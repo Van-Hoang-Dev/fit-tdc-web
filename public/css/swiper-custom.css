@@ -1,0 +1,60 @@
+.swiper-pagination-bullet-active {
+    background-color: white !important;
+    opacity: 1;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+    color: white !important; /* Đổi màu */
+    font-size: 24px !important;
+    width: 50px;
+    height: 50px;
+    background-color: rgba(0, 0, 0, 0.5); /* Nền mờ */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Thay đổi vị trí mũi tên */
+.swiper-button-next {
+    right: 10px !important;
+}
+.swiper-button-prev {
+    left: 10px !important;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background-color: rgba(255, 255, 255, 0); */
+}
+
+/* Hiệu ứng hover */
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Thay đổi vị trí mũi tên */
+.swiper-button-next {
+    right: 10px !important;
+}
+.swiper-button-prev {
+    left: 10px !important;
+}
+
+.swiper-button-next:after, .swiper-button-prev:after {
+    font-size: 15px;
+    font-weight: bolder;
+}

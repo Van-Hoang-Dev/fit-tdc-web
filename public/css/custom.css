@@ -1,0 +1,58 @@
+.text-custom-gradiant {
+    font-size: 35px;
+    font-weight: bold;
+    line-height: 40px;
+    background-image: linear-gradient(to right, #2193b0, #20bdff, #64ffa7);
+    background-size: 100%;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-text-fill-color: transparent;
+    padding: 10px 0;
+    transform: translate3d(10px, 0, 50px);
+    backface-visibility: hidden;
+}
+
+.post-content-triangle-left::before {
+    content: '';
+    position: absolute;
+    top: 20%;
+    left: -17px;
+    width: 25px;
+    height: 14px;
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    transform: rotate(-90deg);
+}
+
+.post-content-triangle-right::before {
+    content: '';
+    position: absolute;
+    top: 20%;
+    right: -17px;
+    width: 25px;
+    height: 14px;
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    transform: rotate(90deg);
+}
+
+.post-content-triangle-top::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: -10px;
+    width: 25px;
+    height: 14px;
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    transform: translate(-50%);
+}
+
+.post-content-triangle-bottom::before {
+    content: '';
+    position: absolute;
+    right: 50%;
+    bottom: -10px;
+    width: 25px;
+    height: 14px;
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    transform: rotate(-180deg) translate(-50%);
+}
