@@ -4,12 +4,122 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="css/footer.css">
         <title>{{ title ?? site:name }}</title>
         {{ vite src="resources/js/site.js|resources/css/site.css" }}
+
+        <link rel="stylesheet" href="css/custom.css">
+        <link rel="stylesheet" href="css/swiper-custom.css">
+
+    <link href ="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.5.2/css/all.css">
+
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.5.2/css/sharp-thin.css">
+
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.5.2/css/sharp-solid.css">
+
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.5.2/css/sharp-regular.css">
+
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.5.2/css/sharp-light.css">
+
     </head>
-    <body class="bg-slate-100 dark:bg-gray-800 font-sans leading-normal text-slate-800 dark:text-gray-400">
+    <!-- <body class="bg-slate-100 dark:bg-gray-800 font-sans leading-normal text-slate-800 dark:text-gray-400">
         <div class="mx-auto px-2 lg:min-h-screen flex flex-col items-center justify-center">
-            {{ template_content }}
         </div>
+    </body> -->
+    <body>
+        {{ template_content }}
     </body>
+    <footer>
+        <div class="relative  w-full h-full bg-[#424242] before:w-1/3 before:h-full before:absolute before:right-0 before:bg-[#42a7a9] before:content-[''] before:z-[1]">
+            <div id="content" class=" grid grid-cols-14 mx-auto w-[80%] text-white">
+                <div class="col-span-10 ">
+                    <div class="mx-auto my-10 w-[90%] max-w-screen-xl">
+                        <div class="flex">
+                            <img class="rounded-full w-40 h-40 flex-none mr-5" src="./logo.jpg" alt="">
+                            <div class=" flex flex-col ">
+                                <h2 class="flex-none text-base font-semibold"> Trường cao đẳng Công Nghệ Thủ Đức </h2>
+                                <h3 class="flex-1 text-lg font-bold mt-3"> Khoa Công Nghệ Thông tin </h3>
+                                <p class="flex-none text-sm font-normal ">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam soluta ipsum ut provident fugiat.</p>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-12 mt-5 ">
+                            <div class="col-span-4">
+                                <h3 id="ft-list-title" class="font-semibold text-lg"> Importants </h3>
+                                <ul id="ft-list-items" class="list-none text-gray-400"> 
+                                    <li id="ft-list-item">Prospective</li>
+                                    <li id="ft-list-item">Alumni</li>
+                                    <li id="ft-list-item">Achievements</li>
+                                    <li id="ft-list-item">Donors</li>
+                                    <li id="ft-list-item">Givings</li>
+                                </ul>
+                            </div>
+                            <div class="col-span-4">
+                                <h3 id="ft-list-title" class="font-semibold text-lg"> Get in touch </h3>
+                                <ul id="ft-list-items" class="list-none text-gray-400"> 
+                                    <li id="ft-list-item">Courses</li>
+                                    <li id="ft-list-item">Jobs</li>
+                                    <li id="ft-list-item">Social Media</li>
+                                    <li id="ft-list-item">Sitemap</li>
+                                    <li id="ft-list-item">Privacy</li>
+                                </ul>
+                            </div>
+                            <div class="col-span-4">
+                                <h3 id="ft-list-title" class="font-semibold text-lg"> Company </h3>
+                                <ul id="ft-list-items" class="list-none text-gray-400"> 
+                                    <li id="ft-list-item">Documentation</li>
+                                    <li id="ft-list-item">Forums</li>
+                                    <li id="ft-list-item">Language Packs</li>
+                                    <li id="ft-list-item">Release Status</li>
+                                </ul>
+                            </div>
+                            
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="col-span-4  z-[2] "> 
+                    <div class="mx-auto my-10 w-[90%] h-20 max-w-screen-xl text-white">
+                        <ul class="list-none">
+                            <li class="text-[14px] flex justify-start items-center mb-2"> 
+                                <div class=" pr-[8px]">
+                                    <img  src="./icons/contact.png" class="h-[20px]">
+                                </div>
+                                <p class="">(04) 3245-6988 </p>
+                                
+                            </li>
+                            <li class="text-[14px] flex justify-start items-center mb-2"> 
+                                <div class=" pr-[6px]">
+                                    <img src="./icons/mail.png" class="h-[20px]">
+                                </div>
+                                <p class="">support@constructor.com </p>
+                            </li>
+                            <li class="text-[14px] flex justify-start items-center mb-2"> 
+                                <div class="pl-[4px] pr-[8px]">
+                                    <img src="./icons/location.png" class="h-[20px]">
+                                </div>
+                                <p class="">A26BT5 Building, SilverC Street</p>
+                            </li>
+                        </ul>
+                        <p class="mt-6 font-semibold">
+                            Powered and Designed by TDC.
+                        </p>
+                        <div class="my-5">
+                            <h3 class="text-lg font-bold mb-3">Newsletter</h3>
+                            <p class=" text-[14px]">Get the latest Eduma news delivered to your inbox.</p>
+                        </div>
+                        <div class="ft-input-box">
+                            <form action="">
+                                <input class="ft-input bg-white/0 border-0 h-[24px] placeholder-gray-100 focus:border-none focus:ring-0" type="text" placeholder="Your email here ...">
+                                <button class="ft-input-btn" type="submit">
+                                    <img class="h-[20px]" src="./icons/Symbol.png" alt="">
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
 </html>
