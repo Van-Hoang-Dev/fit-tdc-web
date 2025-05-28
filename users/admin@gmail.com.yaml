@@ -2,4 +2,4 @@ super: true
 id: 8a2db8fc-eb50-49bb-89d4-b12017d31da0
 password_hash: $2y$12$Yj3FUMz.XbibzNLDw79/uORG0kofPyJskLhh8XczTgoRv8ox7d/aC
 preferences:
-  theme: light
+  theme: dark
