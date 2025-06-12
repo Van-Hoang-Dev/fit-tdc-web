@@ -222,3 +222,13 @@
     left: -6px;
     top: -20px;
 }
+
+/* LECTURER */
+.lecturer-name {
+    color: #428bca;
+}
+
+.lecturer-name:hover {
+       color: #2a6496;
+    text-decoration: underline;
+}

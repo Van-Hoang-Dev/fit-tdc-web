@@ -2,7 +2,11 @@
 module.exports = {
     content: ["./src/**/*.{html,js,jsx,ts,tsx,antlers.html}", "./*.html"],
     theme: {
-        extend: {},
+        extend: {
+            colors: {
+                primary: "#004f79",
+            },
+        },
     },
     plugins: {
         tailwindcss: {},
