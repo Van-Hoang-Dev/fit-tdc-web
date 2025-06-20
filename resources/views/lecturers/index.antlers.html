@@ -5,47 +5,46 @@
             <!-- Section title and description -->
             <div class="col-span-4">
                 <h2 class="text-3xl font-black text-gray-900 mb-3">{{ title }}</h2>
-                <p>Trưởng khoa: ThS. Võ Thành Trung</p>
                 <p class="text-sm text-gray-700 mt-1 max-w-xl">
-                  {{description}}
+                    {{description}}
                 </p>
             </div>
             <div class="col-span-8">
                 <!-- Lecturer list -->
                 <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
                     <!-- Lecturer item -->
-                       {{ collection:lecturers scope="lecturer" }}
-                        {{major}}
-                            {{ if id == major_scope:id }}
-                            <div class="flex flex-col items-center text-center">
+                    {{ collection:lecturers sort="priority" scope="lecturer" }}
+                    {{major}}
+                    {{ if id == major_scope:id }}
+                    <div class="flex flex-col items-center text-center">
                         <div class="p-2 rounded-full" style="background-image: url('assets/images/bg_cr_grey.png');">
                             <div class="w-24 h-24 rounded-full overflow-hidden">
                                 <img src="{{lecturer:avatar}}" alt="Lecturer"
                                     class="rounded-full object-cover transform transition-transform duration-300 ease-in-out hover:scale-110">
-                                </div>
                             </div>
-                            <h3 class="mt-3 mb-1">
-                       <a href="#" class="text-md font-bold lecturer-name">{{lecturer:title}}</a>
+                        </div>
+                        <h3 class="mt-3 mb-1">
+                            <a href={{lecturer:url}} class="text-md font-bold lecturer-name">{{lecturer:title}}</a>
                         </h3>
                         <span class="text-sm text-gray-500">{{ lecturer:position }}</span>
                     </div>
-                            {{ /if }}
-                            {{/major}}
-                        {{ /collection:lecturers }}
-                    
-    
-        
+                    {{ /if }}
+                    {{/major}}
+                    {{ /collection:lecturers }}
+
+
+
                 </div>
             </div>
         </div>
     </div>
     <div class="mb-4"></div>
 
-{{ /collection:majors }}
+    {{ /collection:majors }}
 
 
 
 
-    </div>
+</div>
 
 </div>
