@@ -4,12 +4,12 @@
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="shortcut icon" href="assets/images/logo-removebg.png" type="image/x-icon">
-        <link rel="stylesheet" href="css/footer.css" />
+        <link rel="shortcut icon" href="/assets/images/logo-removebg.png" type="image/x-icon">
+        <link rel="stylesheet" href="/css/footer.css" />
         <title>{{ title ?? site:name }}</title>
         {{ vite src="resources/js/site.js|resources/css/site.css" }}
-        <link rel="stylesheet" href="css/custom.css" />
-        <link rel="stylesheet" href="css/swiper-custom.css" />
+        <link rel="stylesheet" href="/css/custom.css" />
+        <link rel="stylesheet" href="/css/swiper-custom.css" />
 
         <link
             href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css"
@@ -55,12 +55,12 @@
 <!-- Navbar -->
 <div class="relative">
     <a href="#" class="logo mx-auto absolute left-0 top-0 bottom-0 p-5 bg-linear-to-b from-white from-70% to-gray-300">
-        <img src="assets/images/fit-tdc-logo.png" class="h-[100%]" alt="fit-tdc-logo" />
+        <img src="{{ theme:assets src='images/fit-tdc-logo.png' }}" class="h-[100%]" alt="fit-tdc-logo" />
     </a>
     <nav class="bg-sky-950 border-gray-200 dark:bg-gray-900 bg-[url(https://i.pinimg.com/originals/6a/32/7c/6a327caa4b5c102de396a1c3aaa20e98.gif)] bg-blend-overlay">
         <div class="max-w-screen-xl flex flex-wrap items-center justify-end mx-auto">
             {{# <a href="https://flowbite.com/" class="flex items-center space-x-3 rtl:space-x-reverse">
-                <img src="assets/images/fit-tdc-logo.png" class="h-8" alt="Flowbite Logo" />
+                <img src="/assets/images/fit-tdc-logo.png" class="h-8" alt="Flowbite Logo" />
             </a> #}}
             <div class="flex">
                 <button type="button" data-collapse-toggle="navbar-search" aria-controls="navbar-search"
@@ -143,11 +143,13 @@
             <div class="hidden w-full md:block md:w-auto" id="navbar-main">
                 <ul
                     class="font-medium flex flex-col p-4 md:p-0 mt-4 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 uppercase">
-                    <li class="active">
-                        <a href="#"
-                            class="block py-2 px-3 rounded-sm md:hover:text-white md:p-0 dark:text-white md:dark:hover:text-blue-500" aria-current="page">TIN TỨC</a>
+                    {{ nav:main_nav}}
+                    <li class="{{ if is_current || is_parent }}active{{ /if }}">
+                        <a href="{{url}}"
+                            class="block py-2 px-3 rounded-sm md:hover:text-white md:p-0 dark:text-white md:dark:hover:text-blue-500" aria-current="page">{{title}}</a>
                     </li>
-                    <li>
+                    {{ /nav:main_nav}}
+                    <!-- <li>
                         <a href="#"
                         class="block py-2 px-3 text-white/75 rounded-sm md:hover:text-white md:p-0 dark:text-white md:dark:hover:text-blue-500">GIỚI THIỆU</a>
                     </li>
@@ -162,7 +164,7 @@
                     <li>
                         <a href="#"
                             class="block py-2 px-3 text-white/75 rounded-sm md:hover:text-white md:p-0 dark:text-white md:dark:hover:text-blue-500">SINH VIÊN</a>
-                    </li>
+                    </li> -->
                     <li>
                         <a type="button" class="font-black text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">TUYỂN SINH</a>
                     </li>
@@ -184,7 +186,7 @@
                         <div class="flex">
                             <img
                                 class="rounded-full w-40 h-40 flex-none mr-5"
-                                src="./logo.jpg"
+                                src="/logo.jpg"
                                 alt=""
                             />
                             <div class="flex flex-col">
@@ -268,7 +270,7 @@
                             >
                                 <div class="pr-[8px]">
                                     <img
-                                        src="./icons/contact.png"
+                                        src="/icons/contact.png"
                                         class="h-[20px]"
                                     />
                                 </div>
@@ -279,7 +281,7 @@
                             >
                                 <div class="pr-[6px]">
                                     <img
-                                        src="./icons/mail.png"
+                                        src="/icons/mail.png"
                                         class="h-[20px]"
                                     />
                                 </div>
@@ -290,7 +292,7 @@
                             >
                                 <div class="pl-[4px] pr-[8px]">
                                     <img
-                                        src="./icons/location.png"
+                                        src="/icons/location.png"
                                         class="h-[20px]"
                                     />
                                 </div>
@@ -317,7 +319,7 @@
                                 <button class="ft-input-btn" type="submit">
                                     <img
                                         class="h-[20px]"
-                                        src="./icons/Symbol.png"
+                                        src="/icons/Symbol.png"
                                         alt=""
                                     />
                                 </button>

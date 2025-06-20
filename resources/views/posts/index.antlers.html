@@ -1,4 +1,4 @@
-<div class="h-[1000px]">
+<div class="pb-12">
     <!-- Header -->
     <header class="py-[90px] relative bg-cover bg-center bg-no-repeat"
         style="background-image: url('assets/images/banners/tdc.png')">
@@ -16,147 +16,88 @@
         <div class="grid grid-cols-12 gap-5">
             <div class="col-span-9">
                 <!-- Posts List -->
+                 {{collection:posts}}
                  <!-- Post Item -->
-                <div class="grid grid-cols-12 bg-white border border-gray-100 shadow-md overflow-hidden mb-6">
-                    <!-- Thumnail -->
-                    <div class="col-span-5">
-                        <img src="assets/images/events/event-3.png" alt="Post thumbnail"
-                            class="w-full h-[230px] object-cover" />
-                    </div>
-
-                    <!-- Content -->
-                    <div class="col-span-7 p-6 flex flex-col justify-between">
-                        <!-- Date -->
-                        <div class="flex mb-4">
-                            <div class="max-w-[120px] flex flex-row gap-2.5 items-center justify-center text-center border-b border-r border-gray-200 pr-4 pb-4 mr-4">
-                                <div class="w-[60px] text-5xl font-bold text-blue-800 leading-none">22</div>
-                                <div class="flex flex-col text-sm leading-tight">
-                                    <span class="uppercase text-sm text-gray-500 whitespace-nowrap">Tháng 7</span>
-                                    <span class="text-blue-600 text-sm font-medium">2025</span>
-                                </div>
-                            </div>
-
-                            <div>
-                                <h2 class="text-xl font-bold text-gray-900 mb-2 ">
-                                    Kế hoạch xét tốt nghiệp 2025
-                                </h2>
-                                <div class="text-sm text-gray-600 space-x-4">
-                                    <!-- <span>
-                                        <span class="font-medium text-gray-800">Posted by</span> Keny White
-                                    </span> -->
-                                    <span class="">
-                                        <span class="font-medium text-gray-800">Categories</span> Business
-                                    </span>
-                                    <span class="border border-gray-200"></span>
-                                    <span>
-                                        <span class="font-medium text-gray-800">Views</span> 0
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Summary content -->
-                        <p class="text-gray-700 text-sm">
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
-                            been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
-                            galley of type...
-                        </p>
-                    </div>
-                </div>
+                  <a href="{{url}}">
+                      <div class="grid grid-cols-12 bg-white border border-gray-100 shadow-md overflow-hidden mb-6 group post-item">
+                          <!-- Thumnail -->
+                          <div class="col-span-5 overflow-hidden">
+                              {{ thumbnail }}
+                              <img src="{{ url}}" alt="Post thumbnail"
+                                  class="w-full h-[230px] object-cover transform transition-transform duration-300 ease-in-out group-hover:scale-110" />
+                              {{ /thumbnail }}
+                          </div>
+      
+                          <!-- Content -->
+                          <div class="col-span-7 p-6 flex flex-col justify-between">
+                              <!-- Date -->
+                              <div class="flex mb-4">
+                                  <div class="max-w-[120px] flex flex-row gap-2.5 items-center justify-center text-center border-b border-r border-gray-200 pr-4 pb-4 mr-4">
+                                      <div class="w-[60px] text-5xl font-bold text-blue-800 leading-none">{{ date format="d" }}</div>
+                                      <div class="flex flex-col text-sm leading-tight">
+                                          <span class="uppercase text-sm text-gray-500 whitespace-nowrap">Tháng {{ date format="n" }}</span>
+                                          <span class="text-blue-600 text-sm font-medium"> {{ date format="Y" }}</span>
+                                      </div>
+                                  </div>
+      
+                                  <div>
+                                      <h2 class="text-xl font-bold text-gray-900 mb-2 post-title line-clamp-2">
+                                          {{title}}
+                                      </h2>
+                                      <h4>{{featured}}</h4>
+                                      <div class="text-sm text-gray-600 space-x-4">
+                                          <!-- <span>
+                                              <span class="font-medium text-gray-800">Posted by</span> Keny White
+                                          </span> -->
+                                          <span class="">
+                                              <span class="font-medium text-gray-800">Categories</span> Business
+                                          </span>
+                                          <span class="border border-gray-200"></span>
+                                          <span>
+                                              <span class="font-medium text-gray-800">Views</span> 0
+                                          </span>
+                                      </div>
+                                  </div>
+                              </div>
+      
+                              <!-- Summary content -->
+                              <div class="text-gray-700 text-sm line-clamp-3">
+                                 {{content}}
+                              </div>
+                          </div>
+                      </div>
+                  </a>
                     <!-- End Post Item -->
-                      <!-- Post Item -->
-                <div class="grid grid-cols-12 bg-white border border-gray-100 shadow-md overflow-hidden mb-6">
-                    <!-- Thumnail -->
-                    <div class="col-span-5">
-                        <img src="assets/images/events/event-5.png" alt="Post thumbnail"
-                            class="w-full h-[230px] object-cover" />
-                    </div>
+                 {{/collection:posts}}
 
-                    <!-- Content -->
-                    <div class="col-span-7 p-6 flex flex-col justify-between">
-                        <!-- Date -->
-                        <div class="flex mb-4">
-                            <div class="max-w-[120px] max-h-[100px] flex flex-row gap-2.5 items-center justify-center text-center border-b border-r border-gray-200 pr-4 pb-4 mr-4">
-                                <div class="w-[60px] text-5xl font-bold text-blue-800 leading-none">11</div>
-                                <div class="flex flex-col text-sm leading-tight">
-                                    <span class="uppercase text-sm text-gray-500 whitespace-nowrap">Tháng 10</span>
-                                    <span class="text-blue-600 text-sm font-medium">2025</span>
-                                </div>
-                            </div>
-
-                            <div>
-                                <h2 class="text-xl font-bold text-gray-900 mb-2 line-clamp-2">
-                                   Cùng FIT-TDC Tham Gia Ngày Hội Đặc Biệt: Chào Đón Tân Sinh Viên Khóa 2024
-                                </h2>
-                                <div class="text-sm text-gray-600 space-x-4">
-                                    <!-- <span>
-                                        <span class="font-medium text-gray-800">Posted by</span> Keny White
-                                    </span> -->
-                                    <span class="">
-                                        <span class="font-medium text-gray-800">Categories</span> Business
-                                    </span>
-                                    <span class="border border-gray-200"></span>
-                                    <span>
-                                        <span class="font-medium text-gray-800">Views</span> 0
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Summary content -->
-                        <p class="text-gray-700 text-sm">
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
-                            been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
-                            galley of type...
-                        </p>
-                    </div>
-                </div>
-                    <!-- End Post Item -->
-                <!-- End Posts List -->
             </div>
             <!-- Popular Posts -->
             <div class="col-span-3 ml-5">
                 <h3 class="mb-4 font-black text-2xl text-[#004f79] text-center uppercase">Bài Viết Nổi Bật</h3>
                 <!-- Popular Post Item -->
-                <div class="flex flex-col gap-5">
-                     <div class="grid grid-cols-12 gap-3">
-                        <!-- Thumnals -->
-                        <div class="col-span-5">
-                                <img src="assets/images/events/event-3.png" alt="Post thumbnail"
-                                class="w-full h-full object-cover" />
-                        </div>
-                        <!-- Title -->
-                         <div class="col-span-7">
-                            <h2 class="text-sm font-bold text-gray-900 mb-2 line-clamp-2">Kế hoạch xét tốt nghiệp 2025</h2>
-                            <span class="text-xs">29/03/2025</span>
-                        </div>
-                     </div>
-                     <div class="grid grid-cols-12 gap-3">
-                        <!-- Thumnals -->
-                        <div class="col-span-5">
-                                <img src="assets/images/events/event-4.png" alt="Post thumbnail"
-                                class="w-full h-full object-cover" />
-                        </div>
-                        <!-- Title -->
-                         <div class="col-span-7">
-                            <h2 class="text-sm font-bold text-gray-900 mb-2 line-clamp-2">Tuần Lễ Triển Lãm Thiết Kế Đồ Họa – Khóa 2022: Nơi Hội Tụ Sáng Tạo và Đam Mê Nghệ Thuật</h2>
-                            <span class="text-xs">10/12/2024</span>
-                        </div>
-                     </div>
-                     <div class="grid grid-cols-12 gap-3">
-                        <!-- Thumnals -->
-                        <div class="col-span-5">
-                                <img src="assets/images/events/event-5.png" alt="Post thumbnail"
-                                class="w-full h-full object-cover" />
-                        </div>
-                        <!-- Title -->
-                         <div class="col-span-7">
-                            <h2 class="text-sm font-bold text-gray-900 mb-2 line-clamp-2">Cùng FIT-TDC Tham Gia Ngày Hội Đặc Biệt: Chào Đón Tân Sinh Viên Khóa 2024</h2>
-                            <span class="text-xs">11/10/2024</span>
-                        </div>
-                     </div>
-                    
-                 </div>
+                {{ collection:posts }}
+                    {{if featured}}
+                    <a href="{{url}}">
+                        <div class="flex flex-col gap-5">
+                             <div class="grid grid-cols-12 gap-3">
+                                <!-- Thumnail -->
+                                <div class="col-span-5">
+                                    {{thumbnail}}
+                                        <img src="{{url}}" alt="Post thumbnail"
+                                        class="w-full h-full object-cover" />
+                                    {{/thumbnail}}
+                                </div>
+                                <!-- Title -->
+                                 <div class="col-span-7">
+                                    <h2 class="text-sm font-bold text-gray-900 mb-2 line-clamp-2">{{title}}</h2>
+                                    <span class="text-xs">{{date format="d/m/Y"}}</span>
+                                </div>
+                             </div>
+                         </div>
+                    </a>
+
+                    {{/if}}
+                {{ /collection:posts }}
             </div>
         </div>
     </div>

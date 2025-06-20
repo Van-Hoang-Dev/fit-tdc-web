@@ -1,0 +1,58 @@
+<div class="max-w-screen-xl px-6 md:w-[80%] mx-auto py-10">
+    <div class="grid grid-cols-12 mt-10 shadow-[0_6px_10px_-1px_rgba(0,_0,_0,_0.3)]">
+        <!-- Lecturer Avatar -->
+        <div class="col-span-4">
+            <img src="{{avatar}}" alt="{{title}}" srcset="">
+        </div>
+        <!-- Lecturer Content -->
+        <div class="col-span-8 relative bg-before">
+            <!-- Title & Position -->
+            <div class="bg-[#f5ce31] p-[30px] relative lecturer-triangle-down">
+                <div class="font-black text-2xl border-r table-cell align-middle pr-4 capitalize">{{title}}</div>
+                <div class="text-[16.8px] font-extralight table-cell align-middle uppercase pl-4">{{position}}</div>
+            </div>
+            <!-- Major & Info -->
+            <div class="p-[30px]">
+                <span class="text-lg font-medium">{{major}} {{title}} {{/major}}</span>
+                <ul class="mt-4">
+                    <div class="grid grid-cols-12">
+                        <div class="col-span-6 flex flex-col gap-1">
+                            {{if degree}}
+                            <li class="flex gap-2.5 items-center">
+                                <i class="fa-light fa-graduation-cap"></i>
+                                <span>{{degree}}</span>
+                            </li>
+                            {{/if degree}}
+                            {{if phone_number}}
+                            <li class="flex gap-2.5 items-center">
+                                <i class="fa-light fa-phone"></i>
+                                <span>{{phone_number}}</span>
+                            </li>
+                            {{/if}}
+                            {{if email}}
+                            <li class="flex gap-2.5 items-center">
+                                <i class="fa-light fa-envelope"></i>
+                                <span>{{email}}</span>
+                            </li>
+                            {{/if}}
+                        </div>
+                        <div class="col-span-6">
+                            {{if linkedin}}
+                            <li>
+                                <i class="fa-brands fa-linkedin"></i>
+                            </li>
+                            {{/if}}
+                        </div>
+                    </div>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- Lecturer Description -->
+     <div class="shadow-[1px_3px_9px_-4px_#ccc] mb-10">
+         <div class="mt-8 relative" style="background: url('/assets/images/bg_cr_grey.png'); height: 15px;"></div>
+        <div class="p-4">
+            {{description}}
+        </div>
+     </div>
+</div>
