@@ -1,0 +1,185 @@
+<div class="max-w-screen-xl px-4 md:w-[90%] mx-auto py-10">
+    <div class="flex flex-col-reverse md:flex-row md:gap-3 justify-center items-center shake-on-hover">
+        <h1 class="font-black text-2xl md:text-3xl text-[#004f79] text-center uppercase">
+            CHƯƠNG TRÌNH ĐÀO TẠO
+        </h1>
+        <img src="/system/mortarboard.png" class="h-14" alt="" srcset="" />
+    </div>
+    <div class="flex justify-between mx-2">
+        <div id="pre-year"
+            class="flex items-center justify-center h-10 w-10 hover:shadow-[1px_0_5px_-1px_#ccc] hover:text-blue-800 hover:transition-all cursor-pointer transform transition-transform duration-200 hover:-translate-x-1">
+            <i class="fa-solid fa-chevron-left text-lg"></i>
+        </div>
+        <div id="next-year"
+            class="flex items-center justify-center h-10 w-10 hover:shadow-[-2px_1px_5px_-1px_#ccc] hover:text-blue-800 hover:transition-all cursor-pointer transform transition-transform duration-200 hover:translate-x-1">
+            <i class="fa-solid fa-chevron-right text-lg"></i>
+        </div>
+    </div>
+    <div id="course-container" class="md:grid md:grid-cols-10 border-l border-t border-b border-gray-300 mt-5">
+        <!-- Class Of Item -->
+        <!-- <div class="col-span-2 border-r border-gray-300">
+                <div class="py-3 px-5 bg-gray-100 border-b border-gray-300">
+                    <div class="uppercase text-base font-semibold text-gray-500 whitespace-nowrap">
+                        Khóa
+                    </div>
+                    <div class="w-[60px] text-3xl font-bold text-blue-800 leading-none">
+                        2024
+                    </div>
+                </div>
+                <a href="#" class="block py-3 px-5 border-b border-gray-300 group">
+                    <p class="font-semibold group-hover:text-[#004f79]">
+                        Chương trình
+                    </p>
+                    <p class="uppercase group-hover:text-blue-600">
+                        Công nghệ thông tin
+                    </p>
+                    <span class="capitalize group-hover:text-blue-600">(đại trà)</span>
+                </a>
+            </div> -->
+    </div>
+</div>
+
+<script>
+    // Variables
+    let allCourses = [];
+    let offset = 0;
+    let paginatedCourses = [];
+    let currentPage = 0;
+    const visibleCount = 5;
+    const currentYear = new Date().getFullYear();
+    const isMobile = window.innerWidth < 768;
+
+    const preBtn = document.getElementById("pre-year");
+    const nextBtn = document.getElementById("next-year");
+    const courseContainer = document.getElementById("course-container");
+
+    async function fetchCourses() {
+        try {
+            const res = await fetch("/api/courses");
+            if (!res.ok) throw new Error("Fetch failed");
+            const courses = await res.json();
+
+            allCourses = courses;
+
+            paginatedCourses = createPagedCourses(allCourses, 5);
+
+            renderProgramsByCourse();
+        } catch (error) {
+            console.error("Lỗi lấy dữ liệu:", err);
+        }
+    }
+
+    function createPagedCourses(courses, visibleCount = 5) {
+        const pages = [];
+        const total = courses.length;
+        const fullPages = Math.floor(total / visibleCount);
+        const remainder = total % visibleCount;
+
+        for (let i = 0; i < fullPages; i++) {
+            const start = i * visibleCount;
+            const sliced = courses.slice(start, start + visibleCount);
+            pages.push(isMobile ? sliced : sliced.reverse());
+        }
+
+        // Nếu còn dư thì tạo 1 trang cuối với phần tử lùi về
+        if (remainder > 0) {
+            const lastPage = courses.slice(total - visibleCount);
+            pages.push(isMobile ? lastPage : lastPage.reverse());
+        }
+
+        return pages;
+    }
+
+    function renderProgramsByCourse() {
+        const currentCourses = paginatedCourses[currentPage] || [];
+        // console.log(currentCourses);
+
+        const courseListHtml = currentCourses
+            .map((course) => {
+                const isActive = course.year === currentYear;
+
+                const programItems = course.programs
+                    .map((program, index, array) => {
+                        const [main, extra] = program.title.split("(");
+                        const hasExtra = !!extra;
+                        const isLast = index === array.length - 1;
+                        return `
+                    <a href="${program.url
+                            }" target="_blank" class=" relative block px-3 py-2  ${!isLast ? "border-b border-gray-300" : ""
+                            } group  overflow-hidden">
+                        <div class="transform transition-transform duration-300 group-hover:scale-105 group-hover:shadow-md p-2">
+                        <p class="font-semibold group-hover:text-[#004f79]">Chương trình</p>
+                        <p class="uppercase group-hover:text-blue-600">${main.trim()}</p>
+                        ${extra
+                                ? `<span class="capitalize group-hover:text-blue-600">(${extra.trim()}</span>`
+                                : "&nbsp;"
+                            }
+                        </div>
+                    
+                    </a>
+                `;
+                    })
+                    .join("");
+
+                return `
+             <div class="md:col-span-2 border-r border-gray-300">
+            <div class="py-3 px-5 border-b border-gray-300 hover:bg-gray-200 ${isActive
+                        ? "bg-blue-50 border-b border-b-blue-400"
+                        : "bg-gray-100"
+                    } flex justify-between items-center program-header"> 
+                <div>
+                <div class="uppercase text-base font-semibold text-gray-500 whitespace-nowrap">
+                    Khóa
+                </div>
+                <div class="w-[60px] text-3xl font-bold text-blue-800 leading-none">
+                   ${course.year}
+                </div>
+                </div>
+                <div class="md:hidden toggle-down transition-transform duration-300"><i class="fa-solid fa-angle-right"></i></div>
+            </div>
+             <div class="program-body md:block ${isActive? "": "hidden"}">
+                ${programItems}
+            </div>
+        </div>
+        `;
+            })
+            .join("");
+
+        courseContainer.innerHTML = courseListHtml;
+
+        preBtn.classList.toggle("opacity-30", currentPage >= paginatedCourses.length - 1);
+        preBtn.classList.toggle("pointer-events-none", currentPage >= paginatedCourses.length - 1);
+
+        nextBtn.classList.toggle("opacity-30", currentPage === 0);
+        nextBtn.classList.toggle("pointer-events-none", currentPage === 0);
+
+        document.querySelectorAll('.program-header').forEach((header) => {
+            header.addEventListener('click', () => {
+                console.log("click", header.nextElementSibling);
+
+                const body = header.nextElementSibling;
+                const icon = header.querySelector('.toggle-down');
+
+                if (isMobile) {
+                    body.classList.toggle("hidden");
+                    icon.classList.toggle("rotate-90");
+                }
+            })
+        })
+    }
+
+    nextBtn.addEventListener("click", () => {
+        currentPage--;
+        // paginatedCourses[currentPage].reverse();
+        courseListHtml = "";
+        renderProgramsByCourse();
+    });
+
+    preBtn.addEventListener("click", () => {
+        currentPage++;
+        courseListHtml = "";
+        renderProgramsByCourse();
+    });
+
+    fetchCourses();
+</script>

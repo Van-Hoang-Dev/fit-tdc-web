@@ -1,0 +1,48 @@
+<div class="max-w-screen-xl px-4 md:w-[80%] mx-auto py-10">
+    <div class="md:grid md:grid-cols-12 shadow-md">
+        <div class="row-span-4 md:col-span-4">
+            <div class="student-item bg-white text-center">
+                <div class="md:col-span-9 p-2 font-bold bg-amber-300">
+                    Ngành {{major}}
+                </div>
+                <div class="student-photo relative bg-linear-to-r/srgb from-[#E0EAFC] to-[#CFDEF3] pt-5 overflow-hidden">
+                    {{ avatar }}
+                    <img src="{{url}}" alt="" class="object-cover h-[300px] inline-block z-2 relative" />
+                    {{ /avatar }}
+                </div>
+                {{ if awards }}
+                {{awards scope="award"}}
+                <div class="px-3 py-5 shadow-md flex gap-3 items-center rounded-md w-full">
+                    <img src="/system/trophy-star.png" alt="" class="w-9">
+                    <span class="font-medium tracking-wider">{{award.title}}</span>
+                </div>
+                {{/awards}}
+                {{ /if }}
+                <div>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="md:col-span-8 relative">
+            <!-- Student Info -->
+            <div class="bg-blue-500 pl-5 py-3">
+                <div
+                    class="font-black text-white text-[20px] md:text-[25px] border-r table-cell align-middle pr-4 capitalize tracking-wider">
+                    Trương Văn Tiến</div>
+
+                <div class="text-[16.8px] text-white font-extralight table-cell align-middle uppercase pl-4 tracking-wider">
+                    <span class="block md:inline font-medium">{{class}}</span> {{if alumni }} | Cựu sinh viên {{ /if }}
+                </div>
+
+                <span class="text-white text-lg tracking-wider">{{mssv}}</span>
+            </div>
+            <!-- Student Desc -->
+            <div class="px-5 py-3 prose prose-sm md:prose-base max-w-none">
+                {{description}}
+            </div>
+
+        </div>
+    </div>
+</div>
+</div>

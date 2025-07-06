@@ -1,0 +1,116 @@
+<div class="max-w-screen-xl px-4 md:w-[90%] mx-auto py-10">
+    <div class="sm:hidden">
+        <label for="tabs" class="sr-only">Select your country</label>
+        <select id="edu-tab-select"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+            <option>Tiến trình đào tạo</option>
+            <option>Chương trình khung</option>
+            <option>Chuẩn đầu ra</option>
+        </select>
+    </div>
+    <div class="w-[80%] mx-auto">
+        <ul
+            class="tab-btns hidden text-base font-medium text-center text-gray-500 rounded-lg shadow-sm sm:flex capitalize cursor-pointer">
+            <li class="w-full focus-within:z-10 edu-tab-btn">
+                <div href="#" class="inline-block w-full p-4 border-r border-gray-200" aria-current="page">
+                    Tiến trình đào tạo
+                </div>
+            </li>
+            <li class="w-full focus-within:z-10 edu-tab-btn">
+                <div href="#" class="inline-block w-full p-4  border-r border-gray-200">
+                    Chương trình khung
+                </div>
+            </li>
+            <li class="w-full focus-within:z-10 edu-tab-btn">
+                <div href="#" class="inline-block w-full p-4  border-s-0 border-gray-200 rounded-e-lg">
+                    Chuẩn đầu ra
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <div class="mt-10 edu-tab-content">
+        {{if edu_process}}
+        {{edu_process}}
+        <img src="{{url}}" alt="" />
+        
+        {{/edu_process}}
+        {{else}}
+        <div class="h-80 flex flex-col gap-3 items-center justify-center">
+            <img class="w-24 animate-bounceY" src="/system/empty.png" alt="" srcset="">
+             <div class="mt-2 w-20 h-5 bg-black/20 rounded-full blur-[6px] animate-shadowPulse"></div>
+        </div>
+        {{/if}}
+    </div>
+
+    <!-- <iframe src="http://docs.google.com/viewer?url={{url}}&embedded=true" width="560" height="560" frameborder="0"> -->
+    <div class="mt-10 edu-tab-content hidden">
+        {{if edu_table}}
+        {{edu_table}}
+        <iframe src="{{url}}" width="600" height="560" frameborder="0"></iframe>
+        {{/edu_table}}
+        {{else}}
+         <div class="h-80 flex flex-col gap-3 items-center justify-center">
+            <img class="w-24 animate-bounceY" src="/system/empty.png" alt="" srcset="">
+             <div class="mt-2 w-20 h-5 bg-black/20 rounded-full blur-[6px] animate-shadowPulse"></div>
+        </div>
+        {{/if}}
+    </div>
+
+    <div class="mt-10 edu-tab-content hidden mx-auto">
+        {{if learning_outcomes}}
+        {{learning_outcomes}}
+        <iframe src="{{url}}" width="600" height="560" frameborder="0"></iframe>
+        {{/learning_outcomes}}
+        {{else}}
+         <div class="h-80 flex flex-col gap-3 items-center justify-center">
+            <img class="w-24 animate-bounceY" src="/system/empty.png" alt="" srcset="">
+             <div class="mt-2 w-20 h-5 bg-black/20 rounded-full blur-[6px] animate-shadowPulse"></div>
+        </div>
+        {{/if}}
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const btns = document.querySelectorAll(".edu-tab-btn");
+        const tabItems = document.querySelectorAll(".tab-btns li");
+        const select = document.getElementById("edu-tab-select");
+        const contents = document.querySelectorAll(".edu-tab-content");
+
+        function showTab(index) {
+            contents.forEach((c, i) => {
+                c.classList.toggle("hidden", i !== index);
+                if(i === index) {
+                    c.classList.add('flex', 'justify-center')
+                }
+            });
+
+            tabItems.forEach((item, i) => {
+                if (i === index) {
+                    item.classList.add("text-gray-900", "bg-gray-100");
+                    item.classList.remove(
+                        "hover:text-gray-700",
+                        "hover:bg-gray-50"
+                    );
+                } else {
+                    item.classList.remove("text-gray-900", "bg-gray-100");
+                    item.classList.add(
+                        "hover:text-gray-700",
+                        "hover:bg-gray-50"
+                    );
+                }
+            });
+        }
+
+        btns.forEach((btn, i) => {
+            btn.addEventListener("click", () => showTab(i));
+        });
+
+        select.addEventListener("change", (e) => {
+            showTab(e.target.selectedIndex);
+        });
+
+        showTab(0);
+    });
+</script>
