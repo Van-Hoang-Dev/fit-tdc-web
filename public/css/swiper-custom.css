@@ -1,5 +1,5 @@
 .swiper-pagination-bullet-active {
-    background-color: white !important;
+    background-color: white;
     opacity: 1;
 }
 
@@ -58,3 +58,29 @@
     font-size: 15px;
     font-weight: bolder;
 }
+
+/* Swiper custom bullet business */
+.swiper-pagination-business{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.swiper-pagination-business .swiper-pagination-bullet {
+      width: 10px;
+      height: 10px;
+      text-align: center;
+      line-height: 20px;
+      font-size: 12px;
+      color: #000;
+      opacity: 1;
+      background: rgba(0, 0, 0, 0.2);
+       transition: all 0.3s ease;
+    }
+
+.swiper-pagination-business .swiper-pagination-bullet-active {
+      color: #fff;
+      background: #007aff;
+      width: 14px;
+      height: 14px;
+    }
+

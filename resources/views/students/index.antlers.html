@@ -5,50 +5,27 @@
         </h1>
         <img src="/system/mortarboard.png" class="h-14" alt="" srcset="" />
     </div>
-  {{collection:students}}
-    <div id="student-list" class="grid grid-cols-12 mt-5">
-        <div class="col-span-3 m-3 shadow-md">
+    <div id="student-list" class="md:grid grid-cols-12 mt-5">
+    {{collection:students}}
+        <div class="md:col-span-6 lg:col-span-3 m-3 shadow-md">
             <div class="student-item bg-white text-center">
                 <div class="grid grid-cols-12 text-sm">
-                    <div class="col-span-9 p-2 font-bold bg-amber-300">{{major}}</div>
+                    <div class="col-span-9 p-2 font-bold bg-amber-300">
+                        {{major}}
+                    </div>
                     <div class="col-span-3 p-2">{{class}}</div>
                 </div>
                 <div
                     class="student-photo relative bg-linear-to-r/srgb from-[#E0EAFC] to-[#CFDEF3] pt-5 overflow-hidden">
                     {{ avatar }}
-                    <img src="{{url}}" alt="" class="object-cover h-[250px] inline-block z-2 relative">
+                    <img src="{{url}}" alt="" class="object-cover h-[250px] inline-block z-2 relative" />
                     {{ /avatar}}
                     <a href="{{url}}"
                         class="block bg-linear-to-r/srgb from-[#396afc] to-[#2948ff] font-bold p-3 text-xl text-white relative z-2 hover:underline">
                         {{title}}</a>
                 </div>
-                
             </div>
         </div>
-       {{/collection:students}}
-        
+        {{/collection:students}}
     </div>
 </div>
-
-<!-- <script>
-    const list = [1,2,3,4,6,];
-    list.forEach(() => {
-        document.getElementById('student-list').innerHTML += `
-        <div class="col-span-3 m-3 shadow-md">
-             <div class="student-item bg-white text-center">
-                        <div class="grid grid-cols-12 text-sm">
-                            <div class="col-span-9 p-2 font-bold bg-amber-300">Ngành Công nghệ thông tin</div>
-                            <div class="col-span-3 p-2">CD20TT9</div>
-                        </div>
-                        <div
-                            class="student-photo relative bg-linear-to-r/srgb from-[#E0EAFC] to-[#CFDEF3] pt-5 overflow-hidden">
-                            <img src="assets/images/students/student.png" alt=""
-                                class="object-cover h-[250px] inline-block z-2 relative">
-                            <a href=""
-                                class="block bg-linear-to-r/srgb from-[#396afc] to-[#2948ff] font-bold p-3 text-xl text-white relative z-2 hover:underline">
-                                Trương Văn Tiến</a>
-                        </div>
-                    </div>
-        </div>`
-    })
-</script> -->

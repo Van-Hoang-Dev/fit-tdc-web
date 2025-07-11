@@ -1,5 +1,9 @@
 {{images}}
-<img src="{{image}}" alt="{{image_description}}" style="margin: 0 !important;" >
-<span class="block text-center italic">{{image_description}}</span>
+ <figure class="mb-6">
+    <img src="{{ image }}" alt="{{ image_description }}" class="mx-auto w-[690px] h-auto object-contain">
+    {{ if image_description }}
+      <figcaption class="block text-center italic mt-2 text-sm text-gray-500">{{ image_description }}</figcaption>
+    {{ /if }}
+  </figure>
 {{/images}}
 {{text}}

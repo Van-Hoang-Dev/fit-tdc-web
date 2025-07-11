@@ -113,98 +113,118 @@
         </div>
 
         <div class="posts-container grid grid-rows-12 md:grid-rows-none md:grid-cols-12 mb-9">
-            <div class="row-span-6 md:row-span-none col-span-6">
-                <div class="grid grid-cols-12 home-post">
-                    <div class="col-span-6">
-                        <a href="#"><img src="http://fit.tdc.edu.vn/files/large/b867570a39761304949f16fc10795b38.jpg"
-                                alt="" class="aspect-square object-cover" /></a>
-                    </div>
-                    <div class="col-span-6 bg-gray-200 p-7 relative post-content triangle-left before:bg-gray-200">
-                        <div class="text-sm">11/04/2025</div>
-                        <h3 class="text-xl font-semibold">
-                            <a href="#">Kế hoạch xét tốt nghiệp 2025</a>
-                        </h3>
-                        <div class="text-sm hidden md:block">Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                            Ab architecto nam totam sequi sit fugit quam nemo labore quis! A quisquam, ratione dolor quo
-                            itaque soluta! Veniam aliquid fuga ipsam.</div>
-                        <a href="#" class="hidden md:block absolute bottom-7 left-7"><svg fill="currentColor"
-                                viewBox="0 0 23 24" xmlns="http://www.w3.org/2000/svg" class="w-10">
-                                <path clip-rule="evenodd"
-                                    d="M0 3.2V0.5H18H20.5H23V3V5.5V23.5H20.3L20.5 5.5191H19.8881L1.96094 23.4462L0.0308727 21.5514L17.9578 3.62444V3.2H0Z"
-                                    fill-rule="evenodd"></path>
-                            </svg></a>
-                    </div>
-                </div>
-            </div>
-            <div class="row-span-6 md:row-span-none col-span-6">
-                <div class="grid grid-cols-12 home-post">
-                    <div class="col-span-6">
-                        <a href="#"><img src="http://fit.tdc.edu.vn/files/large/a480b3ee5d4a01038d83e77da11d6f38.jpg"
-                                alt="" class="aspect-square object-cover" /></a>
-                    </div>
-                    <div class="col-span-6 bg-gray-200 p-7 relative post-content triangle-left before:bg-gray-200">
-                        <div class="text-sm">11/04/2025</div>
-                        <h3 class="text-xl font-semibold">
-                            <a href="#">Kế hoạch xét tốt nghiệp 2025</a>
-                        </h3>
-                        <div class="hidden md:block text-sm">Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                            Ab architecto nam totam sequi sit fugit quam nemo labore quis! A quisquam, ratione dolor quo
-                            itaque soluta! Veniam aliquid fuga ipsam.</div>
-                        <a href="#" class="hidden md:block absolute bottom-7 left-7"><svg fill="currentColor"
-                                viewBox="0 0 23 24" xmlns="http://www.w3.org/2000/svg" class="w-10">
-                                <path clip-rule="evenodd"
-                                    d="M0 3.2V0.5H18H20.5H23V3V5.5V23.5H20.3L20.5 5.5191H19.8881L1.96094 23.4462L0.0308727 21.5514L17.9578 3.62444V3.2H0Z"
-                                    fill-rule="evenodd"></path>
-                            </svg></a>
+            {{ collection:posts limit="4" sort="date:desc" }}
+                {{if index == 0}}
+                <div class="row-span-6 md:row-span-none col-span-6">
+                    <div class="grid grid-cols-12 home-post">
+                        <div class="col-span-6">
+                            <a href="{{url}}">
+                            {{ thumbnail }}
+                                <img src="{{url}}"
+                                    alt="{{title}}" class="aspect-square object-cover" />
+                             {{ /thumbnail }}
+                             </a>
+                        </div>
+                        <div class="col-span-6 bg-gray-200 p-7 relative post-content triangle-left before:bg-gray-200">
+                            <div class="text-sm">{{date format="d/m/Y"}}</div>
+                            <h3 class="text-xl font-semibold">
+                                <a href="{{url}}" class="line-clamp-3">{{title}}</a>
+                            </h3>
+                            <div class="text-sm hidden md:block title_description">{{title_description}}</div>
+                            <a href="{{url}}" class="absolute bottom-7 left-7 "><svg fill="currentColor"
+                                    viewBox="0 0 23 24" xmlns="http://www.w3.org/2000/svg" class="w-5 scale-x-[-1] md:scale-x-100">
+                                    <path clip-rule="evenodd"
+                                        d="M0 3.2V0.5H18H20.5H23V3V5.5V23.5H20.3L20.5 5.5191H19.8881L1.96094 23.4462L0.0308727 21.5514L17.9578 3.62444V3.2H0Z"
+                                        fill-rule="evenodd"></path>
+                                </svg></a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="row-span-6 md:row-span-none col-span-6">
-                <div class="grid grid-cols-12 home-post">
-                    <div class="col-span-6 order-2">
-                        <a href="#"><img src="http://fit.tdc.edu.vn/files/large/7047cd56e86fa4f15b5a5ed5f5ea07ae.jpg"
-                                alt="" class="aspect-square object-cover" /></a>
-                    </div>
-                    <div class="col-span-6 bg-gray-200 p-7 relative post-content triangle-right before:bg-gray-200">
-                        <div class="text-sm">11/04/2025</div>
-                        <h3 class="text-xl font-semibold">
-                            <a href="#">Kế hoạch xét tốt nghiệp 2025</a>
-                        </h3>
-                        <div class="text-sm hidden md:block">Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                            Ab architecto nam totam sequi sit fugit quam nemo labore quis! A quisquam, ratione dolor quo
-                            itaque soluta! Veniam aliquid fuga ipsam.</div>
-                        <a href="#" class="hidden md:block absolute bottom-7 right-7"><svg fill="currentColor"
-                                viewBox="0 0 23 24" xmlns="http://www.w3.org/2000/svg" class="w-10">
-                                <path clip-rule="evenodd"
-                                    d="M0 3.2V0.5H18H20.5H23V3V5.5V23.5H20.3L20.5 5.5191H19.8881L1.96094 23.4462L0.0308727 21.5514L17.9578 3.62444V3.2H0Z"
-                                    fill-rule="evenodd"></path>
-                            </svg></a>
-                    </div>
-                </div>
-            </div>
-            <div class="row-span-6 md:row-span-none col-span-6">
-                <div class="grid grid-cols-12 home-post">
-                    <div class="col-span-6 order-2">
-                        <a href="#"><img src="http://fit.tdc.edu.vn/files/large/dc8f8abeb0ed717c8d6434628b171e86.jpeg"
-                                alt="" class="aspect-square object-cover" /></a>
-                    </div>
-                    <div class="col-span-6 bg-gray-200 p-7 relative post-content triangle-right before:bg-gray-200">
-                        <div class="text-sm">11/04/2025</div>
-                        <h3 class="text-xl font-semibold">
-                            <a href="#">Kế hoạch xét tốt nghiệp 2025</a>
-                        </h3>
-                        <div class="hidden md:block text-sm">Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                            Ab architecto nam totam sequi sit fugit quam nemo labore quis! A quisquam, ratione dolor quo
-                            itaque soluta! Veniam aliquid fuga ipsam.</div>
-                        <a href="#" class="hidden md:block absolute bottom-7 right-7"><svg fill="currentColor"
-                                viewBox="0 0 23 24" xmlns="http://www.w3.org/2000/svg" class="w-10">
-                                <path clip-rule="evenodd"
-                                    d="M0 3.2V0.5H18H20.5H23V3V5.5V23.5H20.3L20.5 5.5191H19.8881L1.96094 23.4462L0.0308727 21.5514L17.9578 3.62444V3.2H0Z"
-                                    fill-rule="evenodd"></path>
-                            </svg></a>
+                {{/if}}
+                {{if index == 1}}
+                <div class="row-span-6 md:row-span-none col-span-6">
+                    <div class="grid grid-cols-12 home-post">
+                        <div class="col-span-6">
+                            <a href="{{url}}">
+                                {{thumbnail}}
+                                <img src="{{url}}"
+                                    alt="{{title}}" class="aspect-square object-cover" />
+                                    {{/thumbnail}}
+                                </a>
+                        </div>
+                        <div class="col-span-6 bg-gray-200 p-7 relative post-content triangle-left before:bg-gray-200">
+                            <div class="text-sm">{{date format="d/m/Y"}}</div>
+                            <h3 class="text-xl font-semibold">
+                                <a href="{{url}}" class="line-clamp-3">{{title}}</a>
+                            </h3>
+                            <div class="hidden md:block text-sm title_description">{{title_description}}</div>
+                            <a href="{{url}}" class="absolute bottom-7 left-7"><svg fill="currentColor"
+                                    viewBox="0 0 23 24" xmlns="http://www.w3.org/2000/svg" class="w-5 scale-x-[-1] md:scale-x-100">
+                                    <path clip-rule="evenodd"
+                                        d="M0 3.2V0.5H18H20.5H23V3V5.5V23.5H20.3L20.5 5.5191H19.8881L1.96094 23.4462L0.0308727 21.5514L17.9578 3.62444V3.2H0Z"
+                                        fill-rule="evenodd"></path>
+                                </svg></a>
+                        </div>
                     </div>
                 </div>
-            </div>
+                {{/if}}
+
+                {{if index == 2}}
+                <div class="row-span-6 md:row-span-none col-span-6">
+                    <div class="grid grid-cols-12 home-post">
+                        <div class="col-span-6 order-2">
+                            <a href="{{url}}">
+                                {{thumbnail}}
+                                <img src="{{url}}"
+                                    alt="{{title}}" class="aspect-square object-cover" />
+                                    {{/thumbnail}}
+                                </a>
+                        </div>
+                        <div class="col-span-6 bg-gray-200 p-7 relative post-content triangle-right before:bg-gray-200">
+                            <div class="text-sm">{{date format="d/m/Y"}}</div>
+                            <h3 class="text-xl font-semibold">
+                                <a href="{{url}}" class="line-clamp-3">{{title}}</a>
+                            </h3>
+                            <div class="text-sm hidden md:block title_description">{{title_description}}</div>
+                            <a href="{{url}}" class="absolute bottom-7 right-7"><svg fill="currentColor"
+                                    viewBox="0 0 23 24" xmlns="http://www.w3.org/2000/svg" class="w-5">
+                                    <path clip-rule="evenodd"
+                                        d="M0 3.2V0.5H18H20.5H23V3V5.5V23.5H20.3L20.5 5.5191H19.8881L1.96094 23.4462L0.0308727 21.5514L17.9578 3.62444V3.2H0Z"
+                                        fill-rule="evenodd"></path>
+                                </svg></a>
+                        </div>
+                    </div>
+                </div>
+                {{/if}}
+
+                {{if index == 3}}
+                <div class="row-span-6 md:row-span-none col-span-6">
+                    <div class="grid grid-cols-12 home-post">
+                        <div class="col-span-6 order-2">
+                            <a href="{{url}}">
+                                {{thumbnail}}
+                                <img src="{{url}}"
+                                    alt="{{title}}" class="aspect-square object-cover" />
+                                {{/thumbnail}}
+                                </a>
+                        </div>
+                        <div class="col-span-6 bg-gray-200 p-7 relative post-content triangle-right before:bg-gray-200">
+                            <div class="text-sm">{{date format="d/m/Y"}}</div>
+                            <h3 class="text-xl font-semibold">
+                                <a href="{{url}}" class="line-clamp-3">{{title}}</a>
+                            </h3>
+                            <div class="hidden lg:block text-sm title_description">{{title_description}}</div>
+                            <a href="{{url}}" class="absolute bottom-7 right-7"><svg fill="currentColor"
+                                    viewBox="0 0 23 24" xmlns="http://www.w3.org/2000/svg" class="w-5">
+                                    <path clip-rule="evenodd"
+                                        d="M0 3.2V0.5H18H20.5H23V3V5.5V23.5H20.3L20.5 5.5191H19.8881L1.96094 23.4462L0.0308727 21.5514L17.9578 3.62444V3.2H0Z"
+                                        fill-rule="evenodd"></path>
+                                </svg></a>
+                        </div>
+                    </div>
+                </div>
+                {{/if}}
+            {{/collection:posts}}
         </div>
         <!-- End Post -->
         <!-- Upcoming event -->
@@ -301,228 +321,41 @@
         <!-- Students List -->
         <div class="swiper students-list">
             <div class="swiper-wrapper">
+                {{collection:students}}
                 <div class="swiper-slide">
                     <div class="student-item bg-white text-center">
                         <div class="grid grid-cols-12 text-sm">
-                            <div class="col-span-9 p-2 font-bold bg-amber-300">Ngành Công nghệ thông tin</div>
-                            <div class="col-span-3 p-2">CD20TT9</div>
+                            <div class="col-span-9 p-2 font-bold bg-amber-300">{{major}}</div>
+                            <div class="col-span-3 p-2">{{class}}</div>
                         </div>
-                        <div
-                            class="student-photo relative bg-linear-to-r/srgb from-[#E0EAFC] to-[#CFDEF3] pt-5 overflow-hidden">
-                            <img src="assets/images/students/student.png" alt=""
+                        <div class="student-photo relative bg-linear-to-r/srgb from-[#E0EAFC] to-[#CFDEF3] pt-5 overflow-hidden">
+                            <img src=" {{avatar}}" alt="{{title}}"
                                 class="object-cover h-[300px] inline-block z-2 relative">
                             <h3
                                 class="bg-linear-to-r/srgb from-[#396afc] to-[#2948ff] font-bold p-3 text-xl text-white relative z-2 mix-blend-multiply">
-                                Trương Văn Tiến</h3>
+                                <a href="{{url}}" class="hover:border-b hover:border-white">{{title}}</a></h3>
                         </div>
                         <div class="p-3">
 
 
-                            <ul class="max-w-md space-y-1 text-gray-500 list-inside dark:text-gray-400 text-left">
+                            <ul class="grid grid-rows-3 max-w-md space-y-1 text-gray-500 list-inside  text-left">
+                                {{awards limit="3" scope="award"}}
                                 <li class="flex items-center">
-                                    <i class="fa-solid fa-star text-amber-300 me-2"></i> Sinh viên năm tốt cấp thành phố
+                                    <i class="fa-solid fa-star text-amber-300 me-2"></i><span class="line-clamp-1"> {{award:title}}</span>
                                 </li>
-                                <li class="flex items-center">
-                                    <i class="fa-solid fa-star text-amber-300 me-2"></i> Giải thưởng sao tháng giêng
-                                </li>
-                                <li class="flex items-center">
-                                    <i class="fa-solid fa-star text-amber-300 me-2"></i> Giải nhì Cuộc thi HSSV Giỏi
-                                    nghề TPHCM 2023
-                                </li>
+                                {{/awards}}
+                                
 
                             </ul>
 
                             <div class="text-right">
-                                <a href="#"><i class="fa-regular fa-arrow-right"></i></a>
+                                <a href="{{url}}"><i class="fa-regular fa-arrow-right"></i></a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="swiper-slide">
-                    <div class="student-item bg-white text-center">
-                        <div class="grid grid-cols-12 text-sm">
-                            <div class="col-span-9 p-2 font-bold bg-amber-300">Ngành Công nghệ thông tin</div>
-                            <div class="col-span-3 p-2">CD20TT9</div>
-                        </div>
-                        <div
-                            class="student-photo relative bg-linear-to-r/srgb from-[#E0EAFC] to-[#CFDEF3] pt-5 overflow-hidden">
-                            <img src="assets/images/students/student.png" alt=""
-                                class="object-cover h-[300px] inline-block z-2 relative">
-                            <h3
-                                class="bg-linear-to-r/srgb from-[#396afc] to-[#2948ff] font-bold p-3 text-xl text-white relative z-2 mix-blend-multiply">
-                                Trương Văn Tiến</h3>
-                        </div>
-                        <div class="p-3">
-
-
-                            <ul class="max-w-md space-y-1 text-gray-500 list-inside dark:text-gray-400 text-left">
-                                <li class="flex items-center">
-                                    <i class="fa-solid fa-star text-amber-300 me-2"></i> Sinh viên năm tốt cấp thành phố
-                                </li>
-                                <li class="flex items-center">
-                                    <i class="fa-solid fa-star text-amber-300 me-2"></i> Giải thưởng sao tháng giêng
-                                </li>
-                                <li class="flex items-center">
-                                    <i class="fa-solid fa-star text-amber-300 me-2"></i> Giải nhì Cuộc thi HSSV Giỏi
-                                    nghề TPHCM 2023
-                                </li>
-
-                            </ul>
-
-                            <div class="text-right">
-                                <a href="#"><i class="fa-regular fa-arrow-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="student-item bg-white text-center">
-                        <div class="grid grid-cols-12 text-sm">
-                            <div class="col-span-9 p-2 font-bold bg-amber-300">Ngành Công nghệ thông tin</div>
-                            <div class="col-span-3 p-2">CD20TT9</div>
-                        </div>
-                        <div
-                            class="student-photo relative bg-linear-to-r/srgb from-[#E0EAFC] to-[#CFDEF3] pt-5 overflow-hidden">
-                            <img src="assets/images/students/student.png" alt=""
-                                class="object-cover h-[300px] inline-block z-2 relative">
-                            <h3
-                                class="bg-linear-to-r/srgb from-[#396afc] to-[#2948ff] font-bold p-3 text-xl text-white relative z-2 mix-blend-multiply">
-                                Trương Văn Tiến</h3>
-                        </div>
-                        <div class="p-3">
-
-
-                            <ul class="max-w-md space-y-1 text-gray-500 list-inside dark:text-gray-400 text-left">
-                                <li class="flex items-center">
-                                    <i class="fa-solid fa-star text-amber-300 me-2"></i> Sinh viên năm tốt cấp thành phố
-                                </li>
-                                <li class="flex items-center">
-                                    <i class="fa-solid fa-star text-amber-300 me-2"></i> Giải thưởng sao tháng giêng
-                                </li>
-                                <li class="flex items-center">
-                                    <i class="fa-solid fa-star text-amber-300 me-2"></i> Giải nhì Cuộc thi HSSV Giỏi
-                                    nghề TPHCM 2023
-                                </li>
-
-                            </ul>
-
-                            <div class="text-right">
-                                <a href="#"><i class="fa-regular fa-arrow-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="student-item bg-white text-center">
-                        <div class="grid grid-cols-12 text-sm">
-                            <div class="col-span-9 p-2 font-bold bg-amber-300">Ngành Công nghệ thông tin</div>
-                            <div class="col-span-3 p-2">CD20TT9</div>
-                        </div>
-                        <div
-                            class="student-photo relative bg-linear-to-r/srgb from-[#E0EAFC] to-[#CFDEF3] pt-5 overflow-hidden">
-                            <img src="assets/images/students/student.png" alt=""
-                                class="object-cover h-[300px] inline-block z-2 relative">
-                            <h3
-                                class="bg-linear-to-r/srgb from-[#396afc] to-[#2948ff] font-bold p-3 text-xl text-white relative z-2 mix-blend-multiply">
-                                Trương Văn Tiến</h3>
-                        </div>
-                        <div class="p-3">
-
-
-                            <ul class="max-w-md space-y-1 text-gray-500 list-inside dark:text-gray-400 text-left">
-                                <li class="flex items-center">
-                                    <i class="fa-solid fa-star text-amber-300 me-2"></i> Sinh viên năm tốt cấp thành phố
-                                </li>
-                                <li class="flex items-center">
-                                    <i class="fa-solid fa-star text-amber-300 me-2"></i> Giải thưởng sao tháng giêng
-                                </li>
-                                <li class="flex items-center">
-                                    <i class="fa-solid fa-star text-amber-300 me-2"></i> Giải nhì Cuộc thi HSSV Giỏi
-                                    nghề TPHCM 2023
-                                </li>
-
-                            </ul>
-
-                            <div class="text-right">
-                                <a href="#"><i class="fa-regular fa-arrow-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="student-item bg-white text-center">
-                        <div class="grid grid-cols-12 text-sm">
-                            <div class="col-span-9 p-2 font-bold bg-amber-300">Ngành Công nghệ thông tin</div>
-                            <div class="col-span-3 p-2">CD20TT9</div>
-                        </div>
-                        <div
-                            class="student-photo relative bg-linear-to-r/srgb from-[#E0EAFC] to-[#CFDEF3] pt-5 overflow-hidden">
-                            <img src="assets/images/students/student.png" alt=""
-                                class="object-cover h-[300px] inline-block z-2 relative">
-                            <h3
-                                class="bg-linear-to-r/srgb from-[#396afc] to-[#2948ff] font-bold p-3 text-xl text-white relative z-2 mix-blend-multiply">
-                                Trương Văn Tiến</h3>
-                        </div>
-                        <div class="p-3">
-
-
-                            <ul class="max-w-md space-y-1 text-gray-500 list-inside dark:text-gray-400 text-left">
-                                <li class="flex items-center">
-                                    <i class="fa-solid fa-star text-amber-300 me-2"></i> Sinh viên năm tốt cấp thành phố
-                                </li>
-                                <li class="flex items-center">
-                                    <i class="fa-solid fa-star text-amber-300 me-2"></i> Giải thưởng sao tháng giêng
-                                </li>
-                                <li class="flex items-center">
-                                    <i class="fa-solid fa-star text-amber-300 me-2"></i> Giải nhì Cuộc thi HSSV Giỏi
-                                    nghề TPHCM 2023
-                                </li>
-
-                            </ul>
-
-                            <div class="text-right">
-                                <a href="#"><i class="fa-regular fa-arrow-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="student-item bg-white text-center">
-                        <div class="grid grid-cols-12 text-sm">
-                            <div class="col-span-9 p-2 font-bold bg-amber-300">Ngành Công nghệ thông tin</div>
-                            <div class="col-span-3 p-2">CD20TT9</div>
-                        </div>
-                        <div
-                            class="student-photo relative bg-linear-to-r/srgb from-[#E0EAFC] to-[#CFDEF3] pt-5 overflow-hidden">
-                            <img src="assets/images/students/student.png" alt=""
-                                class="object-cover h-[300px] inline-block z-2 relative">
-                            <h3
-                                class="bg-linear-to-r/srgb from-[#396afc] to-[#2948ff] font-bold p-3 text-xl text-white relative z-2 mix-blend-multiply">
-                                Trương Văn Tiến</h3>
-                        </div>
-                        <div class="p-3">
-
-
-                            <ul class="max-w-md space-y-1 text-gray-500 list-inside dark:text-gray-400 text-left">
-                                <li class="flex items-center">
-                                    <i class="fa-solid fa-star text-amber-300 me-2"></i> Sinh viên năm tốt cấp thành phố
-                                </li>
-                                <li class="flex items-center">
-                                    <i class="fa-solid fa-star text-amber-300 me-2"></i> Giải thưởng sao tháng giêng
-                                </li>
-                                <li class="flex items-center">
-                                    <i class="fa-solid fa-star text-amber-300 me-2"></i> Giải nhì Cuộc thi HSSV Giỏi
-                                    nghề TPHCM 2023
-                                </li>
-
-                            </ul>
-
-                            <div class="text-right">
-                                <a href="#"><i class="fa-regular fa-arrow-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                {{/collection:students}}
+                
 
             </div>
         </div>
@@ -534,27 +367,27 @@
 <!-- Business opinion -->
 <div class="max-w-screen-xl px-4 md:w-[90%] mx-auto py-10">
     <div class="animation-wrapper">
-        <h2 class="section-head">Chia sẻ từ đối tác</h2>
+        <h2 class="section-head">Cảm nhận về FIT-TDC</h2>
     </div>
     <div class="business-opinions">
         <div class="swiper business-list">
-            <div class="swiper-wrapper">
+            <div class="swiper-wrapper mb-5 py-5">
+                {{collection:feedbacks}}
                 <div class="swiper-slide">
-                    <div class="business-item bg-[#f3f4f6] px-5 pt-5 pb-20 rounded-xl relative">
-                        <div class="text-[#cfd2d7] text-4xl mb-4">
+                    <div class="business-item bg-[#f3f4f6] px-5 pt-5 pb-20 rounded-xl relative animate-float group">
+                        <div class="text-[#cfd2d7] group-hover:text-blue-500 text-4xl mb-3">
                             <i class="fa-solid fa-quote-left"></i>
                         </div>
                         <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                            Excepturi possimus quos nam!
+                          {{content}}
                         </p>
                         <div class="bg-white py-2 pr-4 absolute bottom-0 left-0 rounded-xl">
                             <div class="flex gap-3.5">
-                                <img src="assets/images/business/person.png" alt=""
+                                <img src="{{avatar}}" alt=""
                                     class="w-11 h-11 rounded-full object-cover" srcset="">
                                 <div>
-                                    <p class="text-sm font-semibold">Hoàng Nam Tiến</p>
-                                    <p class="text-xs text-gray-500">Tập đoàn FPT</p>
+                                    <p class="text-sm font-semibold">{{fullname}}</p>
+                                    <p class="text-xs text-gray-500">{{position}}</p>
                                 </div>
                             </div>
                             <div class="custom-shape shape-right"></div>
@@ -562,99 +395,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="swiper-slide">
-                    <div class="business-item bg-[#f3f4f6] px-5 pt-5 pb-20 rounded-xl relative">
-                        <div class="text-[#cfd2d7] text-4xl mb-4">
-                            <i class="fa-solid fa-quote-left"></i>
-                        </div>
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                            Excepturi possimus quos nam!
-                        </p>
-                        <div class="bg-white py-2 pr-4 absolute bottom-0 left-0 rounded-xl">
-                            <div class="flex gap-3.5">
-                                <img src="assets/images/business/person.png" alt=""
-                                    class="w-11 h-11 rounded-full object-cover" srcset="">
-                                <div>
-                                    <p class="text-sm font-semibold">Hoàng Nam Tiến</p>
-                                    <p class="text-xs text-gray-500">Tập đoàn FPT</p>
-                                </div>
-                            </div>
-                            <div class="custom-shape shape-right"></div>
-                            <div class="custom-shape shape-left"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="business-item bg-[#f3f4f6] px-5 pt-5 pb-20 rounded-xl relative">
-                        <div class="text-[#cfd2d7] text-4xl mb-4">
-                            <i class="fa-solid fa-quote-left"></i>
-                        </div>
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                            Excepturi possimus quos nam!
-                        </p>
-                        <div class="bg-white py-2 pr-4 absolute bottom-0 left-0 rounded-xl">
-                            <div class="flex gap-3.5">
-                                <img src="assets/images/business/person.png" alt=""
-                                    class="w-11 h-11 rounded-full object-cover" srcset="">
-                                <div>
-                                    <p class="text-sm font-semibold">Hoàng Nam Tiến</p>
-                                    <p class="text-xs text-gray-500">Tập đoàn FPT</p>
-                                </div>
-                            </div>
-                            <div class="custom-shape shape-right"></div>
-                            <div class="custom-shape shape-left"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="business-item bg-[#f3f4f6] px-5 pt-5 pb-20 rounded-xl relative">
-                        <div class="text-[#cfd2d7] text-4xl mb-4">
-                            <i class="fa-solid fa-quote-left"></i>
-                        </div>
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                            Excepturi possimus quos nam!
-                        </p>
-                        <div class="bg-white py-2 pr-4 absolute bottom-0 left-0 rounded-xl">
-                            <div class="flex gap-3.5">
-                                <img src="assets/images/business/person.png" alt=""
-                                    class="w-11 h-11 rounded-full object-cover" srcset="">
-                                <div>
-                                    <p class="text-sm font-semibold">Hoàng Nam Tiến</p>
-                                    <p class="text-xs text-gray-500">Tập đoàn FPT</p>
-                                </div>
-                            </div>
-                            <div class="custom-shape shape-right"></div>
-                            <div class="custom-shape shape-left"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="business-item bg-[#f3f4f6] px-5 pt-5 pb-20 rounded-xl relative">
-                        <div class="text-[#cfd2d7] text-4xl mb-4">
-                            <i class="fa-solid fa-quote-left"></i>
-                        </div>
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                            Excepturi possimus quos nam!
-                        </p>
-                        <div class="bg-white py-2 pr-4 absolute bottom-0 left-0 rounded-xl">
-                            <div class="flex gap-3.5">
-                                <img src="assets/images/business/person.png" alt=""
-                                    class="w-11 h-11 rounded-full object-cover" srcset="">
-                                <div>
-                                    <p class="text-sm font-semibold">Hoàng Nam Tiến</p>
-                                    <p class="text-xs text-gray-500">Tập đoàn FPT</p>
-                                </div>
-                            </div>
-                            <div class="custom-shape shape-right"></div>
-                            <div class="custom-shape shape-left"></div>
-                        </div>
-                    </div>
-                </div>
+                {{/collection:feedbacks}}
+                
             </div>
+            <div class="swiper-pagination-business"></div>
         </div>
         <div class="grid grid-cols-12 gap-5">
             <div class="col-span-4">
@@ -714,8 +458,6 @@
 
     let heightA = b.offsetTop - a.offsetTop;
 
-    console.log(heightA);
-
     bgRight.style.height = `${heightA}px`;
 </script>
 
@@ -751,7 +493,7 @@
         let swiper = new Swiper(".mySwiper", {
             loop: true, // Lặp vô hạn
             autoplay: {
-                delay: 3000,
+                delay: 3800,
                 disableOnInteraction: false,
             },
             pagination: {
@@ -780,8 +522,13 @@
                 },
                 //  ≥ 768px (tablet trở lên)
                 768: {
+                    slidesPerView: 2,
+                    spaceBetween: 20,
+                },
+
+                1024: {
                     slidesPerView: 4,
-                    spaceBetween: 30,
+                    spaceBetween: 20,
                 }
             }
         });
@@ -789,8 +536,12 @@
         let businessList = new Swiper(".business-list", {
             loop: true,
             autoplay: {
-                delay: 3500,
+                delay: 6000,
                 disableOnInteraction: false,
+            },
+            pagination: {
+                el: ".swiper-pagination-business",
+                clickable: true,
             },
             slidesPerView: 3,
             spaceBetween: 30,
@@ -801,7 +552,7 @@
                 },
                 //  ≥ 768px (tablet trở lên)
                 768: {
-                    slidesPerView: 4,
+                    slidesPerView: 3,
                     spaceBetween: 30,
                 }
             }

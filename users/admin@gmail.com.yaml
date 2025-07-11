@@ -36,3 +36,18 @@ preferences:
         - date
         - status
         - featured
+    landing_pages:
+      columns:
+        - title
+        - author
+        - slug
+        - status
+        - external_link
+  forms:
+    contact_us:
+      columns:
+        - email
+        - ho_va_ten
+        - loi_nhan
+        - mssv
+        - datestamp

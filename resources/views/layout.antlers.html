@@ -97,17 +97,12 @@
                             class="block w-full p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                             placeholder="Tìm...">
                     </div>
-                    <ul
-                        class="flex flex-col p-4 md:p-0 mt-4 font-medium md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
-                        <li>
-                            <a href="#" class="block py-2 px-3 text-white font-black" aria-current="page">Home</a>
+                    <ul class="flex flex-col p-4 md:p-0 mt-4 font-medium md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+                       {{ nav:landing_nav}}
+                        <li> 
+                            <a  href="{{ if external_link }}{{ external_link }}{{ else }}{{ url }}{{ /if }}" class="block py-2 px-3 {{ if is_current || is_parent }}text-white font-black {{else}} text-white/50 hover:text-white {{ /if }} " aria-current="page">{{title}}</a>
                         </li>
-                        <li>
-                            <a href="#" class="block py-2 px-3 text-white/50 hover:text-white">Internship</a>
-                        </li>
-                        <li>
-                            <a href="#" class="block py-2 px-3 text-white/50 hover:text-white">Liên hệ</a>
-                        </li>
+                        {{ /nav:landing_nav}}
                     </ul>
                 </div>
             </div>
@@ -131,33 +126,21 @@
                     <ul
                         class="font-medium flex flex-col p-4 md:p-0 mt-4 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 uppercase">
                         {{ nav:main_nav}}
+                        {{ if slug !== 'tuyen-sinh'}}
                         <li class="{{ if is_current || is_parent }}active{{ /if }}">
-                            <a href="{{url}}"
+                            <a href="{{ if external_link }}{{ external_link }}{{ else }}{{ url }}{{ /if }}"
                                 class="block py-2 px-3 rounded-sm md:hover:text-white md:p-0 dark:text-white md:dark:hover:text-blue-500"
                                 aria-current="page">{{title}}</a>
                         </li>
-                        {{ /nav:main_nav}}
-                        <!-- <li>
-                        <a href="#"
-                        class="block py-2 px-3 text-white/75 rounded-sm md:hover:text-white md:p-0 dark:text-white md:dark:hover:text-blue-500">GIỚI THIỆU</a>
-                    </li>
-                    <li>
-                        <a href="#"
-                            class="block py-2 px-3 text-white/75 rounded-sm md:hover:text-white md:p-0 dark:text-white md:dark:hover:text-blue-500">ĐÀO TẠO</a>
-                    </li>
-                    <li>
-                        <a href="#"
-                            class="block py-2 px-3 text-white/75 rounded-sm md:hover:text-white md:p-0 dark:text-white md:dark:hover:text-blue-500">GIẢNG VIÊN</a>
-                    </li>
-                    <li>
-                        <a href="#"
-                            class="block py-2 px-3 text-white/75 rounded-sm md:hover:text-white md:p-0 dark:text-white md:dark:hover:text-blue-500">SINH VIÊN</a>
-                    </li> -->
+                        {{else}}
                         <li>
-                            <a type="button"
-                                class="font-black text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">TUYỂN
+                            <a href="{{external_link}}" type="button"
+                                class="text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
+                                TUYỂN
                                 SINH</a>
                         </li>
+                        {{/if}}
+                        {{ /nav:main_nav}}
                     </ul>
                 </div>
             </div>
@@ -167,6 +150,65 @@
     <!-- End Navbar -->
     <!-- End Header -->
     {{ template_content }}
+
+    <!-- ChatBot -->
+     <div class="my-10 max-w-screen-xl px-4 md:w-[90%] mx-auto py-10">
+    <button id="open-chat-popup"
+        class="fixed bottom-12 right-5 z-40 bg-white text-white p-2 hover:bg-gray-50 rounded-full shadow-lg transition-all duration-200 ease-out">
+        <img src="/system/robot.png" alt="" class="w-11" />
+    </button>
+    <!-- Chatbot Popup -->
+    <div id="chatbot-container"
+        class="fixed bottom-5 right-5 z-50 md:w-[40%] bg-white rounded-xl shadow-2xl overflow-hidden translate-y-10 opacity-0 scale-95 pointer-events-none transition-all duration-200 ease-out">
+        <!-- Header Popup -->
+        <div class="flex items-center justify-between text-white bg-blue-500 px-4 py-2">
+            <div class="flex gap-3 items-center">
+                <div class="bg-white rounded-full shadow-md p-[8px]">
+                    <img src="/system/robot.png" alt="" class="w-8" />
+                </div>
+                <h3 class="font-bold text-lg tracking-wider text-shadow-md">
+                    Fit Chatbot
+                </h3>
+            </div>
+            <div id="close-chat-popup" class="cursor-pointer">
+                <i class="fa-solid fa-xmark text-shadow-md"></i>
+            </div>
+        </div>
+        <!-- Messages Container -->
+        <div id="chatBox" class="px-4 py-5 h-[400px] overflow-y-scroll scrollbar-hide">
+            <!-- Question Message -->
+            <!-- <div class="rounded-md shadow-md py-2 px-4 w-fit bg-blue-500 text-white ml-auto">
+                <p>Hello!</p>
+            </div> -->
+            <!-- Anwers Message -->
+            <div class="rounded-md shadow-md border border-gray-50 py-2 px-4 w-fit">
+                <p>Xin chào! Tôi có thể giúp gì cho bạn hôm nay? 😊</p>
+            </div>
+            <!-- <div class="mt-3 rounded-md shadow-md border border-gray-50 py-2 px-4 w-fit">
+            <div class="container-loading">
+            <div class="loading-block"></div>
+            <div class="loading-block"></div>
+            <div class="loading-block"></div>
+            </div>
+        </div> -->
+        </div>
+
+        <!-- Send Message -->
+        <form id="askForm" class="flex items-center gap-3 px-3 py-5">
+            <input class="w-[100%] rounded-md" type="text" name="question" placeholder="Nhập câu hỏi..." required />
+            <button id="sendBtn" class="p-3 bg-gray-50 rounded-md cursor-pointer hover:bg-gray-200" type="submit">
+                <span id="sendIcon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="#6a7282" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" size="18"
+                        class="lucide lucide-send-horizontal-icon">
+                        <path d="m3 3 3 9-3 9 19-9Z"></path>
+                        <path d="M6 12h16"></path>
+                    </svg>
+                </span>
+            </button>
+        </form>
+    </div>
+</div>
 </body>
 <footer>
     <div class="relative w-full bg-[#424242]
@@ -309,7 +351,8 @@
         </div>
     </div>
 </footer>
-
+ <script src="https://cdn.jsdelivr.net/npm/marked/lib/marked.umd.js"></script>
+ <script src="/js/chatbot.js"></script>
 <script>
     let clickCount = 0;
     let clickTimer = null;
