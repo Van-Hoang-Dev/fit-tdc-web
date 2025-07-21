@@ -375,13 +375,19 @@
     transform: translateY(0);
   }
   50% {
-    transform: translateY(-8px); /* lên xuống nhẹ */
+    transform: translateY(-8px); 
   }
 }
 
 .animate-float:hover {
   animation: float 1s ease-in-out infinite;
 }
+
+.animat-not-found {
+  animation: float 1.5s ease-in-out infinite;
+}
+
+
 
 
 

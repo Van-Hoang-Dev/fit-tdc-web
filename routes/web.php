@@ -8,12 +8,3 @@ use Illuminate\Support\Facades\Route;
 //    'title' => 'Example'
 // ]);
 
-// API
-Route::get('/api/courses', [CourseApiController::class, 'index']);
-
-
-
-// ROUTE
-Route::statamic('/dao-tao/{course}/{program}', function (){
-    return view ('programs.show');
-} );

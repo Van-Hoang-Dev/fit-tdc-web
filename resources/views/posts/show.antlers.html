@@ -1,25 +1,25 @@
 <header
     class="py-[90px] relative bg-cover bg-center bg-no-repeat"
-    style="background-image: url('/assets/images/banners/tdc.png')"
+    style="background-image: url('{{post_banners:banner_image}}')"
 >
     <div class="relative z-10 mx-auto max-w-6xl">
         <h2
-            class="text-4xl font-semibold text-white ms-5 before:content[''] before:w-0.5 before:h-full before:block before:leading-4 before:absolute before:left-0 before:right-0 before:z-10 before:bg-[#fa394a]"
+            class="uppercase text-4xl font-black text-white tracking-wider ms-5 before:content[''] before:w-1 before:h-full before:block before:leading-4 before:absolute before:left-0 before:right-0 before:z-10 before:bg-blue-600"
         >
-            BLOG
+            Tin Tức
         </h2>
     </div>
     <!-- Optional overlay -->
-    <div class="absolute inset-0 bg-black/20"></div>
+    <div class="absolute inset-0 bg-blue-900/30"></div>
 </header>
 
-<main class="lg:max-w-6xl xl:mx-auto mx-4">
+<main class="max-w-screen-xl px-4 md:w-[90%] mx-auto pt-10">
     <!-- Breadcrumb -->
     <nav
         aria-label="Breadcrumb"
         class="py-3.5 mx-4 lg:!mx-none border-b border-gray-200"
     >
-        <ol class="flex items-center space-x-2 opacity-50">
+        <ol class="flex items-center space-x-2 opacity-70">
             <li>
                 <a href="/" class="hover:underline whitespace-nowrap"
                     >Trang chủ</a
@@ -27,12 +27,12 @@
             </li>
             <li class="text-gray-500">/</li>
             <li>
-                <a href="/posts" class="hover:underline whitespace-nowrap"
-                    >Bài viết</a
+                <a href="/tin-tuc" class="hover:underline whitespace-nowrap"
+                    >Tin Tức</a
                 >
             </li>
             <li class="text-gray-500">/</li>
-            <li class="text-gray-700 truncate lg:max-w-none" title="{{title}}">
+            <li class="text-gray-700 font-medium truncate lg:max-w-none" title="{{title}}">
                 {{title}}
             </li>
         </ol>
@@ -83,12 +83,14 @@
                 <div class="flex items-center gap-2">
                     <h3 class="font-medium">Tags:</h3>
                     <ul class="flex gap-2">
+                        {{tags}}
                         <li>
-                            <a href="#" class="hover:text-blue-600">Course</a>
+                            <a href="{{url}}" class="hover:text-blue-600">{{title}}</a>
                         </li>
+                        {{/tags}}
                     </ul>
                 </div>
-                <div class="flex items-center gap-2">
+                <!-- <div class="flex items-center gap-2">
                     <h3 class="font-medium">Share:</h3>
                     <ul class="flex items-center">
                         <li>
@@ -101,16 +103,16 @@
                             </a>
                         </li>
                     </ul>
-                </div>
+                </div> -->
             </footer>
 
             <!-- Author Bio -->
-            <aside class="flex gap-7 bg-gray-50 p-6 rounded-lg my-8">
-                <!-- <img
+            <!-- <aside class="flex gap-7 bg-gray-50 p-6 rounded-lg my-8">
+                <img
                     src="https://avatar.iran.liara.run/public"
                     width="110"
                     height="110"
-                /> -->
+                />
 
                 <div class="flex flex-col gap-2">
                     <h3 class="font-bold text-xl">Keny White</h3>
@@ -121,7 +123,7 @@
                         Web designer & Best-Selling Instructor
                     </p>
                 </div>
-            </aside>
+            </aside> -->
             <!-- Post Navigation -->
             <nav
                 class="flex relative justify-between border border-gray-200 rounded"
@@ -225,7 +227,7 @@
                     {{ /if }}
                     <div>
                         <h3 class="font-medium">
-                            <a href="{{ url }}" class="hover:text-blue-600">
+                            <a href="{{ url }}" class="hover:text-blue-600 line-clamp-2">
                                 {{ title }}
                             </a>
                         </h3>

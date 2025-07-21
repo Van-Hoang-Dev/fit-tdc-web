@@ -1,0 +1,237 @@
+<div class="max-w-screen-xl px-4 md:w-[90%] mx-auto pt-10">
+    <div class="flex items-center justify-between md:pb-8">
+        <div class="animation-wrapper">
+            <h2 class="section-head">{{title}}</h2>
+        </div>
+        <a href="/tin-tuc"
+            class="text-white font-semibold relative after:content-[''] after:block after:border-b-2 after:border-white after:mt-1">
+            Xem tất cả
+        </a>
+    </div>
+
+    {{if posts }}
+    <div class="posts-container grid grid-rows-12 md:grid-rows-none md:grid-cols-12 mb-9">
+    
+        {{ posts sort="date:desc" }}
+        {{if index == 0}}
+        <div class="row-span-6 md:row-span-none col-span-6">
+            <div class="grid grid-cols-12 home-post">
+                <div class="col-span-6">
+                    <a href="{{url}}">
+                        {{ thumbnail }}
+                        <img src="{{url}}" alt="{{title}}" loading="lazy" class="aspect-square object-cover" />
+                        {{ /thumbnail }}
+                    </a>
+                </div>
+                <div class="col-span-6 bg-gray-200 p-7 relative post-content triangle-left before:bg-gray-200">
+                    <div class="text-sm">{{date format="d/m/Y"}}</div>
+                    <h1 class="text-xl font-semibold">
+                        <a href="{{url}}" class="line-clamp-3">{{title}}</a>
+                    </h1>
+                    <div class="text-sm hidden md:block title_description">{{title_description}}</div>
+                    <a href="{{url}}" class="absolute bottom-7 left-7 "><svg fill="currentColor" viewBox="0 0 23 24"
+                            xmlns="http://www.w3.org/2000/svg" class="w-5 scale-x-[-1] md:scale-x-100">
+                            <path clip-rule="evenodd"
+                                d="M0 3.2V0.5H18H20.5H23V3V5.5V23.5H20.3L20.5 5.5191H19.8881L1.96094 23.4462L0.0308727 21.5514L17.9578 3.62444V3.2H0Z"
+                                fill-rule="evenodd"></path>
+                        </svg></a>
+                </div>
+            </div>
+        </div>
+        {{/if}}
+        {{if index == 1}}
+        <div class="row-span-6 md:row-span-none col-span-6">
+            <div class="grid grid-cols-12 home-post">
+                <div class="col-span-6">
+                    <a href="{{url}}">
+                        {{thumbnail}}
+                        <img src="{{url}}" alt="{{title}}" class="aspect-square object-cover" />
+                        {{/thumbnail}}
+                    </a>
+                </div>
+                <div class="col-span-6 bg-gray-200 p-7 relative post-content triangle-left before:bg-gray-200">
+                    <div class="text-sm">{{date format="d/m/Y"}}</div>
+                    <h3 class="text-xl font-semibold">
+                        <a href="{{url}}" class="line-clamp-3">{{title}}</a>
+                    </h3>
+                    <div class="hidden md:block text-sm title_description">{{title_description}}</div>
+                    <a href="{{url}}" class="absolute bottom-7 left-7"><svg fill="currentColor" viewBox="0 0 23 24"
+                            xmlns="http://www.w3.org/2000/svg" class="w-5 scale-x-[-1] md:scale-x-100">
+                            <path clip-rule="evenodd"
+                                d="M0 3.2V0.5H18H20.5H23V3V5.5V23.5H20.3L20.5 5.5191H19.8881L1.96094 23.4462L0.0308727 21.5514L17.9578 3.62444V3.2H0Z"
+                                fill-rule="evenodd"></path>
+                        </svg></a>
+                </div>
+            </div>
+        </div>
+        {{/if}}
+    
+        {{if index == 2}}
+        <div class="row-span-6 md:row-span-none col-span-6">
+            <div class="grid grid-cols-12 home-post">
+                <div class="col-span-6 order-2">
+                    <a href="{{url}}">
+                        {{thumbnail}}
+                        <img src="{{url}}" alt="{{title}}" class="aspect-square object-cover" />
+                        {{/thumbnail}}
+                    </a>
+                </div>
+                <div class="col-span-6 bg-gray-200 p-7 relative post-content triangle-right before:bg-gray-200">
+                    <div class="text-sm">{{date format="d/m/Y"}}</div>
+                    <h3 class="text-xl font-semibold">
+                        <a href="{{url}}" class="line-clamp-3">{{title}}</a>
+                    </h3>
+                    <div class="text-sm hidden md:block title_description">{{title_description}}</div>
+                    <a href="{{url}}" class="absolute bottom-7 right-7"><svg fill="currentColor" viewBox="0 0 23 24"
+                            xmlns="http://www.w3.org/2000/svg" class="w-5">
+                            <path clip-rule="evenodd"
+                                d="M0 3.2V0.5H18H20.5H23V3V5.5V23.5H20.3L20.5 5.5191H19.8881L1.96094 23.4462L0.0308727 21.5514L17.9578 3.62444V3.2H0Z"
+                                fill-rule="evenodd"></path>
+                        </svg></a>
+                </div>
+            </div>
+        </div>
+        {{/if}}
+    
+        {{if index == 3}}
+        <div class="row-span-6 md:row-span-none col-span-6">
+            <div class="grid grid-cols-12 home-post">
+                <div class="col-span-6 order-2">
+                    <a href="{{url}}">
+                        {{thumbnail}}
+                        <img src="{{url}}" alt="{{title}}" class="aspect-square object-cover" />
+                        {{/thumbnail}}
+                    </a>
+                </div>
+                <div class="col-span-6 bg-gray-200 p-7 relative post-content triangle-right before:bg-gray-200">
+                    <div class="text-sm">{{date format="d/m/Y"}}</div>
+                    <h3 class="text-xl font-semibold">
+                        <a href="{{url}}" class="line-clamp-3">{{title}}</a>
+                    </h3>
+                    <div class="hidden lg:block text-sm title_description">{{title_description}}</div>
+                    <a href="{{url}}" class="absolute bottom-7 right-7"><svg fill="currentColor" viewBox="0 0 23 24"
+                            xmlns="http://www.w3.org/2000/svg" class="w-5">
+                            <path clip-rule="evenodd"
+                                d="M0 3.2V0.5H18H20.5H23V3V5.5V23.5H20.3L20.5 5.5191H19.8881L1.96094 23.4462L0.0308727 21.5514L17.9578 3.62444V3.2H0Z"
+                                fill-rule="evenodd"></path>
+                        </svg></a>
+                </div>
+            </div>
+        </div>
+        {{/if}}
+        {{/posts}}
+    </div>
+    {{else}}    
+    <div class="posts-container grid grid-rows-12 md:grid-rows-none md:grid-cols-12 mb-9">
+    
+        {{ collection:posts limit="4" sort="date:desc" }}
+        {{if index == 0}}
+        <div class="row-span-6 md:row-span-none col-span-6">
+            <div class="grid grid-cols-12 home-post">
+                <div class="col-span-6">
+                    <a href="{{url}}">
+                        {{ thumbnail }}
+                        <img src="{{url}}" alt="{{title}}" class="aspect-square object-cover" />
+                        {{ /thumbnail }}
+                    </a>
+                </div>
+                <div class="col-span-6 bg-gray-200 p-7 relative post-content triangle-left before:bg-gray-200">
+                    <div class="text-sm">{{date format="d/m/Y"}}</div>
+                    <h3 class="text-xl font-semibold">
+                        <a href="{{url}}" class="line-clamp-3">{{title}}</a>
+                    </h3>
+                    <div class="text-sm hidden md:block title_description">{{title_description}}</div>
+                    <a href="{{url}}" class="absolute bottom-7 left-7 "><svg fill="currentColor" viewBox="0 0 23 24"
+                            xmlns="http://www.w3.org/2000/svg" class="w-5 scale-x-[-1] md:scale-x-100">
+                            <path clip-rule="evenodd"
+                                d="M0 3.2V0.5H18H20.5H23V3V5.5V23.5H20.3L20.5 5.5191H19.8881L1.96094 23.4462L0.0308727 21.5514L17.9578 3.62444V3.2H0Z"
+                                fill-rule="evenodd"></path>
+                        </svg></a>
+                </div>
+            </div>
+        </div>
+        {{/if}}
+        {{if index == 1}}
+        <div class="row-span-6 md:row-span-none col-span-6">
+            <div class="grid grid-cols-12 home-post">
+                <div class="col-span-6">
+                    <a href="{{url}}">
+                        {{thumbnail}}
+                        <img src="{{url}}" alt="{{title}}" class="aspect-square object-cover" />
+                        {{/thumbnail}}
+                    </a>
+                </div>
+                <div class="col-span-6 bg-gray-200 p-7 relative post-content triangle-left before:bg-gray-200">
+                    <div class="text-sm">{{date format="d/m/Y"}}</div>
+                    <h3 class="text-xl font-semibold">
+                        <a href="{{url}}" class="line-clamp-3">{{title}}</a>
+                    </h3>
+                    <div class="hidden md:block text-sm title_description">{{title_description}}</div>
+                    <a href="{{url}}" class="absolute bottom-7 left-7"><svg fill="currentColor" viewBox="0 0 23 24"
+                            xmlns="http://www.w3.org/2000/svg" class="w-5 scale-x-[-1] md:scale-x-100">
+                            <path clip-rule="evenodd"
+                                d="M0 3.2V0.5H18H20.5H23V3V5.5V23.5H20.3L20.5 5.5191H19.8881L1.96094 23.4462L0.0308727 21.5514L17.9578 3.62444V3.2H0Z"
+                                fill-rule="evenodd"></path>
+                        </svg></a>
+                </div>
+            </div>
+        </div>
+        {{/if}}
+    
+        {{if index == 2}}
+        <div class="row-span-6 md:row-span-none col-span-6">
+            <div class="grid grid-cols-12 home-post">
+                <div class="col-span-6 order-2">
+                    <a href="{{url}}">
+                        {{thumbnail}}
+                        <img src="{{url}}" alt="{{title}}" class="aspect-square object-cover" />
+                        {{/thumbnail}}
+                    </a>
+                </div>
+                <div class="col-span-6 bg-gray-200 p-7 relative post-content triangle-right before:bg-gray-200">
+                    <div class="text-sm">{{date format="d/m/Y"}}</div>
+                    <h3 class="text-xl font-semibold">
+                        <a href="{{url}}" class="line-clamp-3">{{title}}</a>
+                    </h3>
+                    <div class="text-sm hidden md:block title_description">{{title_description}}</div>
+                    <a href="{{url}}" class="absolute bottom-7 right-7"><svg fill="currentColor" viewBox="0 0 23 24"
+                            xmlns="http://www.w3.org/2000/svg" class="w-5">
+                            <path clip-rule="evenodd"
+                                d="M0 3.2V0.5H18H20.5H23V3V5.5V23.5H20.3L20.5 5.5191H19.8881L1.96094 23.4462L0.0308727 21.5514L17.9578 3.62444V3.2H0Z"
+                                fill-rule="evenodd"></path>
+                        </svg></a>
+                </div>
+            </div>
+        </div>
+        {{/if}}
+    
+        {{if index == 3}}
+        <div class="row-span-6 md:row-span-none col-span-6">
+            <div class="grid grid-cols-12 home-post">
+                <div class="col-span-6 order-2">
+                    <a href="{{url}}">
+                        {{thumbnail}}
+                        <img src="{{url}}" alt="{{title}}" class="aspect-square object-cover" />
+                        {{/thumbnail}}
+                    </a>
+                </div>
+                <div class="col-span-6 bg-gray-200 p-7 relative post-content triangle-right before:bg-gray-200">
+                    <div class="text-sm">{{date format="d/m/Y"}}</div>
+                    <h3 class="text-xl font-semibold">
+                        <a href="{{url}}" class="line-clamp-3">{{title}}</a>
+                    </h3>
+                    <div class="hidden lg:block text-sm title_description">{{title_description}}</div>
+                    <a href="{{url}}" class="absolute bottom-7 right-7"><svg fill="currentColor" viewBox="0 0 23 24"
+                            xmlns="http://www.w3.org/2000/svg" class="w-5">
+                            <path clip-rule="evenodd"
+                                d="M0 3.2V0.5H18H20.5H23V3V5.5V23.5H20.3L20.5 5.5191H19.8881L1.96094 23.4462L0.0308727 21.5514L17.9578 3.62444V3.2H0Z"
+                                fill-rule="evenodd"></path>
+                        </svg></a>
+                </div>
+            </div>
+        </div>
+        {{/if}}
+        {{/collection:posts}}
+    </div>
+    {{/if}}
+</div>

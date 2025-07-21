@@ -43,6 +43,12 @@ preferences:
         - slug
         - status
         - external_link
+    pages:
+      columns:
+        - title
+        - author
+        - slug
+        - status
   forms:
     contact_us:
       columns:
@@ -51,3 +57,10 @@ preferences:
         - loi_nhan
         - mssv
         - datestamp
+  taxonomies:
+    tags:
+      columns:
+        - title
+        - author
+        - slug
+        - template

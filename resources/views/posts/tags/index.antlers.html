@@ -15,7 +15,7 @@
         <div class="md:grid md:grid-cols-12 gap-5">
             <div class="col-span-9">
                 <!-- Posts List -->
-                {{collection:posts paginate="3" as="posts"}}
+                {{entries paginate="3" as="posts"}}
                 <!-- Post Item -->
                 {{if no_results }}
                 <div class="h-80 flex flex-col gap-3 items-center justify-center">
@@ -85,6 +85,7 @@
                 {{/posts}}
                 <!-- End Post Item -->
                 <!-- Paginate -->
+                {{ if paginate:total_pages > 1 }}
                 {{paginate}}
                 <nav aria-label="Page navigation example">
                     <ul class="flex items-center justify-center -space-x-px h-8 text-sm">
@@ -144,11 +145,9 @@
                         {{/if}}
                     </ul>
                 </nav>
-
-
-
                 {{/paginate}}
-                {{/collection:posts}}
+                {{/if}}
+                {{/entries}}
 
             </div>
             <!-- Popular Posts -->

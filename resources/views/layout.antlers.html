@@ -5,10 +5,19 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="shortcut icon" href="/system/logo-removebg.png" type="image/x-icon">
-    <link rel="stylesheet" href="/css/footer.css" />
-    <title>{{ title ?? site:name }}</title>
+
+    <meta property="og:url" content="http://event.fittdc.info/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content=" FIT-TDC | Khoa Công nghệ thông tin - Cao đẳng Công nghệ Thủ Đức" />
+    <meta property="og:description" content="Khoa Công nghệ thông tin - Cao đẳng Công nghệ Thủ Đức" />
+    <meta property="og:image" content="{{ '/assets/images/banners/banner-5.jpg' }}" />
+    <meta property="fb:app_id" content="161794371174838" />
+
+    <link rel="shortcut icon" href="{{main:favicon}}" type="image/x-icon">
+    <title>{{ title ?? site:name }} | FIT-TDC | Khoa Công nghệ thông tin - Cao đẳng Công nghệ Thủ Đức</title>
     {{ vite src="resources/js/site.js|resources/css/site.css" }}
+
+    <link rel="stylesheet" href="/css/footer.css" />
     <link rel="stylesheet" href="/css/custom.css" />
     <link rel="stylesheet" href="/css/edu.css" />
     <link rel="stylesheet" href="/css/swiper-custom.css" />
@@ -38,17 +47,14 @@
 <body class="font-[Dosis]">
     <!-- Header -->
     <!-- Navbar -->
-    <div class="relative">
-        <a href="/"
-            class="logo mx-auto absolute left-0 top-0 bottom-0 p-5 bg-linear-to-b from-white from-70% to-gray-300">
-            <img src="/system/fit-tdc-logo.png" class="h-[100%]" alt="fit-tdc-logo" />
+    <header class="relative">
+        <a href="/" id="site-logo"
+            class="logo mx-auto absolute left-0 top-0 bottom-0 p-5 bg-linear-to-b from-white from-70% to-gray-300 transition-all duration-300 ease-in-out">
+            <img src="/system/fit-tdc-logo.png" class="h-[100%] w-auto" alt="fit-tdc-logo" />
         </a>
         <nav
-            class="bg-sky-950 border-gray-200 dark:bg-gray-900 bg-[url(https://i.pinimg.com/originals/6a/32/7c/6a327caa4b5c102de396a1c3aaa20e98.gif)] bg-blend-overlay">
+            class="bg-sky-950 border-gray-200 dark:bg-gray-900">
             <div class="max-w-screen-xl flex flex-wrap items-center justify-end mx-auto">
-                {{# <a href="https://flowbite.com/" class="flex items-center space-x-3 rtl:space-x-reverse">
-                    <img src="/assets/images/fit-tdc-logo.png" class="h-8" alt="Flowbite Logo" />
-                </a> #}}
                 <div class="flex">
                     <button type="button" data-collapse-toggle="navbar-search" aria-controls="navbar-search"
                         aria-expanded="false"
@@ -71,7 +77,12 @@
                         </div>
                         <input type="text" id="search-navbar"
                             class="block w-full p-2 ps-10 text-sm text-gray-900 bg-sky-950 border-none focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                            placeholder="Tìm ...">
+                            placeholder="Tìm..." data-target="desktop-post-search-list">
+                        <!-- Search Popup -->
+                        <div id="desktop-post-search-list"
+                            class="hidden bg-white w-[450px] absolute top-[100%] left-1/2 -translate-x-1/2 z-10 mt-2 p-4 flex-col gap-3">
+
+                        </div>
                     </div>
                     <button data-collapse-toggle="navbar-search" type="button"
                         class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
@@ -85,8 +96,8 @@
                     </button>
                 </div>
                 <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-search">
-                    <div class="relative mt-3 md:hidden">
-                        <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                    <div class="relative mt-3 md:hidden px-4">
+                        <div class="absolute inset-y-0 start-0 flex items-center ps-6 pointer-events-none">
                             <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
                                 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
@@ -95,21 +106,27 @@
                         </div>
                         <input type="text" id="search-navbar"
                             class="block w-full p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                            placeholder="Tìm...">
+                            placeholder="Tìm..." data-target="moblie-post-search-list">
+                        <div id="moblie-post-search-list"
+                            class=" hidden bg-white w-[90%] absolute top-[100%] left-1/2 -translate-x-1/2 z-10 mt-2 p-2 flex-col gap-3">
+
+
+                        </div>
+
                     </div>
-                    <ul class="flex flex-col p-4 md:p-0 mt-4 font-medium md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
-                       {{ nav:landing_nav}}
-                        <li> 
-                            <a  href="{{ if external_link }}{{ external_link }}{{ else }}{{ url }}{{ /if }}" class="block py-2 px-3 {{ if is_current || is_parent }}text-white font-black {{else}} text-white/50 hover:text-white {{ /if }} " aria-current="page">{{title}}</a>
+                    <ul
+                        class="flex flex-col p-4 md:p-0 mt-4 font-medium md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+                        {{ nav:landing_nav}}
+                        <li>
+                            <a href="{{ if external_link }}{{ external_link }}{{ else }}{{ url }}{{ /if }}"
+                                class="block py-2 px-3 {{ if is_current || is_parent }}text-white font-black {{else}} text-white/50 hover:text-white {{ /if }} "
+                                aria-current="page">{{title}}</a>
                         </li>
                         {{ /nav:landing_nav}}
                     </ul>
                 </div>
             </div>
         </nav>
-
-
-
         <nav class="bg-linear-to-r/srgb from-[#003b7a] to-[#0079a8] border-gray-200 dark:bg-gray-900">
             <div class="max-w-screen-xl flex flex-wrap items-center justify-end mx-auto">
                 <button data-collapse-toggle="navbar-main" type="button"
@@ -146,74 +163,74 @@
             </div>
         </nav>
 
-    </div>
+    </header>
     <!-- End Navbar -->
     <!-- End Header -->
     {{ template_content }}
 
     <!-- ChatBot -->
-     <div class="my-10 max-w-screen-xl px-4 md:w-[90%] mx-auto py-10">
-    <button id="open-chat-popup"
-        class="fixed bottom-12 right-5 z-40 bg-white text-white p-2 hover:bg-gray-50 rounded-full shadow-lg transition-all duration-200 ease-out">
-        <img src="/system/robot.png" alt="" class="w-11" />
-    </button>
-    <!-- Chatbot Popup -->
-    <div id="chatbot-container"
-        class="fixed bottom-5 right-5 z-50 md:w-[40%] bg-white rounded-xl shadow-2xl overflow-hidden translate-y-10 opacity-0 scale-95 pointer-events-none transition-all duration-200 ease-out">
-        <!-- Header Popup -->
-        <div class="flex items-center justify-between text-white bg-blue-500 px-4 py-2">
-            <div class="flex gap-3 items-center">
-                <div class="bg-white rounded-full shadow-md p-[8px]">
-                    <img src="/system/robot.png" alt="" class="w-8" />
+    <div class="">
+        <button id="open-chat-popup"
+            class="fixed bottom-12 right-5 z-40 bg-white text-white p-2 hover:bg-gray-50 rounded-full shadow-lg transition-all duration-200 ease-out">
+            <img src="/system/robot.png" alt="" class="w-11" />
+        </button>
+        <!-- Chatbot Popup -->
+        <div id="chatbot-container"
+            class="fixed bottom-5 right-5 z-50 md:w-[40%] bg-white rounded-xl shadow-2xl overflow-hidden translate-y-10 opacity-0 scale-95 pointer-events-none transition-all duration-200 ease-out">
+            <!-- Header Popup -->
+            <div class="flex items-center justify-between text-white bg-blue-500 px-4 py-2">
+                <div class="flex gap-3 items-center">
+                    <div class="bg-white rounded-full shadow-md p-[8px]">
+                        <img src="/system/robot.png" alt="" class="w-8" />
+                    </div>
+                    <h3 class="font-bold text-lg tracking-wider text-shadow-md">
+                        Fit Chatbot
+                    </h3>
                 </div>
-                <h3 class="font-bold text-lg tracking-wider text-shadow-md">
-                    Fit Chatbot
-                </h3>
+                <div class="flex gap-9">
+                    <div id="clearChatBtn" class="cursor-pointer" title="Xóa lịch sử trò chuyện">
+                        <i class="fa-regular fa-arrows-rotate"></i>
+                    </div>
+                    <div id="close-chat-popup" class="cursor-pointer" title="Đóng chatbot">
+                        <i class="fa-solid fa-xmark text-shadow-md"></i>
+                    </div>
+                </div>
             </div>
-            <div id="close-chat-popup" class="cursor-pointer">
-                <i class="fa-solid fa-xmark text-shadow-md"></i>
-            </div>
-        </div>
-        <!-- Messages Container -->
-        <div id="chatBox" class="px-4 py-5 h-[400px] overflow-y-scroll scrollbar-hide">
-            <!-- Question Message -->
-            <!-- <div class="rounded-md shadow-md py-2 px-4 w-fit bg-blue-500 text-white ml-auto">
+            <!-- Messages Container -->
+            <div id="chatBox" class="px-4 py-5 h-[400px] overflow-y-scroll scrollbar-hide">
+                <!-- Question Message -->
+                <!-- <div class="rounded-md shadow-md py-2 px-4 w-fit bg-blue-500 text-white ml-auto">
                 <p>Hello!</p>
             </div> -->
-            <!-- Anwers Message -->
-            <div class="rounded-md shadow-md border border-gray-50 py-2 px-4 w-fit">
+                <!-- Anwers Message -->
+                <!-- <div class="rounded-md shadow-md border border-gray-50 py-2 px-4 w-fit">
                 <p>Xin chào! Tôi có thể giúp gì cho bạn hôm nay? 😊</p>
+            </div> -->
             </div>
-            <!-- <div class="mt-3 rounded-md shadow-md border border-gray-50 py-2 px-4 w-fit">
-            <div class="container-loading">
-            <div class="loading-block"></div>
-            <div class="loading-block"></div>
-            <div class="loading-block"></div>
-            </div>
-        </div> -->
-        </div>
 
-        <!-- Send Message -->
-        <form id="askForm" class="flex items-center gap-3 px-3 py-5">
-            <input class="w-[100%] rounded-md" type="text" name="question" placeholder="Nhập câu hỏi..." required />
-            <button id="sendBtn" class="p-3 bg-gray-50 rounded-md cursor-pointer hover:bg-gray-200" type="submit">
-                <span id="sendIcon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                        stroke="#6a7282" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" size="18"
-                        class="lucide lucide-send-horizontal-icon">
-                        <path d="m3 3 3 9-3 9 19-9Z"></path>
-                        <path d="M6 12h16"></path>
-                    </svg>
-                </span>
-            </button>
-        </form>
+            <!-- Send Message -->
+            <form id="askForm" class="flex items-center gap-3 px-3 py-5">
+                <input class="w-[100%] rounded-md" type="text" name="question" placeholder="Nhập câu hỏi..." required />
+                <button id="sendBtn" class="p-3 bg-gray-50 rounded-md cursor-pointer hover:bg-gray-200" type="submit">
+                    <span id="sendIcon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="#6a7282" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" size="18"
+                            class="lucide lucide-send-horizontal-icon">
+                            <path d="m3 3 3 9-3 9 19-9Z"></path>
+                            <path d="M6 12h16"></path>
+                        </svg>
+                    </span>
+                </button>
+            </form>
+        </div>
     </div>
-</div>
 </body>
 <footer>
-    <div class="relative w-full bg-[#424242]
-  before:absolute before:z-[1] before:bg-[#004f79]
-  before:bg-[url(https://i.pinimg.com/originals/6a/32/7c/6a327caa4b5c102de396a1c3aaa20e98.gif)]
+    <div class="relative w-full bg-gray-700
+  before:absolute before:z-[1] before:bg-[#003b7a]
+  /*before:bg-[url(https://i.pinimg.com/originals/6a/32/7c/6a327caa4b5c102de396a1c3aaa20e98.gif)]*/
+  before:bg-[url(https://img.freepik.com/premium-vector/abstract-computer-technology-background-with-circuit-board-hexagon-techvector-illustration_474511-332.jpg)]
+  before:bg-center before:bg-no-repeat before:bg-cover
   before:bg-blend-soft-light before:content-['']
   
   /* Mobile: before ở bottom */
@@ -224,81 +241,66 @@
 ">
         <div id="content" class="grid grid-rows-12 md:grid-rows-none md:grid-cols-14 mx-auto w-[80%] text-white">
             <div class="row-span-8 md:row-span-none md:col-span-10 ">
+                <div id="bubble-container"></div>
                 <div class="mx-auto my-10 w-[90%] max-w-screen-xl">
-                    <div class="flex">
-                        <img id="secret-logo" class="rounded-full w-30 h-30 flex-none mr-5 cursor-pointer"
+                    <div class="flex items-center">
+                        <img id="s-logo" class="rounded-full w-24 h-24 flex-none mr-5 cursor-pointer"
                             src="/system/logo.jpg" alt="" />
                         <div class="flex flex-col">
-                            <h2 class="flex-none text-lg font-semibold">
+                            <h2 class="flex-none text-lg font-semibold tracking-wider">
                                 Trường cao đẳng Công Nghệ Thủ Đức
                             </h2>
-                            <h3 class="uppercase text-xl font-bold mt-3">
+                            <h3 class="uppercase text-xl font-bold mt-2 tracking-wide">
                                 Khoa Công Nghệ Thông tin
                             </h3>
-                            <p class="flex-none text-sm font-normal">
-                                53 Võ Văn Ngân, Phường Linh Chiểu, Thành phố Thủ Đức, Thành phố Hồ Chí Minh
+                            <p class="flex-none text-sm font-normal mt-1">
+                                {{ main:address }}
                             </p>
                         </div>
                     </div>
-                    <div class="grid grid-cols-12 mt-5">
-                        <div class="col-span-4">
-                            <h3 id="ft-list-title" class="font-semibold text-lg">
-                                Importants
+                    <div class="grid grid-cols-12 gap-5 mt-5 pt-3">
+                        <div class="col-span-6">
+                            <h3 id="ft-list-title" class="font-semibold text-lg mb-3">
+                                Thông tin chung
                             </h3>
                             <ul id="ft-list-items" class="list-none text-gray-400">
-                                <li id="ft-list-item">Prospective</li>
-                                <li id="ft-list-item">Alumni</li>
-                                <li id="ft-list-item">Achievements</li>
-                                <li id="ft-list-item">Donors</li>
-                                <li id="ft-list-item">Givings</li>
+                               <li class="mb-5 border-b border-gray-600 hover:text-gray-300 hover:underline"><a href="/gioi-thieu">Giới thiệu</a></li>
+                                <li class="border-b border-gray-600 hover:text-gray-300 hover:underline"><a href="http://tdc.edu.vn/">Trường Cao Đẳng Công Nghệ Thủ Đức</a></li>
                             </ul>
                         </div>
-                        <div class="col-span-4">
-                            <h3 id="ft-list-title" class="font-semibold text-lg">
-                                Get in touch
+                        <div class="col-span-6">
+                            <h3 id="ft-list-title" class="font-semibold text-lg mb-3">
+                                Về chúng tôi
                             </h3>
                             <ul id="ft-list-items" class="list-none text-gray-400">
-                                <li id="ft-list-item">Courses</li>
-                                <li id="ft-list-item">Jobs</li>
-                                <li id="ft-list-item">Social Media</li>
-                                <li id="ft-list-item">Sitemap</li>
-                                <li id="ft-list-item">Privacy</li>
-                            </ul>
-                        </div>
-                        <div class="col-span-4">
-                            <h3 id="ft-list-title" class="font-semibold text-lg">
-                                Company
-                            </h3>
-                            <ul id="ft-list-items" class="list-none text-gray-400">
-                                <li id="ft-list-item">Documentation</li>
-                                <li id="ft-list-item">Forums</li>
-                                <li id="ft-list-item">Language Packs</li>
-                                <li id="ft-list-item">Release Status</li>
+                                <li class="mb-5 border-b border-gray-600 hover:text-gray-300 hover:underline"><a href="/lien-he">Liên hệ</a></li>
+                                <li class="border-b border-gray-600">{{ now format="Y" }} <a href="http://fit.tdc.edu.vn/" class="hover:text-gray-300 hover:underline">Khoa Công nghệ thông tin | Cao đẳng Công nghệ Thủ Đức | FIT - TDC</a> All Rights Reserved.</li>
                             </ul>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="row-span-4 md:row-span-none md:col-span-4 z-[2] flex flex-col items-center md:items-start justify-between">
+            <div
+                class="row-span-4 md:row-span-none md:col-span-4 z-[2] flex flex-col items-center md:items-start justify-between">
                 <div class="my-10 pl-3 text-white md:w-full">
                     <ul class="list-none">
                         <li class="text-base flex justify-start items-center mb-2">
                             <div class="w-7">
                                 <i class="fa-light fa-phone-volume"></i>
                             </div>
-                            <p class="">(028) 2215 8642</p>
+                            <p class=""> {{ main:phone_number }}</p>
                         </li>
                         <li class="text-base flex justify-start items-center mb-2">
                             <div class="w-7">
                                 <i class="fa-light fa-print"></i>
                             </div>
-                            <p class="">(028) 3896 2474</p>
+                            <p class=""> {{ main:fax_number }}</p>
                         </li>
                         <li class="text-base flex justify-start items-center mb-2">
                             <div class="w-7">
                                 <i class="fa-light fa-envelope"></i>
                             </div>
-                            <p class="">fit@tdc.edu.vn</p>
+                            <p class="">{{main:email}}</p>
                         </li>
 
                     </ul>
@@ -306,7 +308,7 @@
 
                 <div class="bottom-0 left-0 py-3 pl-3 flex items-center gap-3 md:w-full">
                     <!-- Facekbook -->
-                    <a href="https://www.facebook.com/tdc.fit/" target="_blank"
+                    <a href="{{ main:facebook_link }}" target="_blank"
                         class="w-10 h-10 flex items-center justify-center rounded-lg bg-white hover:shadow-md shadow-gray-300 group transition-all duration-300">
                         <svg class="transition-all duration-300 group-hover:scale-110"
                             xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 72 72" fill="none">
@@ -316,7 +318,7 @@
                         </svg>
                     </a>
                     <!-- Tiktok -->
-                    <a href="https://www.tiktok.com/@fittdc" target="_blank"
+                    <a href="{{main:tiktok_link}}" target="_blank"
                         class="w-10 h-10 flex items-center justify-center rounded-lg bg-white hover:shadow-md shadow-gray-300 group transition-all duration-300">
                         <svg class="transition-all duration-300 group-hover:scale-110" width="28" height="28"
                             viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -333,7 +335,7 @@
 
                     </a>
                     <!-- Youtube -->
-                    <a href="https://www.youtube.com/fit-tdc" target="_blank"
+                    <a href="{{main:youtube_link}}" target="_blank"
                         class="w-10 h-10 flex items-center justify-center rounded-lg bg-white hover:shadow-md shadow-gray-300 group transition-all duration-300">
                         <svg class="rounded-md transition-all duration-300 group-hover:scale-110"
                             xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 72 72" fill="none">
@@ -351,13 +353,39 @@
         </div>
     </div>
 </footer>
- <script src="https://cdn.jsdelivr.net/npm/marked/lib/marked.umd.js"></script>
- <script src="/js/chatbot.js"></script>
+<script>
+    const container = document.getElementById('bubble-container');
+
+function createBubble() {
+  const bubble = document.createElement('div');
+  bubble.classList.add('bubble');
+
+  // Tùy chỉnh vị trí và kích thước
+  const size = Math.random() * 20 + 10; // 10px - 30px
+  bubble.style.width = `${size}px`;
+  bubble.style.height = `${size}px`;
+  bubble.style.left = `${Math.random() * 100}%`;
+  bubble.style.animationDuration = `${Math.random() * 3 + 3}s`; // 3-6s
+
+  container.appendChild(bubble);
+
+  // Xoá bong bóng sau khi animation xong
+  setTimeout(() => {
+    bubble.remove();
+  }, 6000);
+}
+
+// Tạo bong bóng liên tục
+setInterval(createBubble, 200);
+
+</script>
+<script src="https://cdn.jsdelivr.net/npm/marked/lib/marked.umd.js"></script>
+<script src="/js/chatbot.js"></script>
 <script>
     let clickCount = 0;
     let clickTimer = null;
 
-    document.getElementById('secret-logo').addEventListener('click', function () {
+    document.getElementById('s-logo').addEventListener('click', function () {
         clickCount++;
         clearTimeout(clickTimer);
         clickTimer = setTimeout(() => clickCount = 0, 2000);
@@ -366,5 +394,170 @@
         }
     });
 </script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const logo = document.getElementById("site-logo");
+        const toggleButtons = document.querySelectorAll('[data-collapse-toggle]');
+
+        const menuList = [];
+
+        toggleButtons.forEach(btn => {
+            const id = btn.getAttribute("data-collapse-toggle");
+            const menu = document.getElementById(id);
+
+            if (menu && !menuList.includes(menu)) {
+                menuList.push(menu);
+            }
+        });
+
+        const allMenus = menuList;
+        
+
+        toggleButtons.forEach(toggleButton => {
+            toggleButton.addEventListener("click", function () {
+                requestAnimationFrame(() => {
+                    // Kiểm tra xem có ÍT NHẤT 1 menu đang mở (không có class hidden)
+                    const anyMenuOpen = allMenus.some(menu => !menu.classList.contains("hidden"));
+
+                    if (anyMenuOpen) {
+                        logo.classList.add("opacity-0", "scale-90", "pointer-events-none", "h-[80px]");
+                        logo.classList.remove("opacity-100", "scale-100", "pointer-events-auto");
+                    } else {
+                        logo.classList.add("opacity-100", "scale-100", "pointer-events-auto");
+                        logo.classList.remove("opacity-0", "scale-90", "pointer-events-none", "h-[80px]");
+                    }
+                });
+            });
+        });
+
+        window.addEventListener("resize", () => {
+            if (window.innerWidth >= 768) {
+                logo.classList.add("opacity-100", "scale-100", "pointer-events-auto");
+                logo.classList.remove("opacity-0", "scale-90", "pointer-events-none", "h-[80px]");
+            }
+            else {
+                const anyMenuOpen = allMenus.some(menu => !menu.classList.contains("hidden"));
+
+                    if (anyMenuOpen) {
+                        logo.classList.add("opacity-0", "scale-90", "pointer-events-none", "h-[80px]");
+                        logo.classList.remove("opacity-100", "scale-100", "pointer-events-auto");
+                    } else {
+                        logo.classList.add("opacity-100", "scale-100", "pointer-events-auto");
+                        logo.classList.remove("opacity-0", "scale-90", "pointer-events-none", "h-[80px]");
+                    }
+            }
+        });
+
+
+    });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+    const searchInputs = document.querySelectorAll('#search-navbar');
+
+
+    function fetchPosts(query = "", container) {
+        axios.get('/api/posts', {
+            params: {
+                search: query
+            }
+        })
+            .then(response => {
+                const posts = response.data;
+                renderPosts(posts, container, query);
+
+            })
+            .catch(error => {
+                console.error('Lỗi khi lấy bài viết:', error);
+            })
+    }
+
+
+    function renderPosts(posts, container, searchKey) {
+        if(posts.length == 0){
+            container.innerHTML = `<div class="flex flex-col items-center justify-center gap-4 h-50">
+                                <img src="/system/not-found.png" alt="FIT-TDC NotFound" class="h-16 w-16 animat-not-found">
+                                <span class="">Không có kết quả cho <span class="font-bold">"${searchKey}"</span>. </span>
+                            </div>`
+        }
+        else {
+            container.innerHTML = posts.map(post => `
+                <div class="grid grid-cols-12 gap-3">
+                                    <!-- Thumnail -->
+                                    <div class="col-span-3">
+                                        <img src="${post.thumbnail}" alt="Post thumbnail" class="w-full max-h-[64px] object-cover">   
+                                    </div>
+                                    <!-- Title -->
+                                    <div class="col-span-9 flex flex-col justify-between">
+                                        <h2 class="text-sm font-bold text-gray-900 mb-2 line-clamp-2"><a href="${post.url}">${post.title}</a></h2>
+                                        <span class="text-xs">10/12/2024</span>
+                                    </div>
+                            </div>
+            `).join('');
+        }
+    }
+
+    // Gọi lại khi người dùng gõ tìm kiếm
+    searchInputs.forEach(input => {
+        let debounceTimer;
+        const containerId = input.dataset.target;
+        const resultContainer = document.getElementById(containerId);
+        input.addEventListener('input', function () {
+
+            const query = this.value.trim();
+
+            if (query !== "") {
+                renderLoadingSkeleton(resultContainer);
+            }
+
+            clearTimeout(debounceTimer);
+            debounceTimer = setTimeout(() => {
+                if (query !== "") {
+                    fetchPosts(query, resultContainer);
+                } else {
+                    resultContainer.classList.add('hidden');
+                    resultContainer.classList.remove('flex');
+                    resultContainer.innerHTML = '';
+                }
+            }, 500);
+        });
+
+        // Bấm ra ngoài thì ẩn
+        input.addEventListener('blur', function () {
+            setTimeout(() => {
+                resultContainer.classList.add('hidden');
+            }, 200);
+        });
+
+        // Bấm lại vào input thì hiện nếu có text và đã có nội dung
+        input.addEventListener('focus', function () {
+            if (this.value.trim() !== '' && resultContainer.innerHTML.trim() !== '') {
+                resultContainer.classList.remove('hidden');
+            }
+        });
+
+
+    });
+
+    function renderLoadingSkeleton(container) {
+        const skeletonHTML = `
+        <div class="flex flex-row gap-3">
+            <div class="animate-pulse bg-gray-300 w-[94px] h-[64px]"></div>
+            <div class="flex flex-col justify-between gap-2">
+                <div class="animate-pulse bg-gray-300 w-60 h-8 rounded-md"></div>
+                <div class="animate-pulse bg-gray-300 w-20 h-3 rounded-md"></div>
+            </div>
+        </div>
+    `;
+
+        // Hiển thị 3 item loading
+        container.innerHTML = skeletonHTML.repeat(3);
+        container.classList.remove('hidden');
+        container.classList.add('flex');
+    }
+
+</script>
+
+
 
 </html>

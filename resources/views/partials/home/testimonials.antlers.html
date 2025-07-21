@@ -1,0 +1,42 @@
+<div class="max-w-screen-xl px-4 md:w-[90%] mx-auto py-10">
+    <div class="animation-wrapper">
+        <h2 class="section-head">{{title}}</h2>
+    </div>
+    <div class="business-opinions">
+        <div class="swiper business-list">
+            <div class="swiper-wrapper mb-5 py-5">
+                {{collection:feedbacks}}
+                <div class="swiper-slide">
+                    <div class="business-item bg-[#f3f4f6] px-5 pt-5 pb-20 rounded-xl relative animate-float group">
+                        <div class="text-[#cfd2d7] group-hover:text-blue-500 text-4xl mb-3">
+                            <i class="fa-solid fa-quote-left"></i>
+                        </div>
+                        <p>
+                          {{content}}
+                        </p>
+                        <div class="bg-white py-2 pr-4 absolute bottom-0 left-0 rounded-xl">
+                            <div class="flex gap-3.5">
+                                <img src="{{avatar}}" loading="lazy" alt=""
+                                    class="w-11 h-11 rounded-full object-cover" srcset="">
+                                <div>
+                                    <p class="text-sm font-semibold">{{fullname}}</p>
+                                    <p class="text-xs text-gray-500">{{position}}</p>
+                                </div>
+                            </div>
+                            <div class="custom-shape shape-right"></div>
+                            <div class="custom-shape shape-left"></div>
+                        </div>
+                    </div>
+                </div>
+                {{/collection:feedbacks}}
+                
+            </div>
+            <div class="swiper-pagination-business"></div>
+        </div>
+        <div class="grid grid-cols-12 gap-5">
+            <div class="col-span-4">
+
+            </div>
+        </div>
+    </div>
+</div>

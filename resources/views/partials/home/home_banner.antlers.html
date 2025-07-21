@@ -1,0 +1,91 @@
+<div class="banner-container grid grid-cols-12">
+    <div class="col-span-8 flex flex-col">
+        <div class="flex-1 relative">
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    {{banner_images}}
+                    <div class="swiper-slide">
+                        <img src="{{url}}" alt="FIT-TDC" loading="lazy"
+                            class="w-full h-[450px] object-cover" />
+                         <div class="swiper-lazy-preloader"></div>
+                    </div>
+                    {{/banner_images}}
+                </div>
+
+                <!-- Nút điều hướng -->
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+
+            <div class="absolute z-50 bottom-8 h-[100px] w-[30%] bg-gray-500/30"></div>
+            <div class="banner-text absolute z-50 bottom-12 max-w-screen-xl px-4 mx-auto">
+                <h2 class="text-4xl font-black text-white drop-shadow-md">
+                    {{title}}
+                </h2>
+                <p class="text-white drop-shadow-md">{{sub_title}}</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-span-4 flex flex-col">
+        <div class="grid grid-rows-4 md:grid-cols-2 md:grid-rows-2 flex-1">
+            {{cac_nganh }}
+            <div class="relative">
+                <img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExcXp6azcyYm01azJnenI5cHBtZnloenVteDA5enB3ejIzcnd3YTV3bSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l3q2XB76CaWPggiNW/giphy.gif"
+                    alt="banner-image" class="h-full w-full object-cover" />
+                <div class="absolute inset-0 bg-[#003b7a]/50 flex flex-col items-center justify-center">
+                    <button data-modal-target="default-modal" data-modal-toggle="default-modal"
+                        class="text-white hover:border-blue-800 hover:text-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 w-12 h-12 flex items-center justify-center"
+                        type="button">
+                        <i class="fa-regular fa-play"></i>
+                    </button>
+                    <h2 class="text-white text-center">
+                        Ngành<br><span class="font-bold">{{title | replace('//', '<br>')}}</span>
+                    </h2>
+                </div>
+            </div>
+            {{/cac_nganh}}
+            <!-- <div class="relative">
+                <img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExcXp6azcyYm01azJnenI5cHBtZnloenVteDA5enB3ejIzcnd3YTV3bSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l3q2XB76CaWPggiNW/giphy.gif"
+                    alt="banner-image" class="h-full w-full object-cover" />
+                <div class="absolute inset-0 bg-[#003b7a]/50 flex flex-col items-center justify-center">
+                    <button data-modal-target="default-modal" data-modal-toggle="default-modal"
+                        class="text-white hover:border-blue-800 hover:text-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 w-12 h-12 flex items-center justify-center"
+                        type="button">
+                        <i class="fa-regular fa-play"></i>
+                    </button>
+                    <h2 class="text-white text-center">
+                        Ngành<br><span class="font-bold">CÔNG NGHỆ THÔNG TIN<br>(Nhật Bản)</span>
+                    </h2>
+                </div>
+            </div>
+            <div class="relative">
+                <img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExcXp6azcyYm01azJnenI5cHBtZnloenVteDA5enB3ejIzcnd3YTV3bSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l3q2XB76CaWPggiNW/giphy.gif"
+                    alt="banner-image" class="h-full w-full object-cover" />
+                <div class="absolute inset-0 bg-[#003b7a]/50 flex flex-col items-center justify-center">
+                    <button data-modal-target="default-modal" data-modal-toggle="default-modal"
+                        class="text-white hover:border-blue-800 hover:text-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 w-12 h-12 flex items-center justify-center"
+                        type="button">
+                        <i class="fa-regular fa-play"></i>
+                    </button>
+                    <h2 class="text-white text-center">
+                        Ngành<br><span class="font-bold">TRUYỀN THÔNG &<br>MẠNG MÁY TÍNH</span>
+                    </h2>
+                </div>
+            </div>
+            <div class="relative">
+                <img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExcXp6azcyYm01azJnenI5cHBtZnloenVteDA5enB3ejIzcnd3YTV3bSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l3q2XB76CaWPggiNW/giphy.gif"
+                    alt="banner-image" class="h-full w-full object-cover" />
+                <div class="absolute inset-0 bg-[#003b7a]/50 flex flex-col items-center justify-center">
+                    <button data-modal-target="default-modal" data-modal-toggle="default-modal"
+                        class="text-white hover:border-blue-800 hover:text-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 w-12 h-12 flex items-center justify-center"
+                        type="button">
+                        <i class="fa-regular fa-play"></i>
+                    </button>
+                    <h2 class="text-white text-center">
+                        Ngành<br><span class="font-bold">THIẾT KẾ ĐỒ HỌA</span>
+                    </h2>
+                </div>
+            </div> -->
+        </div>
+    </div>
+</div>
