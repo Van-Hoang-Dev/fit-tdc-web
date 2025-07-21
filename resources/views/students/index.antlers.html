@@ -1,0 +1,31 @@
+<div class="max-w-screen-xl px-4 md:w-[90%] mx-auto py-10">
+    <div class="flex flex-col-reverse md:flex-row md:gap-3 justify-center items-center shake-on-hover">
+        <h1 class="font-black md:text-3xl text-[#004f79] text-center uppercase">
+            Sinh Viên Tiêu Biểu
+        </h1>
+        <img src="/system/mortarboard.png" class="h-14" alt="" srcset="" />
+    </div>
+    <div id="student-list" class="md:grid grid-cols-12 mt-5">
+    {{collection:students}}
+        <div class="md:col-span-6 lg:col-span-3 m-3 shadow-md">
+            <div class="student-item bg-white text-center">
+                <div class="grid grid-cols-12 text-sm">
+                    <div class="col-span-9 p-2 font-bold bg-amber-300">
+                        {{major}}
+                    </div>
+                    <div class="col-span-3 p-2">{{class}}</div>
+                </div>
+                <div
+                    class="student-photo relative bg-linear-to-r/srgb from-[#E0EAFC] to-[#CFDEF3] pt-5 overflow-hidden">
+                    {{ avatar }}
+                    <img src="{{url}}" alt="" class="object-cover h-[250px] inline-block z-2 relative" />
+                    {{ /avatar}}
+                    <a href="{{url}}"
+                        class="block bg-linear-to-r/srgb from-[#396afc] to-[#2948ff] font-bold p-3 text-xl text-white relative z-2 hover:underline">
+                        {{title}}</a>
+                </div>
+            </div>
+        </div>
+        {{/collection:students}}
+    </div>
+</div>

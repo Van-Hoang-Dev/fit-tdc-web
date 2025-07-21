@@ -1,9 +1,9 @@
 <div class="max-w-screen-xl px-4 md:w-[90%] mx-auto pt-10">
     {{ collection:majors sort="pos" scope="major_scope" }}
     <div class="mb-10 {{ unless last }}border-b border-gray-200{{ /unless }} pb-6">
-        <div class="grid grid-cols-12 gap-5">
+        <div class="md:grid grid-cols-12 gap-5">
             <!-- Section title and description -->
-            <div class="col-span-4">
+            <div class="col-span-4 mb-5 major-desc">
                 <h2 class="text-3xl font-black text-gray-900 mb-3">{{ title }}</h2>
                 <p class="text-sm text-gray-700 mt-1 max-w-xl">
                     {{description}}
@@ -17,7 +17,7 @@
                     {{major}}
                     {{ if id == major_scope:id }}
                     <div class="flex flex-col items-center text-center">
-                        <div class="p-2 rounded-full" style="background-image: url('assets/images/bg_cr_grey.png');">
+                        <div class="p-2 rounded-full" style="background-image: url('system/bg_cr_grey.png');">
                             <div class="w-24 h-24 rounded-full overflow-hidden">
                                 <img src="{{lecturer:avatar}}" alt="Lecturer"
                                     class="rounded-full object-cover transform transition-transform duration-300 ease-in-out hover:scale-110">

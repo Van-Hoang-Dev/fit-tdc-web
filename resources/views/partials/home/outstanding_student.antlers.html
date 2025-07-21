@@ -1,0 +1,49 @@
+<div class="bg-[#f1f4f9]">
+    <div class="max-w-screen-xl px-4 md:w-[90%] mx-auto py-14">
+        <div class="animation-wrapper">
+            <h2 class="section-head">{{title}}</h2>
+        </div>
+        <!-- Students List -->
+        <div class="swiper students-list">
+            <div class="swiper-wrapper">
+                {{collection:students}}
+                <div class="swiper-slide">
+                    <div class="student-item bg-white text-center">
+                        <div class="grid grid-cols-12 text-sm">
+                            <div class="col-span-9 p-2 font-bold bg-amber-300">{{major}}</div>
+                            <div class="col-span-3 p-2">{{class}}</div>
+                        </div>
+                        <div class="student-photo relative bg-linear-to-r/srgb from-[#E0EAFC] to-[#CFDEF3] pt-5 overflow-hidden">
+                            <img src=" {{avatar}}" alt="{{title}}" loading="lazy"
+                                class="object-cover h-[300px] inline-block z-2 relative">
+                            <h3
+                                class="bg-linear-to-r/srgb from-[#396afc] to-[#2948ff] font-bold p-3 text-xl text-white relative z-2 mix-blend-multiply">
+                                <a href="{{url}}" class="hover:border-b hover:border-white">{{title}}</a></h3>
+                        </div>
+                        <div class="p-3">
+
+
+                            <ul class="grid grid-rows-3 max-w-md space-y-1 text-gray-500 list-inside  text-left">
+                                {{awards limit="3" scope="award"}}
+                                <li class="flex items-center">
+                                    <i class="fa-solid fa-star text-amber-300 me-2"></i><span class="line-clamp-1"> {{award:title}}</span>
+                                </li>
+                                {{/awards}}
+                                
+
+                            </ul>
+
+                            <div class="text-right">
+                                <a href="{{url}}"><i class="fa-regular fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{/collection:students}}
+                
+
+            </div>
+        </div>
+        <!-- End Students List -->
+    </div>
+</div>

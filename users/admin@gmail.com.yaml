@@ -1,4 +1,6 @@
 super: true
+avatar: logo.jpg
+name: FIT-TDC
 id: 8a2db8fc-eb50-49bb-89d4-b12017d31da0
 password_hash: $2y$12$Yj3FUMz.XbibzNLDw79/uORG0kofPyJskLhh8XczTgoRv8ox7d/aC
 preferences:
@@ -19,6 +21,46 @@ preferences:
         - status
         - position
         - priority
-  assets:
-    assets:
-      mode: grid
+    programs:
+      columns:
+        - title
+        - slug
+        - status
+        - course
+        - index
+    posts:
+      columns:
+        - thumbnail
+        - title
+        - slug
+        - date
+        - status
+        - featured
+    landing_pages:
+      columns:
+        - title
+        - author
+        - slug
+        - status
+        - external_link
+    pages:
+      columns:
+        - title
+        - author
+        - slug
+        - status
+  forms:
+    contact_us:
+      columns:
+        - email
+        - ho_va_ten
+        - loi_nhan
+        - mssv
+        - datestamp
+  taxonomies:
+    tags:
+      columns:
+        - title
+        - author
+        - slug
+        - template

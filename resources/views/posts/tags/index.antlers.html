@@ -1,0 +1,182 @@
+<div class="pb-12">
+    <!-- Header -->
+    <header class="py-[90px] relative bg-cover bg-center bg-no-repeat"
+        style="background-image: url('{{post_banners:banner_image}}')">
+        <div class="relative z-10 mx-auto max-w-6xl">
+            <h2 class="text-shadow-lg uppercase text-4xl font-black tracking-wider text-white ms-5 before:content[''] before:w-1 before:h-full before:block before:leading-4 before:absolute before:left-0 before:right-0 before:z-10 before:bg-blue-800">
+                Tin Tức
+            </h2>
+        </div>
+        <!-- Optional overlay -->
+        <div class="absolute inset-0 bg-blue-900/20"></div>
+    </header>
+    <!-- End Header -->
+    <div class="max-w-screen-xl px-4 md:w-[90%] mx-auto pt-10">
+        <div class="md:grid md:grid-cols-12 gap-5">
+            <div class="col-span-9">
+                <!-- Posts List -->
+                {{entries paginate="3" as="posts"}}
+                <!-- Post Item -->
+                {{if no_results }}
+                <div class="h-80 flex flex-col gap-3 items-center justify-center">
+                    <img class="w-24 animate-bounceY" src="/system/empty.png" alt="" srcset="">
+                    <div class="mt-2 w-20 h-5 bg-black/20 rounded-full blur-[6px] animate-shadowPulse"></div>
+                </div>
+                {{/if}}
+                {{posts}}
+                <a href="{{url}}">
+                    <div
+                        class="md:grid md:grid-cols-12 bg-white border border-gray-100 shadow-md overflow-hidden mb-6 group post-item">
+                        <!-- Thumnail -->
+                        <div class="col-span-5 overflow-hidden flex items-center">
+                            {{ if thumbnail }} {{ thumbnail }}
+                            <img src="{{ url }}" alt="{{title}}"
+                                class="w-full h-[230px] object-cover transform transition-transform duration-500 ease-in-out group-hover:scale-110" />
+                            {{ /thumbnail }} {{else}}
+                            <img src="/system/image_not_available.png" alt="{{ title }}"
+                                class="p-9 w-full items-center object-cover rounded mb-3" />
+                            {{ /if }}
+                        </div>
+
+                        <!-- Content -->
+                        <div class="col-span-7 p-6 flex flex-col justify-between">
+                            <!-- Date -->
+                            <div class="flex flex-col md:flex-row mb-4">
+                                <div
+                                    class="max-w-[120px] flex flex-row gap-2.5 items-center justify-center text-center border-b border-r border-gray-200 pr-4 pb-4 mr-4">
+                                    <div class="w-[60px] text-5xl font-bold text-blue-800 leading-none">{{ date
+                                        format="d" }}</div>
+                                    <div class="flex flex-col text-sm leading-tight">
+                                        <span class="uppercase text-sm text-gray-500 whitespace-nowrap">Tháng {{ date
+                                            format="n" }}</span>
+                                        <span class="text-blue-600 text-sm font-medium"> {{ date format="Y" }}</span>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <h2
+                                        class="text-xl font-bold text-gray-900 mb-2 post-title line-clamp-2 mt-[10px] md:mt-0">
+                                        {{title}}
+                                    </h2>
+                                    <div class="text-sm text-gray-600 space-x-4">
+                                        <!-- <span>
+                                              <span class="font-medium text-gray-800">Posted by</span> Keny White
+                                          </span> -->
+                                          {{if tags}}
+                                        <span class="">
+                                            <span class="font-medium text-gray-800">Categories</span> {{tags scope="tag"}}{{tag:title}}{{/tags}}
+                                        </span>
+                                        {{/if}}
+                                        <!-- <span class="border border-gray-200"></span>
+                                        <span>
+                                            <span class="font-medium text-gray-800">Views</span> 0
+                                        </span> -->
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Summary content -->
+                            <div class="text-gray-700 text-sm line-clamp-3">
+                                {{title_description}}
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                {{/posts}}
+                <!-- End Post Item -->
+                <!-- Paginate -->
+                {{ if paginate:total_pages > 1 }}
+                {{paginate}}
+                <nav aria-label="Page navigation example">
+                    <ul class="flex items-center justify-center -space-x-px h-8 text-sm">
+                        {{if prev_page}}
+                        <li>
+                            <a href="{{prev_page}}"
+                                class="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-gray-500 bg-gray-40 border border-e-0 border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 ">
+                                <span class="sr-only">Previous</span>
+                                <svg class="w-2.5 h-2.5 rtl:rotate-180" aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="2" d="M5 1 1 5l4 4" />
+                                </svg>
+                            </a>
+                        </li>
+                        {{else}}
+                        <li title="Previous"
+                            class="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-gray-500 bg-gray-50 border border-e-0 border-gray-300 rounded-s-lg  ">
+                            <span class="sr-only">Previous</span>
+                            <svg class="w-2.5 h-2.5 rtl:rotate-180" aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2" d="M5 1 1 5l4 4" />
+                            </svg>
+                        </li>
+                        {{/if}}
+
+                        {{links:all}}
+                        <li>
+                            <a href="{{url}}"
+                                class="flex items-center justify-center px-3 h-8 leading-tight hover:bg-gray-100 hover:text-gray-700 {{if page == current_page}}bg-blue-50 text-blue-600 border border-blue-300 pointer-events-none{{/else}} text-gray-500 bg-white  border border-gray-300 {{/if}}">{{page}}</a>
+                        </li>
+                        {{/links:all}}
+
+                        {{if next_page}}
+                        <li>
+                            <a href="{{next_page}}"
+                                class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 ">
+                                <span class="sr-only">Next</span>
+                                <svg class="w-2.5 h-2.5 rtl:rotate-180" aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="2" d="m1 9 4-4-4-4" />
+                                </svg>
+                            </a>
+                        </li>
+                        {{else}}
+                        <li title="Next"
+                            class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500  border border-gray-300 rounded-e-lg bg-gray-50 ">
+                            <span class="sr-only">Next</span>
+                            <svg class="w-2.5 h-2.5 rtl:rotate-180" aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2" d="m1 9 4-4-4-4" />
+                            </svg>
+                        </li>
+                        {{/if}}
+                    </ul>
+                </nav>
+                {{/paginate}}
+                {{/if}}
+                {{/entries}}
+
+            </div>
+            <!-- Popular Posts -->
+            <div class="col-span-3 mt-10 md:ml-5 md:mt-0">
+                <h3 class="mb-4 font-black text-2xl text-[#004f79] text-center uppercase">Bài Viết Nổi Bật</h3>
+                <!-- Popular Post Item -->
+                {{ collection:posts }}
+                {{if featured}}
+                <a href="{{url}}">
+                    <div class="flex flex-col gap-5">
+                        <div class="grid grid-cols-12 gap-3 mb-3">
+                            <!-- Thumnail -->
+                            <div class="col-span-5">
+                                {{thumbnail}}
+                                <img src="{{url}}" alt="Post thumbnail" class="w-full h-full object-cover" />
+                                {{/thumbnail}}
+                            </div>
+                            <!-- Title -->
+                            <div class="col-span-7 flex flex-col justify-between">
+                                <h2 class="text-sm font-bold text-gray-900 mb-2 line-clamp-2">{{title}}</h2>
+                                <span class="text-xs">{{date format="d/m/Y"}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                {{/if}}
+                {{ /collection:posts }}
+            </div>
+        </div>
+    </div>
+</div>

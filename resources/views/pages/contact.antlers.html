@@ -1,0 +1,119 @@
+<div class="max-w-screen-xl px-4 md:w-[90%] mx-auto py-10">
+    <div class="md:grid grid-cols-12">
+        <div class="col-span-6 px-5">
+            <div class="mb-3">
+                <h2 class="text-2xl font-black">Văn phòng Khoa<br><span class="font-normal">Địa chỉ</span></h2>
+            </div>
+            <div class="crossedbg"></div>
+            <div class="p-4 shadow-md">
+                <div class="mb-4">
+                    <p class="pb-3 text-lg">
+                        <b>Khoa CNTT<br>
+                            Khu B, Cao đẳng Công nghệ Thủ Đức</b>
+                    </p>
+                    <ul class="flex flex-col">
+                        <li class="mt-2">
+                            &nbsp;<i class="fa-regular fa-clock"></i>&nbsp;&nbsp;&nbsp; Thứ 2 đến thứ 6, 7h00 - 11h30, 13h30 -
+                            16h30<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Thứ 7, 7h30 - 11h
+                        </li>
+                        <li class="my-2">
+                            <i class="fa fa-building fa-lg fa-fw"></i>&nbsp; 53, Võ Văn Ngân, P.Linh Chiểu,<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Q.Thủ Đức, Tp.HCM
+                        </li>
+                        <li class="mb-2">
+                            <i class="fa fa-phone fa-lg fa-fw"></i>&nbsp; (028) 22 158 642
+                        </li>
+                    </ul>
+                </div>
+
+
+                <div id="map-canvas" class="h-[450px]"></div>
+
+            </div>
+        </div>
+        <div class="col-span-6 px-5 mt-[20px] md:mt-0">
+            <div class="mb-3">
+                <h2 class="text-2xl font-black">Liên hệ<br><span class="font-normal">Với chúng tôi</span></h2>
+            </div>
+            <div class="crossedbg"></div>
+            <!-- Form -->
+
+            <div class="p-4 shadow-md">
+                {{form:contact_us}}
+                {{fields}}
+                {{if type == "text" }}
+                <div class="mb-5">
+                    <input 
+                        type="{{input_type}}" 
+                        id="{{handle}}"
+                        name="{{handle}}"
+                        placeholder="{{placeholder}}"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
+                         required />
+                         {{if error}}
+                         <span class="text-sm text-red-500">{{error}}</span>
+                         {{/if}}
+                </div>
+                {{/if}}
+                {{if type == "email" }}
+                <div class="mb-5">
+                    <input type="{{input_type}}"
+                        name="{{handle}}"
+                        placeholder="{{placeholder}}"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
+                         required />
+                </div>
+                {{/if}}
+                {{if type == "textarea"}}
+                <div class="mb-5">
+                    <textarea id="{{handle}}" name="{{handle}}" rows="4"
+                        class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
+                        placeholder="{{placeholder}}..."></textarea>
+                </div>
+                {{/if}}
+                {{/fields}}
+                <button type="submit"
+                    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-base w-full sm:w-auto px-5 py-2.5 text-center ">Gửi</button>
+                {{/form:contact_us}}
+                </div>
+
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript"
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCMZIJ_0CCaQOi0gNeDw37XK9Gxaclo5kY">
+    </script>
+<script type="text/javascript">
+    function initialize() {
+        var iTDCLatlng = new google.maps.LatLng(10.850951, 106.758200);
+        var mapOptions = {
+            center: iTDCLatlng,
+            zoom: 17
+        };
+
+        var map = new google.maps.Map(document.getElementById("map-canvas"),
+            mapOptions);
+
+        var marker = new google.maps.Marker({
+            position: iTDCLatlng,
+            map: map,
+            title: 'Khoa CNTT - CĐ Công nghệ Thủ Đức',
+            icon: "/system/itdcmarker.png"
+        });
+        var contentString = '<div id="content">' +
+            '<div id="siteNotice">' +
+            '<b>Khoa Công nghệ thông tin</b><br />' +
+            'Cao đẳng Công nghệ Thủ Đức' +
+            '</div>' +
+            '</div>';
+        var infowindow = new google.maps.InfoWindow({
+            content: contentString
+        });
+        google.maps.event.addListener(marker, 'click', function () {
+            infowindow.open(map, marker);
+        });
+    }
+    google.maps.event.addDomListener(window, 'load', initialize);
+</script>

@@ -1,5 +1,5 @@
 <div class="max-w-screen-xl px-6 md:w-[80%] mx-auto py-10">
-    <div class="grid grid-cols-12 mt-10 shadow-[0_6px_10px_-1px_rgba(0,_0,_0,_0.3)]">
+    <div class="md:grid grid-cols-12 mt-10 shadow-[0_6px_10px_-1px_rgba(0,_0,_0,_0.3)]">
         <!-- Lecturer Avatar -->
         <div class="col-span-4">
             <img src="{{avatar}}" alt="{{title}}" srcset="">
@@ -7,12 +7,12 @@
         <!-- Lecturer Content -->
         <div class="col-span-8 relative bg-before">
             <!-- Title & Position -->
-            <div class="bg-[#f5ce31] p-[30px] relative lecturer-triangle-down">
-                <div class="font-black text-2xl border-r table-cell align-middle pr-4 capitalize">{{title}}</div>
-                <div class="text-[16.8px] font-extralight table-cell align-middle uppercase pl-4">{{position}}</div>
+            <div class="bg-[#f5ce31] p-[15px] md:p-[30px] relative lecturer-triangle-down">
+                <div class="font-black text-[18px] md:text-2xl border-b md:border-b-0 md:border-r  table-cell align-middle pb-1 md:pb-0 pr-4 capitalize">{{title}}</div>
+                <div class="text-[15px] md:text-[16.8px] font-extralight md:table-cell align-middle uppercase md:pl-4">{{position}}</div>
             </div>
             <!-- Major & Info -->
-            <div class="p-[30px]">
+            <div class="p-[15px] md:p-[30px]">
                 <span class="text-lg font-medium">{{major}} {{title}} {{/major}}</span>
                 <ul class="mt-4">
                     <div class="grid grid-cols-12">
@@ -50,9 +50,9 @@
     </div>
     <!-- Lecturer Description -->
      <div class="shadow-[1px_3px_9px_-4px_#ccc] mb-10">
-         <div class="mt-8 relative" style="background: url('/assets/images/bg_cr_grey.png'); height: 15px;"></div>
-        <div class="p-4">
+         <div class="mt-8 relative" style="background: url('/system/bg_cr_grey.png'); height: 15px;"></div>
+        <div class="prose prose-sm md:prose-base max-w-none p-6">
             {{description}}
         </div>
      </div>
-</div>
+    </div>

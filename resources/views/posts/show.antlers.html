@@ -1,0 +1,243 @@
+<header
+    class="py-[90px] relative bg-cover bg-center bg-no-repeat"
+    style="background-image: url('{{post_banners:banner_image}}')"
+>
+    <div class="relative z-10 mx-auto max-w-6xl">
+        <h2
+            class="uppercase text-4xl font-black text-white tracking-wider ms-5 before:content[''] before:w-1 before:h-full before:block before:leading-4 before:absolute before:left-0 before:right-0 before:z-10 before:bg-blue-600"
+        >
+            Tin Tức
+        </h2>
+    </div>
+    <!-- Optional overlay -->
+    <div class="absolute inset-0 bg-blue-900/30"></div>
+</header>
+
+<main class="max-w-screen-xl px-4 md:w-[90%] mx-auto pt-10">
+    <!-- Breadcrumb -->
+    <nav
+        aria-label="Breadcrumb"
+        class="py-3.5 mx-4 lg:!mx-none border-b border-gray-200"
+    >
+        <ol class="flex items-center space-x-2 opacity-70">
+            <li>
+                <a href="/" class="hover:underline whitespace-nowrap"
+                    >Trang chủ</a
+                >
+            </li>
+            <li class="text-gray-500">/</li>
+            <li>
+                <a href="/tin-tuc" class="hover:underline whitespace-nowrap"
+                    >Tin Tức</a
+                >
+            </li>
+            <li class="text-gray-500">/</li>
+            <li class="text-gray-700 font-medium truncate lg:max-w-none" title="{{title}}">
+                {{title}}
+            </li>
+        </ol>
+    </nav>
+
+    <div class="md:grid grid-cols-4 gap-8 my-7 md:my-14">
+        <article class="col-span-3 mx-4 md:mx-0">
+
+            <!-- Article Header -->
+            <header class="mb-6">
+                <h1 class="text-[28px] capitalize font-semibold mb-4">
+                    {{title}}
+                </h1>
+                <span class="italic">{{title_description}}</span>
+                <!-- <div class="sm:flex gap-4 text-sm text-gray-600">
+                    <span class="me-5 pe-5 border-r border-r-[#eee]"
+                        >Người đăng: {{author}} <br />
+                        <b> {{name}} </b>
+                        {{/author}}
+                    </span>
+                    <span class="me-5 pe-5 border-r border-r-[#eee]"
+                        >Danh mục: <br />
+                        <b> Bài viết </b>
+                    </span>
+                    <time
+                        class="me-5 pe-5 border-r border-r-[#eee]"
+                        datetime="{{date format='d/m/Y'}}"
+                        >Ngày đăng:
+                        <br />
+                        <b> {{date| format('d/m/Y')}} </b>
+                    </time>
+                    <span
+                        >Bình luận: <br />
+                        <b> 0 comments </b>
+                    </span>
+                </div> -->
+            </header>
+
+            <!-- Article Content -->
+            <div class="prose max-w-none mb-8 mt-5">
+                {{ sections }}
+                {{partial src="partials/{type}"}}
+                {{ /sections }}
+            </div>
+
+            <!-- Tags and Share -->
+            <footer class="flex justify-between items-center my-7">
+                <div class="flex items-center gap-2">
+                    <h3 class="font-medium">Tags:</h3>
+                    <ul class="flex gap-2">
+                        {{tags}}
+                        <li>
+                            <a href="{{url}}" class="hover:text-blue-600">{{title}}</a>
+                        </li>
+                        {{/tags}}
+                    </ul>
+                </div>
+                <!-- <div class="flex items-center gap-2">
+                    <h3 class="font-medium">Share:</h3>
+                    <ul class="flex items-center">
+                        <li>
+                            <a
+                                href="#"
+                                title="Share on Facebook"
+                                class="w-8 h-8 flex items-center justify-center border border-gray-300 rounded-full transition-all duration-300 ease-in-out transform hover:bg-blue-500 hover:text-white hover:scale-110 hover:border-blue-500"
+                            >
+                                <i class="fa-brands fa-facebook-f"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div> -->
+            </footer>
+
+            <!-- Author Bio -->
+            <!-- <aside class="flex gap-7 bg-gray-50 p-6 rounded-lg my-8">
+                <img
+                    src="https://avatar.iran.liara.run/public"
+                    width="110"
+                    height="110"
+                />
+
+                <div class="flex flex-col gap-2">
+                    <h3 class="font-bold text-xl">Keny White</h3>
+                    <p class="text-sm uppercase font-medium opacity-60">
+                        Professor
+                    </p>
+                    <p class="text-sm">
+                        Web designer & Best-Selling Instructor
+                    </p>
+                </div>
+            </aside> -->
+            <!-- Post Navigation -->
+            <nav
+                class="flex relative justify-between border border-gray-200 rounded"
+            >
+                <div
+                    class="absolute block w-[1px] z-10 bg-[#eee] h-full left-1/2 top-0"
+                ></div>
+                <div class="p-5 w-1/2">
+                    <span class="text-sm text-[#333]">Bài viết trước</span>
+                    {{ collection:previous in="posts" limit="1" sort="date:asc"
+                    }} {{ if no_results }}
+                    <span class="text-sm text-gray-500"
+                        >Không có bài viết trước</span
+                    >
+                    {{ else }}
+                    <span class="text-sm text-[#333]">Bài viết trước</span>
+                    <a
+                        href="{{ url }}"
+                        class="block font-medium hover:text-blue-600 transition-all duration-200 text-lg"
+                    >
+                        {{ title }}
+                    </a>
+                    <time class="text-sm text-gray-500">
+                        {{ date | format('d-m-Y') }}
+                    </time>
+                    {{ /if }} {{ /collection:previous }}
+                </div>
+                <div class="text-right p-5">
+                    {{ collection:next in="posts" limit="1" sort="date:asc" }}
+                    {{ if no_results }}
+                    <span class="text-sm text-gray-500"
+                        >Không có bài kế tiếp</span
+                    >
+                    {{ else }}
+                    <span class="text-sm text-gray-500">Bài viết kế tiếp</span>
+                    <a
+                        href="{{ url }}"
+                        class="block font-medium hover:text-blue-600 transition-all duration-200 text-lg"
+                    >
+                        {{ title }}
+                    </a>
+                    <time class="text-sm text-gray-500">
+                        {{ date | format('d-m-Y') }}
+                    </time>
+                    {{ /if }} {{ /collection:next }}
+                </div>
+            </nav>
+
+            <!-- Related Posts -->
+            <section class="mt-7">
+                <h3 class="text-xl font-bold mb-7">Bài viết liên quan</h3>
+                <div class="grid grid-cols-3 gap-6">
+                    {{ collection:posts limit="3" sort="date:desc" }}
+                    <article class="group">
+                        {{ if thumbnail }} {{ thumbnail }}
+                        <img
+                            src="{{ url }}"
+                            alt="{{ alt or title }}"
+                            class="w-full h-48 object-cover rounded mb-3"
+                        />
+                        {{ /thumbnail }} {{ else }}
+                        <img
+                            src="https://placehold.co/300x200/png"
+                            alt="{{ title }}"
+                            class="w-full h-48 object-cover rounded mb-3"
+                        />
+                        {{ /if }}
+                        <h4
+                            class="group-hover:text-blue-600 text-lg mt-4 mb-2 font-semibold transition-colors"
+                        >
+                            <a href="{{ url }}">{{ title }}</a>
+                        </h4>
+                        <time class="text-sm text-gray-500">
+                            {{ date | format('d/m/Y') }}
+                        </time>
+                    </article>
+                    {{ /collection:posts }}
+                </div>
+            </section>
+        </article>
+        <!-- Sidebar -->
+        <aside class="col-span-1">
+            <div class="sticky top-4">
+                <h3 class="text-lg font-semibold mb-5 uppercase">
+                    Bài viết mới
+                </h3>
+                {{ collection:posts limit="5" sort="date:desc" }}
+                <article class="flex gap-4 mb-4 items-start">
+                    {{ if thumbnail }} {{ thumbnail }}
+                    <img
+                        src="{{ url }}"
+                        alt="{{ alt }}"
+                        class="w-20 h-20 object-cover rounded"
+                    />
+                    {{ /thumbnail }} {{ else }}
+                    <img
+                        src="https://placehold.co/150x150/png"
+                        alt="{{ title }}"
+                        class="w-20 h-20 object-cover rounded"
+                    />
+                    {{ /if }}
+                    <div>
+                        <h3 class="font-medium">
+                            <a href="{{ url }}" class="hover:text-blue-600 line-clamp-2">
+                                {{ title }}
+                            </a>
+                        </h3>
+                        <time class="text-sm text-gray-500">
+                            {{ date | format('d/m/Y') }}
+                        </time>
+                    </div>
+                </article>
+                {{ /collection:posts }}
+            </div>
+        </aside>
+    </div>
+</main>

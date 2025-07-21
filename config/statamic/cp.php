@@ -71,7 +71,7 @@ return [
     |
     */
 
-    'date_format' => 'Y-m-d',
+    'date_format' => 'd-m-Y',
 
     /*
     |--------------------------------------------------------------------------
@@ -133,15 +133,15 @@ return [
     |
     */
 
-    'custom_cms_name' => env('STATAMIC_CUSTOM_CMS_NAME', 'Statamic'),
+    'custom_cms_name' => env('STATAMIC_CUSTOM_CMS_NAME', 'FIT-TDC'),
 
-    'custom_logo_url' => env('STATAMIC_CUSTOM_LOGO_URL', null),
+    'custom_logo_url' => env('STATAMIC_CUSTOM_LOGO_URL', '/system/logo-removebg.png'),
 
     'custom_dark_logo_url' => env('STATAMIC_CUSTOM_DARK_LOGO_URL', null),
 
     'custom_logo_text' => env('STATAMIC_CUSTOM_LOGO_TEXT', null),
 
-    'custom_favicon_url' => env('STATAMIC_CUSTOM_FAVICON_URL', null),
+    'custom_favicon_url' => env('STATAMIC_CUSTOM_FAVICON_URL', '/system/logo-removebg.png'),
 
     'custom_css_url' => env('STATAMIC_CUSTOM_CSS_URL', null),
 
