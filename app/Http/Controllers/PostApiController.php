@@ -23,7 +23,7 @@ class PostApiController extends Controller
     })
         ->get();
 
-        Log::info("Data", [$posts]);
+ 
 
         // return response()->json($posts);
         return response()->json($posts->map(function ($post) {
