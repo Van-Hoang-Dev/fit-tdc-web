@@ -95,7 +95,10 @@ class GeminiApiController extends Controller
         }
 
         // 2. Xác định đường dẫn đến file PDF tài liệu chatbot
-        $pdfPath = public_path('assets/chatbot-docs/chatbot.pdf');
+         $globals = \Statamic\Globals\GlobalSet::findByHandle('chatbot_doc')->inDefaultSite();
+        $docPath = $globals->get('document');
+        $pdfPath = public_path('assets/'. $docPath);
+
         if (!file_exists($pdfPath)) {
             return response()->json(['error' => 'Không tìm thấy file PDF.'], 404);
         }
@@ -150,23 +153,14 @@ class GeminiApiController extends Controller
     // Hàm tạo Prompt cho chatbot
     private function buildPrompt($question, $pdfText)
     {
-        return <<<PROMPT
-        Bạn là một trợ lý ảo thân thiện của Khoa Công nghệ Thông tin (FIT-TDC). 
-        Nhiệm vụ của bạn là trả lời các câu hỏi của sinh viên, hoặc người quan tâm dựa trên tài liệu sau.
-
-        Câu hỏi người dùng: "{$question}"
-
-        Yêu cầu:
-        Hãy bắt đầu bằng một lời chào thân thiện nếu người hỏi chào hỏi bạn.
-        Nếu câu trả lời có trong tài liệu bên dưới, hãy sử dụng thông tin đó để trả lời.
-        Nếu không có thông tin trong tài liệu, hãy trả lời một cách lịch sự rằng bạn chưa có thông tin cho câu hỏi đó.
-        Không nên trả lời như "thông tin trong tài liệu có đề cập" mà hãy nói là "theo mình được biết" hoặc "theo thông tin mình có được" tránh nói về tài liệu.
-        Trình bày câu trả lời rõ ràng, có thể sử dụng emoji để tạo cảm giác gần gũi và sinh động hơn.
-        Nội dung tài liệu tham khảo:
-        \"\"\"
-        {$pdfText}
-        \"\"\"
-        PROMPT;
+        $globals = GlobalSet::find('chatbot_prompt')->in('default');
+        $template = $globals->get('prompt_template');
+        $finalPrompt = str_replace(
+            ['{question}', '{pdfText}'],
+            [$question, $pdfText],
+            $template
+        );
+        return $finalPrompt;
     }
 
     // Hàm lấy Key có thể sử dụng được
@@ -185,7 +179,7 @@ class GeminiApiController extends Controller
             }
 
             // Nếu lỗi, thử key tiếp theo
-            Log::info('✅ Lỗi Key ', [$apiKey]);
+            // Log::info('✅ Lỗi Key ', [$apiKey]);
         }
 
         // Nếu không key nào thành công
