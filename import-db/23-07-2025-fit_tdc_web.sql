@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jul 23, 2025 at 03:02 AM
+-- Generation Time: Jul 23, 2025 at 03:23 AM
 -- Server version: 8.0.31
 -- PHP Version: 8.2.0
 
@@ -20,8 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `fit_tdc_web`
 --
-CREATE DATABASE IF NOT EXISTS `fit_tdc_web` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
-USE `fit_tdc_web`;
 
 -- --------------------------------------------------------
 
@@ -49,7 +47,7 @@ CREATE TABLE IF NOT EXISTS `assets_meta` (
   KEY `assets_meta_filename_index` (`filename`),
   KEY `assets_meta_extension_index` (`extension`),
   KEY `assets_meta_path_index` (`path`)
-) ENGINE=InnoDB AUTO_INCREMENT=75 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=76 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `assets_meta`
@@ -73,7 +71,6 @@ INSERT INTO `assets_meta` (`id`, `container`, `folder`, `basename`, `filename`, 
 (29, 'assets', 'images/events/event-4', 'event-4-1.jpg', 'event-4-1', 'jpg', 'images/events/event-4/event-4-1.jpg', '{\"data\": [], \"size\": 573532, \"width\": 2048, \"height\": 1365, \"duration\": null, \"mime_type\": \"image/jpeg\", \"last_modified\": 1750848946}', '2025-06-25 03:55:46', '2025-06-25 03:55:46'),
 (30, 'assets', 'images/events/event-4', 'event-4-2.jpg', 'event-4-2', 'jpg', 'images/events/event-4/event-4-2.jpg', '{\"data\": [], \"size\": 583614, \"width\": 2048, \"height\": 1365, \"duration\": null, \"mime_type\": \"image/jpeg\", \"last_modified\": 1750848948}', '2025-06-25 03:55:48', '2025-06-25 03:55:48'),
 (31, 'assets', 'images/events/event-4', 'event-4-3.jpg', 'event-4-3', 'jpg', 'images/events/event-4/event-4-3.jpg', '{\"data\": [], \"size\": 469073, \"width\": 2048, \"height\": 1365, \"duration\": null, \"mime_type\": \"image/jpeg\", \"last_modified\": 1750848950}', '2025-06-25 03:55:50', '2025-06-25 03:55:50'),
-(32, 'assets', '/', 'logo.jpg', 'logo', 'jpg', 'logo.jpg', '{\"data\": [], \"size\": 10431, \"width\": 225, \"height\": 225, \"duration\": null, \"mime_type\": \"image/jpeg\", \"last_modified\": 1750928072}', '2025-06-26 01:54:32', '2025-06-26 01:54:32'),
 (34, 'assets', 'files/tien-trinh-dao-tao', 'ttdt-nb-2024.png', 'ttdt-nb-2024', 'png', 'files/tien-trinh-dao-tao/ttdt-nb-2024.png', '{\"data\": [], \"size\": 457590, \"width\": 2616, \"height\": 1626, \"duration\": null, \"mime_type\": \"image/png\", \"last_modified\": 1751171893}', '2025-06-28 21:38:13', '2025-06-28 21:38:13'),
 (35, 'assets', 'files/chuong-trinh-khung', 'ctk-nb-2024.pdf', 'ctk-nb-2024', 'pdf', 'files/chuong-trinh-khung/ctk-nb-2024.pdf', '{\"data\": [], \"size\": 811458, \"width\": null, \"height\": null, \"duration\": null, \"mime_type\": \"application/pdf\", \"last_modified\": 1751171921}', '2025-06-28 21:38:41', '2025-06-28 21:38:41'),
 (36, 'assets', 'files/chuan-dau-ra', 'cdr-nb-2024.pdf', 'cdr-nb-2024', 'pdf', 'files/chuan-dau-ra/cdr-nb-2024.pdf', '{\"data\": [], \"size\": 1098818, \"width\": null, \"height\": null, \"duration\": null, \"mime_type\": \"application/pdf\", \"last_modified\": 1751171931}', '2025-06-28 21:38:51', '2025-06-28 21:38:51'),
@@ -99,7 +96,8 @@ INSERT INTO `assets_meta` (`id`, `container`, `folder`, `basename`, `filename`, 
 (71, 'assets', 'images/banners', 'banner-5.jpg', 'banner-5', 'jpg', 'images/banners/banner-5.jpg', '{\"data\": [], \"size\": 335875, \"width\": 1280, \"height\": 960, \"duration\": null, \"mime_type\": \"image/jpeg\", \"last_modified\": 1752754949}', '2025-07-17 05:22:29', '2025-07-17 05:22:29'),
 (72, 'assets', 'globals', 'logo-rmbg.png', 'logo-rmbg', 'png', 'globals/logo-rmbg.png', '{\"data\": [], \"size\": 52279, \"width\": 225, \"height\": 225, \"duration\": null, \"mime_type\": \"image/png\", \"last_modified\": 1752756945}', '2025-07-17 05:55:45', '2025-07-17 05:55:45'),
 (73, 'assets', 'post-banners', 'banner-1.jpg', 'banner-1', 'jpg', 'post-banners/banner-1.jpg', '{\"data\": [], \"size\": 664480, \"width\": 2048, \"height\": 1604, \"duration\": null, \"mime_type\": \"image/jpeg\", \"last_modified\": 1753088307}', '2025-07-21 01:58:27', '2025-07-21 01:58:27'),
-(74, 'assets', 'chatbot-docs', 'chatbot.pdf', 'chatbot', 'pdf', 'chatbot-docs/chatbot.pdf', '{\"data\": [], \"size\": 2274450, \"width\": null, \"height\": null, \"duration\": null, \"mime_type\": \"application/pdf\", \"last_modified\": 1753185079}', '2025-07-22 04:51:19', '2025-07-22 04:51:19');
+(74, 'assets', 'chatbot-docs', 'chatbot.pdf', 'chatbot', 'pdf', 'chatbot-docs/chatbot.pdf', '{\"data\": [], \"size\": 2274450, \"width\": null, \"height\": null, \"duration\": null, \"mime_type\": \"application/pdf\", \"last_modified\": 1753185079}', '2025-07-22 04:51:19', '2025-07-22 04:51:19'),
+(75, 'assets', '/', 'logo.jpg', 'logo', 'jpg', 'logo.jpg', '{\"data\": [], \"size\": 10431, \"width\": 225, \"height\": 225, \"duration\": null, \"mime_type\": \"image/jpeg\", \"last_modified\": 1753240946}', '2025-07-22 20:22:26', '2025-07-22 20:22:26');
 
 -- --------------------------------------------------------
 
@@ -173,7 +171,7 @@ INSERT INTO `blueprints` (`id`, `namespace`, `handle`, `data`, `created_at`, `up
 (21, 'globals', 'post_banners', '{\"tabs\": {\"main\": {\"__count\": 0, \"display\": \"Main\", \"sections\": [{\"fields\": [{\"field\": {\"type\": \"assets\", \"folder\": \"post-banners\", \"display\": \"Banner Image\", \"validate\": [\"required\"], \"container\": \"assets\", \"max_files\": 1, \"min_files\": 1}, \"handle\": \"banner_image\"}], \"__count\": 0}]}}}', '2025-07-21 01:57:00', '2025-07-21 02:00:55'),
 (22, 'globals', 'gemini_api', '{\"tabs\": {\"main\": {\"__count\": 0, \"display\": \"Main\", \"sections\": [{\"fields\": [{\"field\": {\"type\": \"grid\", \"fields\": [{\"field\": {\"type\": \"text\", \"display\": \"API Key\"}, \"handle\": \"api_key\"}], \"add_row\": \"Thêm Key\", \"display\": \"API Keys\"}, \"handle\": \"api_keys\"}], \"__count\": 0}]}}}', '2025-07-22 01:50:12', '2025-07-22 03:49:47'),
 (23, 'globals', 'chatbot_doc', '{\"tabs\": {\"main\": {\"__count\": 0, \"display\": \"Main\", \"sections\": [{\"fields\": [{\"field\": {\"type\": \"assets\", \"folder\": \"chatbot-docs\", \"display\": \"Document\", \"validate\": [\"required\"], \"container\": \"assets\", \"max_files\": 1, \"min_files\": 1}, \"handle\": \"document\"}], \"__count\": 0}]}}}', '2025-07-22 04:49:43', '2025-07-22 04:49:43'),
-(24, 'globals', 'chatbot_prompt', '{\"tabs\": {\"main\": {\"__count\": 0, \"display\": \"Main\", \"sections\": [{\"fields\": [{\"field\": {\"type\": \"textarea\", \"display\": \"prompt_template\"}, \"handle\": \"prompt_template\"}], \"__count\": 0}]}}}', '2025-07-22 19:51:09', '2025-07-22 19:58:36');
+(24, 'globals', 'chatbot_prompt', '{\"tabs\": {\"main\": {\"__count\": 0, \"display\": \"Main\", \"sections\": [{\"fields\": [{\"field\": {\"type\": \"textarea\", \"display\": \"prompt_template\", \"instructions\": \"{question}: Là câu hỏi, {pdfText}: Giá trị của tài liệu\"}, \"handle\": \"prompt_template\"}], \"__count\": 0}]}}}', '2025-07-22 19:51:09', '2025-07-22 20:11:03');
 
 -- --------------------------------------------------------
 
