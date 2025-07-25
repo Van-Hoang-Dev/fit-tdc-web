@@ -172,7 +172,7 @@
     <div class="">
         <button id="open-chat-popup"
             class="fixed bottom-12 right-5 z-40 bg-white text-white p-2 hover:bg-gray-50 rounded-full shadow-lg transition-all duration-200 ease-out">
-            <img src="/system/robot.png" alt="" class="w-11" />
+            <img src="/system/robot.png" alt="FIT-TDC | Khoa Công nghệ thông tin - Cao đẳng Công nghệ Thủ Đức" class="w-11" />
         </button>
         <!-- Chatbot Popup -->
         <div id="chatbot-container"
@@ -181,7 +181,7 @@
             <div class="flex items-center justify-between text-white bg-blue-500 px-4 py-2">
                 <div class="flex gap-3 items-center">
                     <div class="bg-white rounded-full shadow-md p-[8px]">
-                        <img src="/system/robot.png" alt="" class="w-8" />
+                        <img src="/system/robot.png" alt="FIT-TDC | Khoa Công nghệ thông tin - Cao đẳng Công nghệ Thủ Đức" class="w-8" />
                     </div>
                     <h3 class="font-bold text-lg tracking-wider text-shadow-md">
                         Fit Chatbot
@@ -239,33 +239,34 @@
   /* Desktop: before ở right */
   md:before:right-0 md:before:bottom-auto md:before:w-1/3 md:before:h-full md:before:left-auto
 ">
-        <div id="content" class="grid grid-rows-12 md:grid-rows-none md:grid-cols-14 mx-auto w-[80%] text-white">
+        <div id="content" class="grid grid-rows-12 md:grid-rows-none md:grid-cols-14 mx-auto w-[90%] text-white">
             <div class="row-span-8 md:row-span-none md:col-span-10 ">
                 <div id="bubble-container"></div>
                 <div class="mx-auto my-10 w-[90%] max-w-screen-xl">
                     <div class="flex flex-col md:flex-row items-center gap-5">
-                        <img id="s-logo" class="rounded-full w-24 h-24 flex-none"
-                            src="/system/logo.jpg" alt="" />
-                        <div class="flex flex-col">
-                            <h2 class="flex-none text-lg font-semibold tracking-wider">
-                                Trường cao đẳng Công Nghệ Thủ Đức
+                        <img id="s-logo" class="rounded-full w-[80px] h-[80px] md:w-24 md:h-24 flex-none"
+                            src="{{main:footer_logo}}" alt="FIT-TDC | Khoa Công nghệ thông tin - Cao đẳng Công nghệ Thủ Đức" />
+                        <div class="flex flex-col make-center">
+                            <h2 class="uppercase flex-none text-[14px] md:text-lg font-semibold tracking-wide">
+                                {{ main:ten_truong }}
                             </h2>
-                            <h3 class="uppercase text-xl font-bold mt-2 tracking-wide">
-                                Khoa Công Nghệ Thông tin
+                            <h3 class="uppercase text-xl font-bold mt-1.5 tracking-wide">
+                                 {{ main:ten_khoa }}
                             </h3>
-                            <p class="flex-none text-sm font-normal mt-1">
+                            <p class="flex-none text-[12px] whitespace-nowrap md:text-sm font-normal mt-1">
                                 {{ main:address }}
                             </p>
                         </div>
                     </div>
-                    <div class="grid grid-cols-12 gap-5 mt-5 pt-3">
-                        <div class="col-span-6">
+                    <div class="md:grid grid-cols-12 gap-5 mt-5 pt-3">
+                        <div class="col-span-6 mb-[25px] md:mb-0">
                             <h3 id="ft-list-title" class="font-semibold text-lg mb-3">
                                 Thông tin chung
                             </h3>
                             <ul id="ft-list-items" class="list-none text-gray-400">
-                               <li class="mb-5 border-b border-gray-600 hover:text-gray-300 hover:underline"><a href="/gioi-thieu">Giới thiệu</a></li>
-                                <li class="border-b border-gray-600 hover:text-gray-300 hover:underline"><a href="http://tdc.edu.vn/">Trường Cao Đẳng Công Nghệ Thủ Đức</a></li>
+                                 {{ nav:information_footnav}}
+                                 <li class="mb-[10px] md:mb-5 border-b border-gray-600 hover:text-gray-300 hover:underline"><a href="{{url}}">{{title}}</a></li>
+                                 {{/nav:information_footnav}}
                             </ul>
                         </div>
                         <div class="col-span-6">
@@ -273,16 +274,21 @@
                                 Về chúng tôi
                             </h3>
                             <ul id="ft-list-items" class="list-none text-gray-400">
-                                <li class="mb-5 border-b border-gray-600 hover:text-gray-300 hover:underline"><a href="/lien-he">Liên hệ</a></li>
-                                <li class="border-b border-gray-600">{{ now format="Y" }} <a href="http://fit.tdc.edu.vn/" class="hover:text-gray-300 hover:underline">Khoa Công nghệ thông tin | Cao đẳng Công nghệ Thủ Đức | FIT - TDC</a> All Rights Reserved.</li>
+                                 {{ nav:about_footnav}}
+                                 {{if !last}}
+                                 <li class="mb-[10px] md:mb-5 border-b border-gray-600 hover:text-gray-300 hover:underline"><a href="{{url}}">{{title}}</a></li>
+                                 {{else}}
+                                 <li class="border-b border-gray-600">{{ now format="Y" }} <a href="{{url}}" class="hover:text-gray-300 hover:underline">{{title}}</a> All Rights Reserved.</li>
+                                  {{/if}}
+                                 {{/nav:about_footnav}}
                             </ul>
                         </div>
                     </div>
                 </div>
             </div>
             <div
-                class="row-span-4 md:row-span-none md:col-span-4 z-[2] flex flex-col items-center md:items-start justify-between">
-                <div class="my-10 pl-3 text-white md:w-full">
+                class="row-span-4 md:row-span-none md:col-span-4 z-[2] flex flex-col items-center md:items-start md:justify-between">
+                <div class="my-[20px] md:my-10 pl-3 text-white md:w-full">
                     <ul class="list-none">
                         <li class="text-base flex justify-start items-center mb-2">
                             <div class="w-7">
@@ -345,6 +351,13 @@
                             <path d="M30.8811 44.1617L44.4392 36.3124L30.8811 28.463V44.1617Z" fill="white"></path>
                         </svg>
                     </a>
+                    <!-- LinkedIn -->
+                    <a href="{{main:linkedin_link}}" target="_blank"
+                        class="w-10 h-10 flex items-center justify-center rounded-lg bg-white hover:shadow-md shadow-gray-300 group transition-all duration-300">
+                        <svg class="rounded-md transition-all duration-300 group-hover:scale-110" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 72 72" fill="none">
+                         <path fill-rule="evenodd" clip-rule="evenodd" d="M14.6975 11C12.6561 11 11 12.6057 11 14.5838V57.4474C11 59.4257 12.6563 61.03 14.6975 61.03H57.3325C59.3747 61.03 61.03 59.4255 61.03 57.4468V14.5838C61.03 12.6057 59.3747 11 57.3325 11H14.6975ZM26.2032 30.345V52.8686H18.7167V30.345H26.2032ZM26.6967 23.3793C26.6967 25.5407 25.0717 27.2703 22.4615 27.2703L22.4609 27.2701H22.4124C19.8998 27.2701 18.2754 25.5405 18.2754 23.3791C18.2754 21.1686 19.9489 19.4873 22.5111 19.4873C25.0717 19.4873 26.6478 21.1686 26.6967 23.3793ZM37.833 52.8686H30.3471L30.3469 52.8694C30.3469 52.8694 30.4452 32.4588 30.3475 30.3458H37.8336V33.5339C38.8288 31.9995 40.6098 29.8169 44.5808 29.8169C49.5062 29.8169 53.1991 33.0363 53.1991 39.9543V52.8686H45.7133V40.8204C45.7133 37.7922 44.6293 35.7269 41.921 35.7269C39.8524 35.7269 38.6206 37.1198 38.0796 38.4653C37.8819 38.9455 37.833 39.6195 37.833 40.2918V52.8686Z" fill="#006699"></path>
+                        </svg>
+                    </a>
                 </div>
 
 
@@ -390,7 +403,8 @@ setInterval(createBubble, 200);
         clearTimeout(clickTimer);
         clickTimer = setTimeout(() => clickCount = 0, 2000);
         if (clickCount === 3) {
-            window.location.href = "{{ cp_url }}"
+            // window.location.href = "{{ cp_url }}"
+            window.open("{{ cp_url }}", "_blank");
         }
     });
 </script>
@@ -561,3 +575,4 @@ setInterval(createBubble, 200);
 
 
 </html>
+

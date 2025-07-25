@@ -36,6 +36,7 @@ preferences:
         - date
         - status
         - featured
+        - tags
     landing_pages:
       columns:
         - title
