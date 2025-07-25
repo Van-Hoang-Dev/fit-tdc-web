@@ -32,12 +32,12 @@
         {{if edu_process}}
         {{edu_process}}
         <img src="{{url}}" alt="" />
-        
+
         {{/edu_process}}
         {{else}}
         <div class="h-80 flex flex-col gap-3 items-center justify-center">
             <img class="w-24 animate-bounceY" src="/system/empty.png" alt="" srcset="">
-             <div class="mt-2 w-20 h-5 bg-black/20 rounded-full blur-[6px] animate-shadowPulse"></div>
+            <div class="mt-2 w-20 h-5 bg-black/20 rounded-full blur-[6px] animate-shadowPulse"></div>
         </div>
         {{/if}}
     </div>
@@ -45,15 +45,18 @@
     <div class="mt-10 edu-tab-content hidden">
         {{if edu_table}}
         {{edu_table}}
-        <div class="md:w-[600px]">
-            <iframe src="http://docs.google.com/viewer?url={{ config:app:url }}{{url}}&embedded=true" width="100%" height="560" frameborder="0"></iframe>
-            <!-- <iframe src="{{url}}" width="600" height="560" frameborder="0"></iframe> -->
+        <div class="my-7 flex justify-center">
+            <div class="w-[100%] md:w-[60%]">
+                <!-- <iframe src="{{url}}" width="90%" height="900" frameborder="0"></iframe> -->
+                <iframe src="http://docs.google.com/viewer?url={{ config:app:url }}{{url}}&embedded=true" width="100%"
+                    height="900" frameborder="0"></iframe>
+            </div>
         </div>
         {{/edu_table}}
         {{else}}
-         <div class="h-80 flex flex-col gap-3 items-center justify-center">
+        <div class="h-80 flex flex-col gap-3 items-center justify-center">
             <img class="w-24 animate-bounceY" src="/system/empty.png" alt="" srcset="">
-             <div class="mt-2 w-20 h-5 bg-black/20 rounded-full blur-[6px] animate-shadowPulse"></div>
+            <div class="mt-2 w-20 h-5 bg-black/20 rounded-full blur-[6px] animate-shadowPulse"></div>
         </div>
         {{/if}}
     </div>
@@ -61,15 +64,18 @@
     <div class="mt-10 edu-tab-content hidden mx-auto">
         {{if learning_outcomes}}
         {{learning_outcomes}}
-        <div class="md:w-[600px]">
-            <iframe src="http://docs.google.com/viewer?url={{ config:app:url }}{{url}}&embedded=true" width="100%" height="560" frameborder="0"></iframe>
-            <!-- <iframe src="{{url}}" width="600" height="560" frameborder="0"></iframe> -->
+        <div class="my-7 flex justify-center">
+            <div class="w-[100%] md:w-[60%]">
+                <!-- <iframe src="{{url}}" width="90%" height="900" frameborder="0"></iframe> -->
+                <iframe src="http://docs.google.com/viewer?url={{ config:app:url }}{{url}}&embedded=true" width="100%"
+                    height="900" frameborder="0"></iframe>
+            </div>
         </div>
         {{/learning_outcomes}}
         {{else}}
-         <div class="h-80 flex flex-col gap-3 items-center justify-center">
+        <div class="h-80 flex flex-col gap-3 items-center justify-center">
             <img class="w-24 animate-bounceY" src="/system/empty.png" alt="" srcset="">
-             <div class="mt-2 w-20 h-5 bg-black/20 rounded-full blur-[6px] animate-shadowPulse"></div>
+            <div class="mt-2 w-20 h-5 bg-black/20 rounded-full blur-[6px] animate-shadowPulse"></div>
         </div>
         {{/if}}
     </div>
@@ -85,8 +91,8 @@
         function showTab(index) {
             contents.forEach((c, i) => {
                 c.classList.toggle("hidden", i !== index);
-                if(i === index) {
-                    c.classList.add('flex', 'justify-center')
+                if (i === index) {
+                    c.classList.add('block')
                 }
             });
 
