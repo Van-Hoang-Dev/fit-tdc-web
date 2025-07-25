@@ -28,7 +28,6 @@
             </li>
         </ul>
     </div>
-
     <div class="mt-10 edu-tab-content">
         {{if edu_process}}
         {{edu_process}}
@@ -43,11 +42,13 @@
         {{/if}}
     </div>
 
-    <!-- <iframe src="http://docs.google.com/viewer?url={{url}}&embedded=true" width="560" height="560" frameborder="0"> -->
     <div class="mt-10 edu-tab-content hidden">
         {{if edu_table}}
         {{edu_table}}
-        <iframe src="{{url}}" width="600" height="560" frameborder="0"></iframe>
+        <div class="md:w-[600px]">
+            <iframe src="http://docs.google.com/viewer?url={{ config:app:url }}{{url}}&embedded=true" width="100%" height="560" frameborder="0"></iframe>
+            <!-- <iframe src="{{url}}" width="600" height="560" frameborder="0"></iframe> -->
+        </div>
         {{/edu_table}}
         {{else}}
          <div class="h-80 flex flex-col gap-3 items-center justify-center">
@@ -60,7 +61,10 @@
     <div class="mt-10 edu-tab-content hidden mx-auto">
         {{if learning_outcomes}}
         {{learning_outcomes}}
-        <iframe src="{{url}}" width="600" height="560" frameborder="0"></iframe>
+        <div class="md:w-[600px]">
+            <iframe src="http://docs.google.com/viewer?url={{ config:app:url }}{{url}}&embedded=true" width="100%" height="560" frameborder="0"></iframe>
+            <!-- <iframe src="{{url}}" width="600" height="560" frameborder="0"></iframe> -->
+        </div>
         {{/learning_outcomes}}
         {{else}}
          <div class="h-80 flex flex-col gap-3 items-center justify-center">
