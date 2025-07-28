@@ -10,7 +10,7 @@
     <meta property="og:url" content="{{ url }}" />
     <meta property="og:type" content="article" />
     <meta property="og:title" content="{{ title }}" />
-    <meta property="og:description" content="{{ title_description }}" />
+    <meta property="og:description" content="{{ title_description | markdown | striptags | trim }}" />
     {{thumbnail}}
     <meta property="og:image" content="{{ config:app:url }}{{ url }}" />
     {{/thumbnail}}
@@ -60,7 +60,7 @@
             <img src="/system/fit-tdc-logo.png" class="h-[100%] w-auto" alt="fit-tdc-logo" />
         </a>
         <nav
-            class="bg-sky-950 border-gray-200">
+            class="bg-blue-950 border-gray-200">
             <div class="max-w-screen-xl flex flex-wrap items-center justify-end mx-auto">
                 <div class="flex">
                     <button type="button" data-collapse-toggle="navbar-search" aria-controls="navbar-search"
@@ -87,7 +87,7 @@
                             placeholder="Tìm..." data-target="desktop-post-search-list">
                         <!-- Search Popup -->
                         <div id="desktop-post-search-list"
-                            class="hidden bg-white w-[450px] absolute top-[100%] left-1/2 -translate-x-1/2 z-10 mt-2 p-4 flex-col gap-3">
+                            class="hidden bg-white w-[450px] absolute top-[100%] left-1/2 -translate-x-1/2 z-10 mt-2 p-4 flex-col gap-3 max-h-[480px] overflow-y-scroll">
 
                         </div>
                     </div>
@@ -115,18 +115,17 @@
                             class="block w-full p-2 ps-10 text-sm border rounded-lg focus:ring-blue-500 focus:border-blue-500 bg-gray-700 border-gray-600 placeholder-gray-400 text-white"
                             placeholder="Tìm..." data-target="moblie-post-search-list">
                         <div id="moblie-post-search-list"
-                            class=" hidden bg-white w-[90%] absolute top-[100%] left-1/2 -translate-x-1/2 z-10 mt-2 p-2 flex-col gap-3">
-
+                            class=" hidden bg-white w-[90%] absolute top-[100%] left-1/2 -translate-x-1/2 z-10 mt-2 p-2 flex-col gap-3 max-h-[450px] overflow-y-scroll">
 
                         </div>
 
                     </div>
                     <ul
-                        class="flex flex-col p-4 md:p-0 mt-4 font-medium md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 bg-gray-800 md:bg-gray-900 border-gray-700">
+                        class="flex flex-col p-4 md:p-0 mt-4 font-medium md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 bg-blue-950 border-gray-700">
                         {{ nav:landing_nav}}
                         <li>
-                            <a href="{{ if external_link }}{{ external_link }}{{ else }}{{ url }}{{ /if }}"
-                                class="block py-2 px-3 {{ if is_current || is_parent }}text-white font-black {{else}} text-white/50 hover:text-white {{ /if }} "
+                            <a href="{{ url }}"
+                                class="block py-2 px-3 {{ if is_current || is_parent }}text-white font-black {{else}} text-white/70 hover:text-white {{ /if }} "
                                 aria-current="page">{{title}}</a>
                         </li>
                         {{ /nav:landing_nav}}
@@ -152,13 +151,13 @@
                         {{ nav:main_nav}}
                         {{ if slug !== 'tuyen-sinh'}}
                         <li class="{{ if is_current || is_parent }}active{{ /if }}">
-                            <a href="{{ if external_link }}{{ external_link }}{{ else }}{{ url }}{{ /if }}"
+                            <a href="{{ url }}"
                                 class="block py-2 px-3 rounded-sm md:p-0 text-white md:hover:text-blue-500"
                                 aria-current="page">{{title}}</a>
                         </li>
                         {{else}}
                         <li>
-                            <a href="{{external_link}}" type="button"
+                            <a href="{{url}}" type="button"
                                 class="text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
                                 TUYỂN
                                 SINH</a>
@@ -232,7 +231,7 @@
         </div>
     </div>
     <footer>
-        <div class="relative w-full bg-gray-700
+        <div class="relative w-full bg-gradient-blue
       before:absolute before:z-[1] before:bg-[#003b7a]
       /*before:bg-[url(https://i.pinimg.com/originals/6a/32/7c/6a327caa4b5c102de396a1c3aaa20e98.gif)]*/
       before:bg-[url(https://img.freepik.com/premium-vector/abstract-computer-technology-background-with-circuit-board-hexagon-techvector-illustration_474511-332.jpg)]
@@ -259,7 +258,7 @@
                                 <h3 class="uppercase text-xl font-bold mt-1.5 tracking-wide">
                                      {{ main:ten_khoa }}
                                 </h3>
-                                <p class="flex-none text-[10px] whitespace-nowrap md:text-sm font-normal mt-1">
+                                <p class="flex-none text-xs md:text-sm font-normal mt-1">
                                     {{ main:address }}
                                 </p>
                             </div>

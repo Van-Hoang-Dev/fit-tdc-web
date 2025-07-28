@@ -28,6 +28,10 @@
     top: 0;
 }
 
+.bg-gradient-blue {
+  background: linear-gradient(to right, #002a55, #004a73);
+}
+
 #bubble-container {
   position: absolute;
   bottom: 0;
