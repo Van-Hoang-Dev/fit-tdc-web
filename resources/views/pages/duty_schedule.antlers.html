@@ -1,0 +1,160 @@
+<div class="max-w-screen-xl px-4 md:w-[90%] mx-auto py-10">
+    <header class="flex flex-col-reverse md:flex-row md:gap-3 justify-center items-center shake-on-hover">
+        <img src="/system/calendar.png" class="h-12" alt="" />
+        <h1 class="font-black text-2xl md:text-3xl text-[#004f79] text-center uppercase tracking-wider">
+            {{title}}
+        </h1>
+    </header>
+
+    <!-- Dropdown-->
+    <div class="flex justify-end mb-5">
+        <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown"
+            class="text-white bg-blue-600 hover:bg-blue-700 font-medium rounded-lg text-sm px-7 py-2.5 text-center inline-flex items-center"
+            type="button">
+            Giảng viên<svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                viewBox="0 0 10 6">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="m1 1 4 4 4-4" />
+            </svg>
+        </button>
+        <!-- Dropdown menu -->
+        <div id="dropdown" class="dropdown-lecturers z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-44">
+            <ul class="py-2 text-sm" aria-labelledby="dropdownDefaultButton">
+
+            </ul>
+        </div>
+    </div>
+
+    <div id="loading-spinner" class="hidden justify-center">
+        <div class="loader"></div>
+    </div>
+    <div class="overflow-x-auto">
+        <div id="schedule-table" class="min-w-[768px] grid grid-cols-7 border-t border-l border-gray-300 mt-5">
+
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', async function () {
+        const rows = ['Sáng', 'Chiều'];
+        const columns = ['Thứ 2', 'Thứ 3', 'Thứ 4', 'Thứ 5', 'Thứ 6', 'Thứ 7', 'Chủ nhật'];
+        const loadingSpinner = document.getElementById('loading-spinner');
+        loadingSpinner.classList.remove('hidden');
+        loadingSpinner.classList.add('flex');
+        try {
+            const data = await getScheduleData();
+            renderSchedule(data);
+            renderLecturerList(data);
+        } catch (err) {
+            console.error('Lỗi khi tải dữ liệu lịch:', err);
+         } finally {
+            loadingSpinner.classList.add('hidden');
+            loadingSpinner.classList.remove('flex');
+        }
+    });
+
+    // 🔹 Hàm gọi API
+    async function getScheduleData() {
+        const response = await axios.get('/api/duties');
+        return response.data;
+    }
+
+
+    function renderLecturerList(scheduleData) {
+        const lecturersList = new Map();
+        scheduleData.forEach(s => {
+            s.lecturers.forEach(lecturer => {
+                const id = lecturer.id;
+                if(!lecturersList.has(id)){
+                    lecturersList.set(id, lecturer);
+                }
+            });
+        })
+
+        const uniqueLecturers = Array.from(lecturersList.values());
+
+        const dropdown = document.querySelector('.dropdown-lecturers ul');
+        
+        dropdown.innerHTML = '';
+
+        uniqueLecturers.forEach(l => {
+        const li = document.createElement('li');
+        li.className = 'block px-4 py-2 hover:bg-gray-100 cursor-pointer';
+        li.setAttribute('data-lecturer-item', l.slug);
+        li.textContent = l.title;
+
+        li.addEventListener('click', () => {
+            document.querySelectorAll('div[data-lecturer-id]')
+                .forEach(td => td.classList.remove('bg-blue-100'));
+
+            document.querySelectorAll(`div[data-lecturer-id='${l.slug}']`)
+                .forEach(td => td.classList.add('bg-blue-100'));
+
+             document.querySelectorAll('li[data-lecturer-item]')
+            .forEach(item => item.classList.remove('bg-blue-100'));
+
+            li.classList.add('bg-blue-100');
+        });
+
+        dropdown.appendChild(li);
+        });
+    }
+
+    function renderSchedule(scheduleData) {
+        const table = document.getElementById('schedule-table');
+        table.innerHTML = '';
+
+        const headerRow = document.createElement('div');
+        headerRow.className = 'contents';
+        
+        const columns = ['Thứ 2', 'Thứ 3', 'Thứ 4', 'Thứ 5', 'Thứ 6', 'Thứ 7', 'Chủ nhật'];
+        columns.forEach(col => {
+            const headerCell = document.createElement('div');
+            headerCell.className = 'border-r border-b border-gray-300 p-3 font-bold text-center bg-gray-100 text-blue-800';
+            headerCell.textContent = col;
+            headerRow.appendChild(headerCell);
+        });
+
+        table.appendChild(headerRow);
+
+        let currentRow = null;
+
+        scheduleData.forEach(item => {
+            const [rowLabel, colLabel] = item.title.split('-');
+
+            // Nếu dòng thay đổi, thì tạo cell dòng (label bên trái)
+            if (rowLabel !== currentRow) {
+                const labelCell = document.createElement('div');
+                labelCell.className = 'col-span-7 p-2 text-center font-bold bg-gray-100';
+                labelCell.textContent = rowLabel;
+                table.appendChild(labelCell);
+                currentRow = rowLabel;
+            }
+
+            // Tạo ô dữ liệu cho cột tương ứng
+            const cell = document.createElement('div');
+            cell.id = `cell-${item.slug}`;
+            cell.className = 'border-r border-b border-gray-300 text-sm min-h-[180px] flex flex-col justify-center items-center';
+
+            item.lecturers.forEach((lecturer, index) => {
+                const isLast = index === item.lecturers.length - 1;
+                const lecturerEl = document.createElement('div');
+                lecturerEl.setAttribute('data-lecturer-id', lecturer.slug);
+                lecturerEl.className = `block py-3 px-2 border-gray-300 group ${!isLast ? 'border-b' : ''}`;
+                lecturerEl.innerHTML = `
+                <a href="${lecturer.url}" class="block font-semibold group-hover:text-[#004f79] group-hover:underline">
+                    ${lecturer.title}
+                </a>
+                <span class="capitalize text-sm group-hover:text-blue-600">
+                    (${lecturer.note})
+                </span>
+            `;
+                cell.appendChild(lecturerEl);
+            });
+
+            table.appendChild(cell);
+        });
+    }
+
+</script>

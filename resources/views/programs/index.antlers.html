@@ -1,11 +1,48 @@
-<div class="max-w-screen-xl px-4 md:w-[90%] mx-auto py-10">
-    <div class="flex flex-col-reverse md:flex-row md:gap-3 justify-center items-center shake-on-hover">
+<div class="relative max-w-screen-xl px-4 md:w-[90%] mx-auto py-10 overflow-hidden">
+    <!-- <div class="flex flex-col-reverse md:flex-row md:gap-3 justify-center items-center shake-on-hover">
         <h1 class="font-black text-2xl md:text-3xl text-[#004f79] text-center uppercase">
             CHƯƠNG TRÌNH ĐÀO TẠO
         </h1>
         <img src="/system/mortarboard.png" class="h-14" alt="" srcset="" />
+    </div> -->
+
+    <div class="flex items-center justify-center mx-auto relative w-80 md:w-96 h-35 bg-gradient-to-r from-blue-500 to-indigo-600 text-white p-6 rounded-lg">
+    <div class="absolute inset-0 bg-gradient-to-r from-blue-400 via-indigo-300 to-blue-500 opacity-20"></div>
+    <div class="relative z-20">
+      <h1 class="text-xl md:text-3xl font-extrabold drop-shadow-md tracking-wide">CHƯƠNG TRÌNH ĐÀO TẠO</h1>
+        <!-- <p class="text-base mt-2 opacity-90">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p> -->
     </div>
-    <div class="flex justify-between mx-2">
+  <!-- Góc trên trái: Nền xanh trôi lên xuống -->
+<div class="absolute top-0 left-0 w-20 h-20 bg-blue-800/30 z-10 animate-[float_6s_ease-in-out_infinite] -translate-x-8 -translate-y-8"></div>
+
+<!-- Góc dưới trái: Xoay nhẹ -->
+<div class="absolute bottom-0 left-0 w-20 h-14 bg-blue-300 opacity-50 -z-10 animate-[float_20s_linear_infinite] -translate-x-8 translate-y-8"></div>
+
+<!-- Góc dưới phải: Nhấp nháy nhẹ -->
+<div class="absolute bottom-0 right-0 w-24 h-24 bg-indigo-500 opacity-50 translate-x-8 translate-y-8 animate-[float_4s_ease-in-out_infinite] rounded-lg"></div>
+
+<!-- Viền nhỏ góc trên trái: Xoay chậm -->
+<div class="absolute top-0 left-0 w-10 h-10 border border-blue-700 opacity-30 z-[1] animate-[rotateSlow_15s_linear_infinite] -translate-x-5 translate-y-5 rotate-45"></div>
+
+<!-- Viền lớn hơn: Trôi lên -->
+<div class="absolute top-0 left-0 w-30 h-30 border border-blue-700 opacity-30 z-[1] animate-[float2_8s_ease-in-out_infinite] -translate-x-12 translate-y-12 rotate-45 rounded-md"></div>
+
+<!-- Viền góc phải trên: Xoay chậm -->
+<div class="absolute top-0 right-0 w-32 h-32 border border-indigo-500 -z-[5] animate-[rotateSlow_25s_linear_infinite] translate-x-4 -translate-y-4 rotate-45"></div>
+
+<!-- Nền tím phía trên phải: Nhấp nháy + trôi -->
+<div class="absolute top-0 right-0 w-28 h-28 bg-indigo-500 -z-10 animate-[pulseOpacity_5s_ease-in-out_infinite,float2_7s_ease-in-out_infinite] translate-x-6 -translate-y-6 rotate-45"></div>
+
+<!-- Dưới trái: Trôi lên nhẹ -->
+<div class="absolute bottom-0 left-0 w-10 h-20 bg-blue-300 opacity-30 -z-10 animate-[float2_3s_ease-in-out_infinite] translate-x-16 translate-y-8 rotate-45"></div>
+
+<!-- Dưới phải: Xoay nhẹ -->
+<div class="absolute bottom-0 right-0 w-10 h-10 bg-indigo-400 opacity-30 animate-[rotateSlow_18s_linear_infinite] -translate-x-16 translate-y-8 rotate-45"></div>
+
+  </div>
+
+
+    <div class="flex justify-between mx-2 relative z-50">
         <div id="pre-year"
             class="flex items-center justify-center h-10 w-10 hover:shadow-[1px_0_5px_-1px_#ccc] hover:text-blue-800 hover:transition-all cursor-pointer transform transition-transform duration-200 hover:-translate-x-1">
             <i class="fa-solid fa-chevron-left text-lg"></i>
@@ -15,7 +52,11 @@
             <i class="fa-solid fa-chevron-right text-lg"></i>
         </div>
     </div>
-    <div id="course-container" class="md:grid md:grid-cols-10 border-l border-t border-b border-gray-300 mt-5">
+
+    <div id="loading-spinner" class="hidden justify-center">
+        <div class="loader"></div>
+    </div>
+    <div id="course-container" class="md:grid md:grid-cols-10 border-l border-t bg-white border-b border-gray-300 mt-5">
         <!-- Class Of Item -->
         <!-- <div class="col-span-2 border-r border-gray-300">
                 <div class="py-3 px-5 bg-gray-100 border-b border-gray-300">
@@ -54,6 +95,9 @@
     const courseContainer = document.getElementById("course-container");
 
     async function fetchCourses() {
+        const loadingSpinner = document.getElementById('loading-spinner');
+        loadingSpinner.classList.remove('hidden');
+        loadingSpinner.classList.add('flex');
         try {
             const res = await fetch("/api/courses");
             if (!res.ok) throw new Error("Fetch failed");
@@ -66,6 +110,9 @@
             renderProgramsByCourse();
         } catch (error) {
             console.error("Lỗi lấy dữ liệu:", err);
+        } finally {
+            loadingSpinner.classList.add('hidden');
+            loadingSpinner.classList.remove('flex');
         }
     }
 
@@ -98,22 +145,25 @@
             .map((course) => {
                 const isActive = course.year === currentYear;
 
+                // ${!isLast ? "border-b border-gray-300" : ""}
+
                 const programItems = course.programs
                     .map((program, index, array) => {
-                        const [main, extra] = program.title.split("(");
+                        const [main, extra] = program.curriculum.title.split("(");
                         const hasExtra = !!extra;
                         const isLast = index === array.length - 1;
+                        
                         return `
                     <a href="${program.url
-                            }" target="_blank" class=" relative block px-3 py-2  ${!isLast ? "border-b border-gray-300" : ""
-                            } group  overflow-hidden">
-                        <div class="transform transition-transform duration-300 group-hover:scale-105 group-hover:shadow-md p-2">
-                        <p class="font-semibold group-hover:text-[#004f79]">Chương trình</p>
-                        <p class="uppercase group-hover:text-blue-600">${main.trim()}</p>
+                            }" target="_blank" class=" relative block px-3 py-2  group  overflow-hidden liquid-pulse">
+                        <div class=" min-h-[110px] transform transition-transform duration-200 group-hover:scale-105 group-hover:shadow-md shadow-md p-2 text-white backdrop-blur-md border border-white/10 rounded-lg"
+                         style="background-color: ${program.curriculum.background_color}">
+                        <p class="font-semibold">Chương trình</p>
+                        <p class="uppercase">${main.trim()}</p>
                         ${extra
-                                ? `<span class="capitalize group-hover:text-blue-600">(${extra.trim()}</span>`
-                                : "&nbsp;"
-                            }
+                                ? `<span class="capitalize">(${extra.trim()}</span>`
+                                : ""
+                        }
                         </div>
                     
                     </a>

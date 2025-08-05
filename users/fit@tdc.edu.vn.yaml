@@ -24,10 +24,10 @@ preferences:
     programs:
       columns:
         - title
-        - slug
         - status
         - course
         - index
+        - curriculum
     posts:
       columns:
         - thumbnail
@@ -50,6 +50,10 @@ preferences:
         - author
         - slug
         - status
+    duties:
+      columns:
+        - title
+        - lecturers_field
   forms:
     contact_us:
       columns:
