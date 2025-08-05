@@ -21,17 +21,23 @@ class CourseApiController extends Controller
                 /** @var EntryQueryBuilder $query */
                 $query = Entry::query();
                 $programs = $query
-                 ->where('collection', 'programs')
-                 ->where('course', $course->id)
-                 ->get()
-                 ->map(function($program) {
-                    return [
-                        'title' => $program->title,
-                        'slug' => $program->slug,
-                        'url' => $program->url,
-                        'index' => $program->index,
-                    ];
-                 });
+                    ->where('collection', 'programs')
+                    ->where('course', $course->id)
+                    ->get()
+                    ->map(function ($program) {
+                        return [
+                            'title' => $program->title,
+                            'slug' => $program->slug,
+                            'url' => $program->url,
+                            'index' => $program->index,
+                            'curriculum' => [
+                                'title' => $program->curriculum['title'],
+                                'slug' => $program->curriculum['slug'] ?? null,
+                                'background_color' => $program->curriculum['background_color'] ?? null,
+                                'text_color' => $program->curriculum['text_color'] ?? null,
+                            ],
+                        ];
+                    });
 
                 return [
                     'title' => $course->title,
