@@ -5,9 +5,9 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    
-     {{ if collection == "posts" }}
-    <meta property="og:url" content="{{ url }}" />
+
+    {{ if collection == "posts" }}
+    <meta property="og:url" content="{{ permalink }}" />
     <meta property="og:type" content="article" />
     <meta property="og:title" content="{{ title }}" />
     <meta property="og:description" content="{{ title_description | markdown | striptags | trim }}" />
@@ -25,7 +25,14 @@
     {{/if}}
 
     <link rel="shortcut icon" href="{{main:favicon}}" type="image/x-icon">
-    <title>{{ title ?? site:name }} | FIT-TDC | Khoa Công nghệ thông tin - Cao đẳng Công nghệ Thủ Đức</title>
+    <title>
+        {{ if collection == "lecturers" }}
+        {{ degree }}. {{ title }}
+        {{ else }}
+        {{ title ?? site:name }}
+        {{ /if }}
+        | FIT-TDC | Khoa Công nghệ thông tin - Cao đẳng Công nghệ Thủ Đức
+    </title>
     <link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css" rel="stylesheet" />
     {{ vite src="resources/js/site.js|resources/css/site.css" }}
 
@@ -59,8 +66,7 @@
             class="logo mx-auto absolute left-0 top-0 bottom-0 p-5 bg-linear-to-b from-white from-70% to-gray-300 transition-all duration-300 ease-in-out">
             <img src="/system/fit-tdc-logo.png" class="h-[100%] w-auto" alt="fit-tdc-logo" />
         </a>
-        <nav
-            class="bg-blue-950 border-gray-200">
+        <nav class="bg-blue-950 border-gray-200">
             <div class="max-w-screen-xl flex flex-wrap items-center justify-end mx-auto">
                 <div class="flex">
                     <button type="button" data-collapse-toggle="navbar-search" aria-controls="navbar-search"
@@ -75,8 +81,8 @@
                     </button>
                     <div class="relative hidden md:block">
                         <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                            <svg class="w-4 h-4 text-gray-400" aria-hidden="true"
-                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                            <svg class="w-4 h-4 text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                fill="none" viewBox="0 0 20 20">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                     stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
                             </svg>
@@ -105,8 +111,8 @@
                 <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-search">
                     <div class="relative mt-3 md:hidden px-4">
                         <div class="absolute inset-y-0 start-0 flex items-center ps-6 pointer-events-none">
-                            <svg class="w-4 h-4 text-gray-400" aria-hidden="true"
-                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                            <svg class="w-4 h-4 text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                fill="none" viewBox="0 0 20 20">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                     stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
                             </svg>
@@ -150,9 +156,9 @@
                         class="font-medium flex flex-col p-4 md:p-0 mt-4 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 uppercase">
                         {{ nav:main_nav}}
                         {{ if slug !== 'tuyen-sinh'}}
-                        <li class="{{ if is_current || is_parent }}active{{ /if }}">
+                        <li>
                             <a href="{{ url }}"
-                                class="block py-2 px-3 rounded-sm md:p-0 text-white md:hover:text-blue-500"
+                                class="block py-2 px-3 rounded-sm md:p-0 text-white {{ if is_current || is_parent }}active{{ else }}hover-tag{{/if}}"
                                 aria-current="page">{{title}}</a>
                         </li>
                         {{else}}
@@ -178,7 +184,8 @@
     <div class="">
         <button id="open-chat-popup"
             class="fixed bottom-12 right-5 z-40 bg-white text-white p-2 hover:bg-gray-50 rounded-full shadow-lg transition-all duration-200 ease-out">
-            <img src="/system/robot.png" alt="FIT-TDC | Khoa Công nghệ thông tin - Cao đẳng Công nghệ Thủ Đức" class="w-11" />
+            <img src="/system/robot.png" alt="FIT-TDC | Khoa Công nghệ thông tin - Cao đẳng Công nghệ Thủ Đức"
+                class="w-11" />
         </button>
         <!-- Chatbot Popup -->
         <div id="chatbot-container"
@@ -187,7 +194,8 @@
             <div class="flex items-center justify-between text-white bg-blue-500 px-4 py-2">
                 <div class="flex gap-3 items-center">
                     <div class="bg-white rounded-full shadow-md p-[8px]">
-                        <img src="/system/robot.png" alt="FIT-TDC | Khoa Công nghệ thông tin - Cao đẳng Công nghệ Thủ Đức" class="w-8" />
+                        <img src="/system/robot.png"
+                            alt="FIT-TDC | Khoa Công nghệ thông tin - Cao đẳng Công nghệ Thủ Đức" class="w-8" />
                     </div>
                     <h3 class="font-bold text-lg tracking-wider text-shadow-md">
                         Fit Chatbot
@@ -250,13 +258,14 @@
                     <div class="mx-auto my-10 w-[90%] max-w-screen-xl">
                         <div class="flex flex-col md:flex-row items-center gap-5">
                             <img id="s-logo" class="rounded-full w-[80px] h-[80px] md:w-24 md:h-24 flex-none"
-                                src="{{main:footer_logo}}" alt="FIT-TDC | Khoa Công nghệ thông tin - Cao đẳng Công nghệ Thủ Đức" />
+                                src="{{main:footer_logo}}"
+                                alt="FIT-TDC | Khoa Công nghệ thông tin - Cao đẳng Công nghệ Thủ Đức" />
                             <div class="flex flex-col make-center">
                                 <h2 class="uppercase flex-none text-[14px] md:text-lg font-semibold tracking-wide">
                                     {{ main:ten_truong }}
                                 </h2>
                                 <h3 class="uppercase text-xl font-bold mt-1.5 tracking-wide">
-                                     {{ main:ten_khoa }}
+                                    {{ main:ten_khoa }}
                                 </h3>
                                 <p class="flex-none text-xs md:text-sm font-normal mt-1">
                                     {{ main:address }}
@@ -269,9 +278,11 @@
                                     Thông tin chung
                                 </h3>
                                 <ul id="ft-list-items" class="list-none text-gray-400">
-                                     {{ nav:information_footnav}}
-                                     <li class="mb-[10px] md:mb-5 border-b border-gray-600 hover:text-gray-300 hover:underline"><a href="{{url}}">{{title}}</a></li>
-                                     {{/nav:information_footnav}}
+                                    {{ nav:information_footnav}}
+                                    <li
+                                        class="mb-[10px] md:mb-5 border-b border-gray-600 hover:text-gray-300 hover:underline">
+                                        <a href="{{url}}">{{title}}</a></li>
+                                    {{/nav:information_footnav}}
                                 </ul>
                             </div>
                             <div class="col-span-6">
@@ -279,13 +290,17 @@
                                     Về chúng tôi
                                 </h3>
                                 <ul id="ft-list-items" class="list-none text-gray-400">
-                                     {{ nav:about_footnav}}
-                                     {{if !last}}
-                                     <li class="mb-[10px] md:mb-5 border-b border-gray-600 hover:text-gray-300 hover:underline"><a href="{{url}}">{{title}}</a></li>
-                                     {{else}}
-                                     <li class="border-b border-gray-600">{{ now format="Y" }} <a href="{{url}}" class="hover:text-gray-300 hover:underline">{{title}}</a> All Rights Reserved.</li>
-                                      {{/if}}
-                                     {{/nav:about_footnav}}
+                                    {{ nav:about_footnav}}
+                                    {{if !last}}
+                                    <li
+                                        class="mb-[10px] md:mb-5 border-b border-gray-600 hover:text-gray-300 hover:underline">
+                                        <a href="{{url}}">{{title}}</a></li>
+                                    {{else}}
+                                    <li class="border-b border-gray-600">{{ now format="Y" }} <a href="{{url}}"
+                                            class="hover:text-gray-300 hover:underline">{{title}}</a> All Rights
+                                        Reserved.</li>
+                                    {{/if}}
+                                    {{/nav:about_footnav}}
                                 </ul>
                             </div>
                         </div>
@@ -313,16 +328,17 @@
                                 </div>
                                 <p class="">{{main:email}}</p>
                             </li>
-    
+
                         </ul>
                     </div>
-    
+
                     <div class="bottom-0 left-0 py-3 pl-3 flex items-center gap-3 md:w-full">
                         <!-- Facekbook -->
                         <a href="{{ main:facebook_link }}" target="_blank"
                             class="w-10 h-10 flex items-center justify-center rounded-lg bg-white hover:shadow-md shadow-gray-300 group transition-all duration-300">
                             <svg class="transition-all duration-300 group-hover:scale-110"
-                                xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 72 72" fill="none">
+                                xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 72 72"
+                                fill="none">
                                 <path
                                     d="M46.4927 38.6403L47.7973 30.3588H39.7611V24.9759C39.7611 22.7114 40.883 20.4987 44.4706 20.4987H48.1756V13.4465C46.018 13.1028 43.8378 12.9168 41.6527 12.8901C35.0385 12.8901 30.7204 16.8626 30.7204 24.0442V30.3588H23.3887V38.6403H30.7204V58.671H39.7611V38.6403H46.4927Z"
                                     fill="#337FFF" />
@@ -343,13 +359,14 @@
                                     d="M53.9736 25.0161V23.4129C52.0005 23.4213 50.0655 22.8696 48.3934 21.8221C49.8695 23.4493 51.8229 24.5674 53.9736 25.0161ZM43.5838 14.7134C43.5838 14.4275 43.4968 14.1292 43.4596 13.8434V12.874H35.8785V42.9744C35.872 44.6598 35.197 46.2738 34.0017 47.4621C32.8064 48.6504 31.1885 49.3159 29.503 49.3126C28.5106 49.3176 27.5311 49.0876 26.6446 48.6415C27.4519 49.7007 28.5707 50.4805 29.8438 50.8715C31.1169 51.2624 32.4805 51.2448 33.7432 50.8212C35.0058 50.3976 36.1041 49.5892 36.8838 48.5095C37.6636 47.4298 38.0856 46.1331 38.0907 44.8013V14.7134H43.5838ZM31.4418 30.8696V29.167C28.3222 28.7432 25.1511 29.3885 22.4453 30.9977C19.7394 32.6069 17.6584 35.0851 16.5413 38.0284C15.4242 40.9718 15.337 44.2067 16.2938 47.206C17.2506 50.2053 19.195 52.792 21.8102 54.5448C19.9287 52.5995 18.6545 50.1484 18.1433 47.4908C17.6321 44.8333 17.906 42.0844 18.9315 39.5799C19.957 37.0755 21.6897 34.924 23.918 33.3882C26.1463 31.8524 28.7736 30.9988 31.4791 30.9318L31.4418 30.8696Z"
                                     fill="#69C9D0"></path>
                             </svg>
-    
+
                         </a>
                         <!-- Youtube -->
                         <a href="{{main:youtube_link}}" target="_blank"
                             class="w-10 h-10 flex items-center justify-center rounded-lg bg-white hover:shadow-md shadow-gray-300 group transition-all duration-300">
                             <svg class="rounded-md transition-all duration-300 group-hover:scale-110"
-                                xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 72 72" fill="none">
+                                xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 72 72"
+                                fill="none">
                                 <path
                                     d="M61.1026 23.7185C60.5048 21.471 58.7363 19.6981 56.4863 19.0904C52.4181 18 36.0951 18 36.0951 18C36.0951 18 19.7805 18 15.7039 19.0904C13.4622 19.6897 11.6937 21.4627 11.0876 23.7185C10 27.7971 10 36.3124 10 36.3124C10 36.3124 10 44.8276 11.0876 48.9063C11.6854 51.1537 13.4539 52.9267 15.7039 53.5343C19.7805 54.6247 36.0951 54.6247 36.0951 54.6247C36.0951 54.6247 52.4181 54.6247 56.4863 53.5343C58.728 52.935 60.4965 51.162 61.1026 48.9063C62.1902 44.8276 62.1902 36.3124 62.1902 36.3124C62.1902 36.3124 62.1902 27.7971 61.1026 23.7185Z"
                                     fill="#FF3000"></path>
@@ -359,17 +376,23 @@
                         <!-- LinkedIn -->
                         <a href="{{main:linkedin_link}}" target="_blank"
                             class="w-10 h-10 flex items-center justify-center rounded-lg bg-white hover:shadow-md shadow-gray-300 group transition-all duration-300">
-                            <svg class="rounded-md transition-all duration-300 group-hover:scale-110" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 72 72" fill="none">
-                             <path fill-rule="evenodd" clip-rule="evenodd" d="M14.6975 11C12.6561 11 11 12.6057 11 14.5838V57.4474C11 59.4257 12.6563 61.03 14.6975 61.03H57.3325C59.3747 61.03 61.03 59.4255 61.03 57.4468V14.5838C61.03 12.6057 59.3747 11 57.3325 11H14.6975ZM26.2032 30.345V52.8686H18.7167V30.345H26.2032ZM26.6967 23.3793C26.6967 25.5407 25.0717 27.2703 22.4615 27.2703L22.4609 27.2701H22.4124C19.8998 27.2701 18.2754 25.5405 18.2754 23.3791C18.2754 21.1686 19.9489 19.4873 22.5111 19.4873C25.0717 19.4873 26.6478 21.1686 26.6967 23.3793ZM37.833 52.8686H30.3471L30.3469 52.8694C30.3469 52.8694 30.4452 32.4588 30.3475 30.3458H37.8336V33.5339C38.8288 31.9995 40.6098 29.8169 44.5808 29.8169C49.5062 29.8169 53.1991 33.0363 53.1991 39.9543V52.8686H45.7133V40.8204C45.7133 37.7922 44.6293 35.7269 41.921 35.7269C39.8524 35.7269 38.6206 37.1198 38.0796 38.4653C37.8819 38.9455 37.833 39.6195 37.833 40.2918V52.8686Z" fill="#006699"></path>
+                            <svg class="rounded-md transition-all duration-300 group-hover:scale-110"
+                                xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 72 72"
+                                fill="none">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M14.6975 11C12.6561 11 11 12.6057 11 14.5838V57.4474C11 59.4257 12.6563 61.03 14.6975 61.03H57.3325C59.3747 61.03 61.03 59.4255 61.03 57.4468V14.5838C61.03 12.6057 59.3747 11 57.3325 11H14.6975ZM26.2032 30.345V52.8686H18.7167V30.345H26.2032ZM26.6967 23.3793C26.6967 25.5407 25.0717 27.2703 22.4615 27.2703L22.4609 27.2701H22.4124C19.8998 27.2701 18.2754 25.5405 18.2754 23.3791C18.2754 21.1686 19.9489 19.4873 22.5111 19.4873C25.0717 19.4873 26.6478 21.1686 26.6967 23.3793ZM37.833 52.8686H30.3471L30.3469 52.8694C30.3469 52.8694 30.4452 32.4588 30.3475 30.3458H37.8336V33.5339C38.8288 31.9995 40.6098 29.8169 44.5808 29.8169C49.5062 29.8169 53.1991 33.0363 53.1991 39.9543V52.8686H45.7133V40.8204C45.7133 37.7922 44.6293 35.7269 41.921 35.7269C39.8524 35.7269 38.6206 37.1198 38.0796 38.4653C37.8819 38.9455 37.833 39.6195 37.833 40.2918V52.8686Z"
+                                    fill="#006699"></path>
                             </svg>
                         </a>
                     </div>
-    
+
                 </div>
             </div>
         </div>
     </footer>
 </body>
+<script async defer crossorigin="anonymous"
+    src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v23.0"></script>
 <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/marked/lib/marked.umd.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
@@ -378,27 +401,27 @@
 <script>
     const container = document.getElementById('bubble-container');
 
-function createBubble() {
-  const bubble = document.createElement('div');
-  bubble.classList.add('bubble');
+    function createBubble() {
+        const bubble = document.createElement('div');
+        bubble.classList.add('bubble');
 
-  // Tùy chỉnh vị trí và kích thước
-  const size = Math.random() * 20 + 10; // 10px - 30px
-  bubble.style.width = `${size}px`;
-  bubble.style.height = `${size}px`;
-  bubble.style.left = `${Math.random() * 100}%`;
-  bubble.style.animationDuration = `${Math.random() * 3 + 3}s`; // 3-6s
+        // Tùy chỉnh vị trí và kích thước
+        const size = Math.random() * 20 + 10; // 10px - 30px
+        bubble.style.width = `${size}px`;
+        bubble.style.height = `${size}px`;
+        bubble.style.left = `${Math.random() * 100}%`;
+        bubble.style.animationDuration = `${Math.random() * 3 + 3}s`; // 3-6s
 
-  container.appendChild(bubble);
+        container.appendChild(bubble);
 
-  // Xoá bong bóng sau khi animation xong
-  setTimeout(() => {
-    bubble.remove();
-  }, 6000);
-}
+        // Xoá bong bóng sau khi animation xong
+        setTimeout(() => {
+            bubble.remove();
+        }, 6000);
+    }
 
-// Tạo bong bóng liên tục
-setInterval(createBubble, 200);
+    // Tạo bong bóng liên tục
+    setInterval(createBubble, 200);
 
 </script>
 
@@ -436,7 +459,7 @@ setInterval(createBubble, 200);
         });
 
         const allMenus = menuList;
-        
+
 
         toggleButtons.forEach(toggleButton => {
             toggleButton.addEventListener("click", function () {
@@ -463,13 +486,13 @@ setInterval(createBubble, 200);
             else {
                 const anyMenuOpen = allMenus.some(menu => !menu.classList.contains("hidden"));
 
-                    if (anyMenuOpen) {
-                        logo.classList.add("opacity-0", "scale-90", "pointer-events-none", "h-[80px]");
-                        logo.classList.remove("opacity-100", "scale-100", "pointer-events-auto");
-                    } else {
-                        logo.classList.add("opacity-100", "scale-100", "pointer-events-auto");
-                        logo.classList.remove("opacity-0", "scale-90", "pointer-events-none", "h-[80px]");
-                    }
+                if (anyMenuOpen) {
+                    logo.classList.add("opacity-0", "scale-90", "pointer-events-none", "h-[80px]");
+                    logo.classList.remove("opacity-100", "scale-100", "pointer-events-auto");
+                } else {
+                    logo.classList.add("opacity-100", "scale-100", "pointer-events-auto");
+                    logo.classList.remove("opacity-0", "scale-90", "pointer-events-none", "h-[80px]");
+                }
             }
         });
 
@@ -500,7 +523,7 @@ setInterval(createBubble, 200);
 
 
     function renderPosts(posts, container, searchKey) {
-        if(posts.length == 0){
+        if (posts.length == 0) {
             container.innerHTML = `<div class="flex flex-col items-center justify-center gap-4 h-50">
                                 <img src="/system/not-found.png" alt="FIT-TDC NotFound" class="h-16 w-16 animat-not-found">
                                 <span class="">Không có kết quả cho <span class="font-bold">"${searchKey}"</span>. </span>
@@ -585,4 +608,3 @@ setInterval(createBubble, 200);
 </script>
 
 </html>
-
