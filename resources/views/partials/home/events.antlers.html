@@ -37,7 +37,6 @@
  <script>
     const eventContainer = document.querySelector('.upcoming-event');
     const apiUrl = eventContainer.dataset.apiUrl;
-    console.log(apiUrl);
     
     
     async function loadEvents() {
@@ -66,5 +65,7 @@
     }
    
     // Gọi hàm khi tải trang
+    if (apiUrl) {
     document.addEventListener('DOMContentLoaded', loadEvents);
+    }
  </script>
