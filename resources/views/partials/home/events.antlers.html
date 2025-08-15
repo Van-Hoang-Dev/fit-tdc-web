@@ -1,4 +1,4 @@
- <div class="max-w-screen-xl px-4 md:w-[90%] mx-auto pt-10">
+ <div id="event-container" class="max-w-screen-xl px-4 md:w-[90%] mx-auto pt-10">
      <div class="flex items-center justify-between md:pb-8">
                 <div class="animation-wrapper">
                     <h2 class="section-head">{{title}}</h2>
@@ -9,7 +9,7 @@
                 </span>
             </div>
     
-            <div class="upcoming-event">
+            <div class="upcoming-event" data-api-url="{{event_api_url}}">
                 <div
                     class="event-item grid grid-rows-2 md:grid-rows-none md:grid-cols-2 p-7 gap-5 md:gap-14 relative 
                 before:content-['']  before:absolute before:left-0 before:right-0 before:bottom-1/2 before:border-b-1 md:before:border-b-0
@@ -32,5 +32,39 @@
     
                 <!-- End Post And Event -->
             </div>
-
  </div>
+
+ <script>
+    const eventContainer = document.querySelector('.upcoming-event');
+    const apiUrl = eventContainer.dataset.apiUrl;
+    console.log(apiUrl);
+    
+    
+    async function loadEvents() {
+        try {
+            const response = await axios.get(apiUrl);
+            const events = response.data.data;
+
+             const container = document.querySelector('.upcoming-event .event-item');
+            container.innerHTML = ''; 
+            events.slice(0,2).forEach(event => {
+                const eventHTML = `
+                    <div class="overflow-hidden">
+                        <a href="${event.link || '#'}">
+                            <img src="${event.image}" loading="lazy" alt="${event.title}"
+                                class="object-cover w-full h-[200px] md:h-[350px] hover:scale-105 transition-transform duration-500">
+                        </a>
+                    </div>
+                `;
+                container.innerHTML += eventHTML;
+            });
+
+        } catch (error) {
+             console.error('Lỗi khi tải dữ liệu sự kiện:', error);
+             document.getElementById('event-container').classList.add('hidden');
+        }
+    }
+   
+    // Gọi hàm khi tải trang
+    document.addEventListener('DOMContentLoaded', loadEvents);
+ </script>

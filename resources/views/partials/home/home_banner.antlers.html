@@ -16,12 +16,12 @@
                 <div class="swiper-button-prev"></div>
             </div>
 
-            <div class="absolute z-50 bottom-8 h-[100px] w-[30%] bg-gray-500/30"></div>
+            <div class="absolute z-50 bottom-8 h-[100px] w-[80%] md:w-[30%] bg-gray-500/30"></div>
             <div class="banner-text absolute z-50 bottom-12 max-w-screen-xl px-4 mx-auto">
-                <h2 class="text-4xl font-black text-white drop-shadow-md">
+                <h2 class="text-4xl font-black text-white text-shadow-title">
                     {{title}}
                 </h2>
-                <p class="text-white drop-shadow-md">{{sub_title}}</p>
+                <p class="text-white text-lg text-shadow-title">{{sub_title}}</p>
             </div>
         </div>
     </div>
@@ -29,17 +29,17 @@
         <div class="grid grid-rows-4 md:grid-cols-2 md:grid-rows-2 flex-1">
             {{programs_field }}
             <div class="relative">
-                <img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExcXp6azcyYm01azJnenI5cHBtZnloenVteDA5enB3ejIzcnd3YTV3bSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l3q2XB76CaWPggiNW/giphy.gif"
-                    alt="banner-image" class="h-full w-full object-cover" />
-                <div class="absolute inset-0 bg-[#003b7a]/50 flex flex-col items-center justify-center">
+                <img  src="{{ if image }}{{ image }}{{ else }}{{ image_link }}{{ /if }}"
+                    alt="banner-image | FIT-TDC | Khoa Công nghệ thông tin - Cao đẳng Công nghệ Thủ Đức" class="h-full w-full object-cover" />
+                <div class="absolute inset-0  flex flex-col items-center justify-center">
                     <button data-modal-target="default-modal"
                             data-modal-toggle="default-modal"
                             data-video="{{video_youtube_link}}"
-                        class="text-white hover:border-blue-800 hover:text-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 w-12 h-12 flex items-center justify-center"
+                        class="glass rounded-full text-white hover:border-blue-800 hover:text-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 w-8 h-8 md:w-12 md:h-12 flex items-center justify-center mb-1"
                         type="button">
                         <i class="fa-regular fa-play"></i>
                     </button>
-                    <h2 class="text-white text-center">
+                    <h2 class="text-white text-center bg-gray-800/20 px-2 rounded-md text-shadow-md">
                         Ngành<br /><span class="font-bold text-xs md:text-base">{{title | replace('//',
                             '<br />')}}</span>
                     </h2>

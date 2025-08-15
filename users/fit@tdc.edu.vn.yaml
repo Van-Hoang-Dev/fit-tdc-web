@@ -21,6 +21,7 @@ preferences:
         - status
         - position
         - priority
+        - degree
     programs:
       columns:
         - title
@@ -69,3 +70,10 @@ preferences:
         - author
         - slug
         - template
+  favorites:
+    -
+      name: 'Trang Chủ ‹ Pages ‹ Collections'
+      url: collections/pages/entries/f11292ac-cf88-49a8-96a7-b8e126103704
+    -
+      name: 'Posts ‹ Collections'
+      url: collections/posts

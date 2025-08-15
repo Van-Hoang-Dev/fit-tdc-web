@@ -1,8 +1,11 @@
-<header class="py-[90px] relative bg-cover bg-center bg-no-repeat"
-    style="background-image: url('{{post_banners:banner_image}}')">
+<header
+    class="py-[90px] relative bg-cover bg-center bg-no-repeat"
+    style="background-image: url('{{post_banners:banner_image}}')"
+>
     <div class="relative z-10 mx-auto max-w-6xl">
         <h2
-            class="uppercase text-4xl font-black text-white tracking-wider ms-5 before:content[''] before:w-1 before:h-full before:block before:leading-4 before:absolute before:left-0 before:right-0 before:z-10 before:bg-blue-600">
+            class="uppercase text-4xl font-black text-white tracking-wider ms-5 before:content[''] before:w-1 before:h-full before:block before:leading-4 before:absolute before:left-0 before:right-0 before:z-10 before:bg-blue-600"
+        >
             Tin Tức
         </h2>
     </div>
@@ -12,17 +15,27 @@
 
 <main class="max-w-screen-xl px-4 md:w-[90%] mx-auto md:pt-10">
     <!-- Breadcrumb -->
-    <nav aria-label="Breadcrumb" class="py-3.5 mx-4 lg:!mx-none border-b border-gray-200">
+    <nav
+        aria-label="Breadcrumb"
+        class="py-3.5 mx-4 lg:!mx-none border-b border-gray-200"
+    >
         <ol class="flex items-center space-x-2 opacity-70">
             <li>
-                <a href="/" class="hover:underline whitespace-nowrap">Trang chủ</a>
+                <a href="/" class="hover:underline whitespace-nowrap"
+                    >Trang chủ</a
+                >
             </li>
             <li class="text-gray-500">/</li>
             <li>
-                <a href="/tin-tuc" class="hover:underline whitespace-nowrap">Tin Tức</a>
+                <a href="/tin-tuc" class="hover:underline whitespace-nowrap"
+                    >Tin Tức</a
+                >
             </li>
             <li class="text-gray-500">/</li>
-            <li class="text-gray-700 font-medium truncate lg:max-w-none" title="{{title}}">
+            <li
+                class="text-gray-700 font-medium truncate lg:max-w-none"
+                title="{{title}}"
+            >
                 {{title}}
             </li>
         </ol>
@@ -30,10 +43,11 @@
 
     <div class="md:grid grid-cols-4 gap-8 my-7 md:my-14">
         <article class="col-span-3 mx-4 md:mx-0">
-
             <!-- Article Header -->
             <header class="mb-10">
-                <h1 class="text-[20px] md:text-[28px] capitalize font-semibold mb-4">
+                <h1
+                    class="text-[20px] md:text-[28px] capitalize font-semibold mb-4"
+                >
                     {{title}}
                 </h1>
                 <span class="italic">{{title_description}}</span>
@@ -61,25 +75,36 @@
                 </div> -->
             </header>
 
+            <div>
+                <div
+                    class="fb-like"
+                    data-href="{{ permalink }}"
+                    data-width=""
+                    data-layout="standard"
+                    data-action="like"
+                    data-size="small"
+                    data-share="true"
+                ></div>
+            </div>
 
             <!-- Article Content -->
             <div class="prose max-w-none mb-8 mt-5">
-                {{ sections }}
-                {{partial src="partials/{type}"}}
-                {{ /sections }}
+                {{ sections }} {{partial src="partials/{type}"}} {{ /sections }}
             </div>
 
-             <div class="crossedbg"></div>
+            <div class="crossedbg"></div>
 
             <!-- Tags and Share -->
-             {{if tags}}
+            {{if tags}}
             <footer class="flex justify-between items-center mt-5 mb-7">
                 <div class="flex items-center gap-2">
                     <h3 class="font-medium">Tags:</h3>
                     <ul class="flex gap-2">
                         {{tags}}
                         <li>
-                            <a href="{{url}}" class="hover:text-blue-600">{{title}}</a>
+                            <a href="{{url}}" class="hover:text-blue-600"
+                                >{{title}}</a
+                            >
                         </li>
                         {{/tags}}
                     </ul>
@@ -99,7 +124,7 @@
                     </ul>
                 </div> -->
             </footer>
-             {{/if}}
+            {{/if}}
 
             <!-- Author Bio -->
             <!-- <aside class="flex gap-7 bg-gray-50 p-6 rounded-lg my-8">
@@ -120,60 +145,88 @@
                 </div>
             </aside> -->
             <!-- Post Navigation -->
-            <nav class="grid grid-cols-2 gap-4 border border-gray-200 rounded overflow-hidden relative mt-5">
+            <nav
+                class="grid grid-cols-2 gap-4 border border-gray-200 rounded overflow-hidden relative mt-5"
+            >
                 <!-- Đường kẻ giữa -->
-                <div class="absolute w-[1px] h-full bg-[#eee] left-1/2 top-0 z-10"></div>
+                <div
+                    class="absolute w-[1px] h-full bg-[#eee] left-1/2 top-0 z-10"
+                ></div>
 
                 <!-- Cột trái: Bài viết trước -->
                 <div class="p-3 flex flex-col gap-1">
-                    {{ collection:previous in="posts" limit="1" sort="date:asc" }}
-                    {{ if no_results }}
-                    <span class="text-sm text-gray-500">Không có bài viết trước</span>
+                    {{ collection:previous in="posts" limit="1" sort="date:asc"
+                    }} {{ if no_results }}
+                    <span class="text-sm text-gray-500"
+                        >Không có bài viết trước</span
+                    >
                     {{ else }}
                     <span class="text-sm text-[#333]">Bài viết trước</span>
-                    
-                    <a href="{{ url }}"
-                        class="font-medium hover:text-blue-600 text-[14px] md:text-[16px] line-clamp-2">
+
+                    <a
+                        href="{{ url }}"
+                        class="font-medium hover:text-blue-600 text-[14px] md:text-[16px] line-clamp-2"
+                    >
                         {{ title }}
                     </a>
-                    <time class="text-sm text-gray-500">{{ date | format('d-m-Y') }}</time>
-                    {{ /if }}
-                    {{ /collection:previous }}
+                    <time class="text-sm text-gray-500"
+                        >{{ date | format('d-m-Y') }}</time
+                    >
+                    {{ /if }} {{ /collection:previous }}
                 </div>
 
                 <!-- Cột phải: Bài viết kế tiếp -->
                 <div class="p-3 flex flex-col items-end gap-1">
                     {{ collection:next in="posts" limit="1" sort="date:asc" }}
                     {{ if no_results }}
-                    <span class="text-sm text-gray-500">Không có bài kế tiếp</span>
+                    <span class="text-sm text-gray-500"
+                        >Không có bài kế tiếp</span
+                    >
                     {{ else }}
                     <span class="text-sm text-gray-500">Bài viết kế tiếp</span>
-                    <a href="{{ url }}"
-                        class="text-right font-medium hover:text-blue-600  text-[14px] md:text-[16px] line-clamp-2">
+                    <a
+                        href="{{ url }}"
+                        class="text-right font-medium hover:text-blue-600 text-[14px] md:text-[16px] line-clamp-2"
+                    >
                         {{ title }}
                     </a>
-                    <time class="text-sm text-gray-500">{{ date | format('d-m-Y') }}</time>
-                    {{ /if }}
-                    {{ /collection:next }}
+                    <time class="text-sm text-gray-500"
+                        >{{ date | format('d-m-Y') }}</time
+                    >
+                    {{ /if }} {{ /collection:next }}
                 </div>
             </nav>
-
 
             <!-- Related Posts -->
             <section class="mt-7">
                 <h3 class="text-xl font-bold mb-7">Bài viết liên quan</h3>
-                <div class="grid grid-rows-3 md:grid-rows-none md:grid-cols-3 gap-6">
+                <div
+                    class="grid grid-rows-3 md:grid-rows-none md:grid-cols-3 gap-6"
+                >
                     {{ collection:posts limit="3" sort="date:desc" }}
                     <article class="group">
                         {{ if thumbnail }} {{ thumbnail }}
-                        <img src="{{ url }}" alt="{{ alt or title }}" class="w-full h-48 object-cover rounded mb-3" />
+                        <img
+                            src="{{ url }}"
+                            alt="{{ alt or title }}"
+                            class="w-full h-48 object-cover rounded mb-3"
+                        />
                         {{ /thumbnail }} {{ else }}
-                        <img src="https://placehold.co/300x200/png" alt="{{ title }}"
-                            class="w-full h-48 object-cover rounded mb-3" />
+                        <img
+                            src="https://placehold.co/300x200/png"
+                            alt="{{ title }}"
+                            class="w-full h-48 object-cover rounded mb-3"
+                        />
                         {{ /if }}
-                        <div class="md:flex md:flex-col justify-between md:h-[100px]">
-                            <h4 class="group-hover:text-blue-600 text-lg mt-4 mb-2 font-semibold transition-colors">
-                                <a href="{{ url }}" class="line-clamp-2">{{ title }}</a>
+                        <div
+                            class="md:flex md:flex-col justify-between md:h-[100px]"
+                        >
+                            <h4
+                                class="group-hover:text-blue-600 text-lg mt-4 mb-2 font-semibold transition-colors"
+                            >
+                                <a href="{{ url }}" class="line-clamp-2"
+                                    >{{ title }}</a
+                                >
                             </h4>
                             <time class="text-sm text-gray-500">
                                 {{ date | format('d/m/Y') }}
@@ -193,14 +246,24 @@
                 {{ collection:posts limit="5" sort="date:desc" }}
                 <article class="flex gap-4 mb-4 items-start">
                     {{ if thumbnail }} {{ thumbnail }}
-                    <img src="{{ url }}" alt="{{ alt }}" class="w-[94px] h-[64px] object-cover" />
+                    <img
+                        src="{{ url }}"
+                        alt="{{ alt }}"
+                        class="w-[94px] h-[64px] object-cover"
+                    />
                     {{ /thumbnail }} {{ else }}
-                    <img src="https://placehold.co/150x150/png" alt="{{ title }}"
-                        class="w-[94px] h-[64px] object-cover" />
+                    <img
+                        src="https://placehold.co/150x150/png"
+                        alt="{{ title }}"
+                        class="w-[94px] h-[64px] object-cover"
+                    />
                     {{ /if }}
                     <div>
                         <h3 class="font-semibold text-sm">
-                            <a href="{{ url }}" class="hover:text-blue-600 line-clamp-2">
+                            <a
+                                href="{{ url }}"
+                                class="hover:text-blue-600 line-clamp-2"
+                            >
                                 {{ title }}
                             </a>
                         </h3>
